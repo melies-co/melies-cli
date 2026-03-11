@@ -1,0 +1,57 @@
+{
+  "name": "@melies/cli",
+  "version": "1.1.0",
+  "description": "CLI for Melies - Generate movie posters, images, and videos from the command line",
+  "main": "dist/index.js",
+  "bin": {
+    "melies": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "start": "node ./dist/index.js",
+    "prepublishOnly": "npx tsup"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "SKILL.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "melies",
+    "ai-video",
+    "ai-image",
+    "movie-poster",
+    "ai-filmmaking",
+    "video-generation",
+    "image-generation",
+    "cli",
+    "ai-agent",
+    "command-line",
+    "youtube-thumbnail",
+    "ai-actors"
+  ],
+  "author": "Melies <support@melies.co>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melies-co/cli.git"
+  },
+  "homepage": "https://melies.co",
+  "bugs": {
+    "url": "https://github.com/melies-co/cli/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "@types/yargs": "^17.0.32",
+    "tsup": "^8.5.1",
+    "typescript": "^5.3.3"
+  }
+}
