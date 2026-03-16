@@ -1,0 +1,142 @@
+[
+  {
+    "id": "cinematic",
+    "name": "Cinematic",
+    "icon": "🎬",
+    "description": "Photorealistic Hollywood blockbuster",
+    "promptSuffix": "photorealistic cinematic movie poster, dramatic lighting, Hollywood blockbuster style, professional film poster composition, high contrast, epic scale"
+  },
+  {
+    "id": "anime",
+    "name": "Anime",
+    "icon": "⛩️",
+    "description": "Japanese animation style",
+    "promptSuffix": "vibrant anime art style movie poster, cel-shaded, Japanese animation aesthetic, dynamic composition, vivid colors, manga-inspired illustration"
+  },
+  {
+    "id": "retro",
+    "name": "Retro",
+    "icon": "📼",
+    "description": "1960s-70s vintage aesthetic",
+    "promptSuffix": "retro vintage 1970s movie poster style, worn paper texture, muted color palette, classic typography, old Hollywood golden age aesthetic, grain texture"
+  },
+  {
+    "id": "film-noir",
+    "name": "Film Noir",
+    "icon": "🕵️",
+    "description": "High contrast black & white",
+    "promptSuffix": "film noir movie poster, high contrast black and white, dramatic shadows, detective story aesthetic, venetian blind lighting, smoke and mystery atmosphere"
+  },
+  {
+    "id": "minimalist",
+    "name": "Minimalist",
+    "icon": "◻️",
+    "description": "Clean and simple composition",
+    "promptSuffix": "minimalist movie poster design, clean composition, bold simple shapes, limited color palette, strong negative space, modern graphic design aesthetic"
+  },
+  {
+    "id": "horror",
+    "name": "Horror",
+    "icon": "💀",
+    "description": "Dark and unsettling atmosphere",
+    "promptSuffix": "horror movie poster, dark unsettling atmosphere, eerie lighting, distressed textures, creepy shadows, ominous mood, blood red and black color scheme"
+  },
+  {
+    "id": "sci-fi",
+    "name": "Sci-Fi",
+    "icon": "🚀",
+    "description": "Futuristic and cyberpunk",
+    "promptSuffix": "science fiction movie poster, futuristic neon lights, space themes, cyberpunk elements, holographic effects, advanced technology aesthetic, cosmic scale"
+  },
+  {
+    "id": "watercolor",
+    "name": "Watercolor",
+    "icon": "🎨",
+    "description": "Soft painted look",
+    "promptSuffix": "watercolor art style movie poster, soft flowing colors, artistic brushstrokes, delicate washes, painterly composition, dreamy ethereal quality"
+  },
+  {
+    "id": "comic-book",
+    "name": "Comic Book",
+    "icon": "💥",
+    "description": "Bold outlines and pop art",
+    "promptSuffix": "comic book style movie poster, bold black outlines, halftone dots, pop art aesthetic, vibrant saturated colors, action panels, speech bubble style typography"
+  },
+  {
+    "id": "art-deco",
+    "name": "Art Deco",
+    "icon": "🏛️",
+    "description": "1920s-30s geometric glamour",
+    "promptSuffix": "art deco style movie poster, geometric patterns, gold and black accents, 1920s-1930s glamour, ornate symmetrical design, Gatsby era elegance"
+  },
+  {
+    "id": "grindhouse",
+    "name": "Grindhouse",
+    "icon": "🔥",
+    "description": "Exploitation film style",
+    "promptSuffix": "grindhouse exploitation movie poster, grainy film texture, bold garish colors, over-the-top dramatic poses, 1970s B-movie aesthetic, distressed worn print"
+  },
+  {
+    "id": "bollywood",
+    "name": "Bollywood",
+    "icon": "✨",
+    "description": "Vibrant and ornate",
+    "promptSuffix": "Bollywood movie poster style, vibrant rich colors, ornate decorative details, dramatic poses, glamorous aesthetic, elaborate composition, festive energy"
+  },
+  {
+    "id": "western",
+    "name": "Western",
+    "icon": "🤠",
+    "description": "Dusty frontier textures",
+    "promptSuffix": "western movie poster, dusty textures, sepia and earth tones, frontier typography, desert landscape, cowboy aesthetic, wanted poster influenced design"
+  },
+  {
+    "id": "pixel-art",
+    "name": "Pixel Art",
+    "icon": "👾",
+    "description": "Retro 8/16-bit game style",
+    "promptSuffix": "pixel art retro movie poster, 16-bit video game aesthetic, pixelated characters, limited color palette, nostalgic gaming art style, crisp pixel edges"
+  },
+  {
+    "id": "surrealist",
+    "name": "Surrealist",
+    "icon": "🌀",
+    "description": "Dreamlike impossible scenes",
+    "promptSuffix": "surrealist movie poster, dreamlike impossible scenes, Salvador Dali inspired, melting forms, bizarre juxtapositions, subconscious imagery, otherworldly atmosphere"
+  },
+  {
+    "id": "documentary",
+    "name": "Documentary",
+    "icon": "📰",
+    "description": "Clean editorial photography",
+    "promptSuffix": "documentary film poster, clean journalistic style, photography-based, editorial composition, muted tones, serious tone, informative layout"
+  },
+  {
+    "id": "cartoon",
+    "name": "Cartoon",
+    "icon": "🎪",
+    "description": "Animated feature style",
+    "promptSuffix": "cartoon animated movie poster, hand-drawn colorful style, Disney/Pixar inspired, exaggerated features, playful composition, family-friendly, bright vibrant colors"
+  },
+  {
+    "id": "epic-fantasy",
+    "name": "Epic Fantasy",
+    "icon": "⚔️",
+    "description": "Sweeping magical landscapes",
+    "promptSuffix": "epic fantasy movie poster, sweeping landscapes, magical elements, Lord of the Rings inspired, mythical creatures, dramatic sky, heroic composition, painterly realism"
+  },
+  {
+    "id": "indie-film",
+    "name": "Indie Film",
+    "icon": "🎞️",
+    "description": "Muted artistic aesthetic",
+    "promptSuffix": "indie film poster, muted desaturated tones, artistic composition, festival poster aesthetic, thoughtful framing, understated elegance, photography-driven"
+  },
+  {
+    "id": "neon-noir",
+    "name": "Neon Noir",
+    "icon": "🌃",
+    "description": "Rain-soaked neon streets",
+    "promptSuffix": "neon noir movie poster, rain-soaked night streets, neon signs reflecting on wet pavement, gritty urban atmosphere, electric blue and pink neon glow, moody detective aesthetic"
+  }
+]

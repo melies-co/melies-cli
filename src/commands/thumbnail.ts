@@ -1,21 +1,18 @@
 import type { CommandModule } from 'yargs';
 import { MeliesAPI } from '../api';
 import { getToken } from '../config';
+import { pollAsset } from './image';
 import { resolveModel, getPresetCredits } from '../utils/model-resolver';
 import { buildPrompt, type StyleOptions } from '../utils/prompt-builder';
 import { findActor } from '../utils/actors';
-import { downloadFile, getOutputPath } from '../utils/download';
+import { downloadFile } from '../utils/download';
 import { addStyleOptions, addQualityOptions, addActorOption, addGenerationOptions } from '../utils/style-options';
 
-interface ImageArgs {
+interface ThumbnailArgs {
   prompt: string;
   model?: string;
-  aspectRatio?: string;
   numOutputs?: number;
-  resolution?: string;
-  imageUrl?: string;
   ref?: string;
-  sref?: string;
   sync?: boolean;
   actor?: string;
   fast?: boolean;
@@ -36,14 +33,14 @@ interface ImageArgs {
   output?: string;
 }
 
-export const imageCommand: CommandModule<{}, ImageArgs> = {
-  command: 'image <prompt>',
-  describe: 'Generate an image from a text prompt',
+export const thumbnailCommand: CommandModule<{}, ThumbnailArgs> = {
+  command: 'thumbnail <prompt>',
+  describe: 'Generate YouTube thumbnails (16:9, optimized for click-through)',
   builder: (yargs) => {
     let y = yargs
       .positional('prompt', {
         type: 'string',
-        description: 'Text prompt describing the image',
+        description: 'Text prompt describing the thumbnail',
         demandOption: true,
       })
       .option('model', {
@@ -51,35 +48,15 @@ export const imageCommand: CommandModule<{}, ImageArgs> = {
         type: 'string',
         description: 'Image model to use (overrides quality presets)',
       })
-      .option('aspectRatio', {
-        alias: 'a',
-        type: 'string',
-        default: '1:1',
-        description: 'Aspect ratio (1:1, 16:9, 9:16, 4:3, 3:4)',
-      })
       .option('numOutputs', {
         alias: 'n',
         type: 'number',
         default: 1,
-        description: 'Number of images to generate (1-4)',
-      })
-      .option('resolution', {
-        alias: 'r',
-        type: 'string',
-        description: 'Output resolution (model-dependent)',
-      })
-      .option('imageUrl', {
-        alias: 'i',
-        type: 'string',
-        description: 'Reference image URL for image-to-image generation',
+        description: 'Number of thumbnails to generate (1-4)',
       })
       .option('ref', {
         type: 'string',
-        description: 'Reference ID (actor/object) for consistent characters',
-      })
-      .option('sref', {
-        type: 'string',
-        description: 'Style reference code for visual style consistency',
+        description: 'Reference ID for consistent characters',
       })
       .option('sync', {
         alias: 's',
@@ -110,12 +87,12 @@ export const imageCommand: CommandModule<{}, ImageArgs> = {
         actorRef = actor.r2Url;
       }
 
-      // Build enhanced prompt
+      // Build thumbnail-optimized prompt
       const styleOptions: StyleOptions = {
         camera: argv.camera,
         shot: argv.shot,
-        expression: argv.expression,
-        lighting: argv.lighting,
+        expression: argv.expression || 'smile',
+        lighting: argv.lighting || 'soft',
         time: argv.time,
         weather: argv.weather,
         colorGrade: argv.colorGrade,
@@ -123,19 +100,18 @@ export const imageCommand: CommandModule<{}, ImageArgs> = {
         artStyle: argv.artStyle,
         era: argv.era,
       };
-      const finalPrompt = buildPrompt(argv.prompt, styleOptions, actorModifier);
+      const basePrompt = `YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`;
+      const finalPrompt = buildPrompt(basePrompt, styleOptions, actorModifier);
 
-      // Dry run
       if (argv.dryRun) {
         const credits = getPresetCredits('image', argv);
         console.log(JSON.stringify({
           model,
           prompt: finalPrompt,
           credits: credits || 'varies by model',
-          aspectRatio: argv.aspectRatio,
+          aspectRatio: '16:9',
           numOutputs: argv.numOutputs,
           actor: argv.actor || null,
-          sref: argv.sref || null,
           seed: argv.seed || null,
         }, null, 2));
         return;
@@ -147,26 +123,12 @@ export const imageCommand: CommandModule<{}, ImageArgs> = {
       const params: Record<string, unknown> = {
         prompt: finalPrompt,
         model,
-        aspectRatio: argv.aspectRatio,
+        aspectRatio: '16:9',
         numOutputs: argv.numOutputs,
       };
-      if (argv.resolution) params.resolution = argv.resolution;
-      if (argv.imageUrl) params.imageUrl = argv.imageUrl;
+      if (argv.ref) params.refs = [argv.ref];
       if (argv.seed) params.seed = argv.seed;
-
-      // References: actor image URL or user ref ID
-      const refs: string[] = [];
-      if (argv.ref) refs.push(argv.ref);
-      if (actorRef) params.imageUrl = params.imageUrl || actorRef;
-      if (refs.length > 0) params.refs = refs;
-
-      // Style reference
-      if (argv.sref) {
-        const srefData = await api.getSrefStyle(argv.sref);
-        if (srefData?.imageUrl) {
-          params.srefImageUrl = srefData.imageUrl;
-        }
-      }
+      if (actorRef) params.imageUrl = actorRef;
 
       const result = await api.executeTool('text_to_image', params);
 
@@ -181,7 +143,7 @@ export const imageCommand: CommandModule<{}, ImageArgs> = {
         console.log(JSON.stringify({
           assetId: result.assetId,
           status: 'pending',
-          message: 'Generation started. Use "melies status <assetId>" to check progress.',
+          message: 'Thumbnail generation started. Use "melies status <assetId>" to check progress.',
         }, null, 2));
       }
     } catch (error: any) {
@@ -190,41 +152,3 @@ export const imageCommand: CommandModule<{}, ImageArgs> = {
     }
   },
 };
-
-export async function pollAsset(api: MeliesAPI, assetId: string, maxWait = 120000): Promise<any> {
-  const start = Date.now();
-  const interval = 3000;
-
-  while (Date.now() - start < maxWait) {
-    const { assets } = await api.getAssets({ limit: 50 });
-    const asset = assets.find((a) => a._id === assetId);
-
-    if (asset) {
-      if (asset.status === 'completed') {
-        return {
-          assetId: asset._id,
-          status: 'completed',
-          url: asset.url,
-          type: asset.type,
-          prompt: asset.prompt,
-          model: asset.model,
-        };
-      }
-      if (asset.status === 'failed') {
-        return {
-          assetId: asset._id,
-          status: 'failed',
-          error: asset.error || 'Generation failed',
-        };
-      }
-    }
-
-    await new Promise((resolve) => setTimeout(resolve, interval));
-  }
-
-  return {
-    assetId,
-    status: 'timeout',
-    message: `Generation did not complete within ${maxWait / 1000}s. Check with "melies status ${assetId}".`,
-  };
-}

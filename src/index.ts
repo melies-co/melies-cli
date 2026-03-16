@@ -9,6 +9,12 @@ import { posterCommand } from './commands/poster';
 import { statusCommand } from './commands/status';
 import { assetsCommand } from './commands/assets';
 import { refCommand } from './commands/ref';
+import { actorsCommand } from './commands/actors';
+import { stylesCommand } from './commands/styles';
+import { upscaleCommand } from './commands/upscale';
+import { removeBgCommand } from './commands/remove-bg';
+import { thumbnailCommand } from './commands/thumbnail';
+import { pipelineCommand } from './commands/pipeline';
 
 yargs(hideBin(process.argv))
   .scriptName('melies')
@@ -19,9 +25,15 @@ yargs(hideBin(process.argv))
   .command(imageCommand)
   .command(videoCommand)
   .command(posterCommand)
+  .command(thumbnailCommand)
+  .command(pipelineCommand)
+  .command(upscaleCommand)
+  .command(removeBgCommand)
   .command(statusCommand)
   .command(assetsCommand)
   .command(refCommand)
+  .command(actorsCommand)
+  .command(stylesCommand)
   .demandCommand(1, 'Run "melies --help" to see available commands')
   .strict()
   .epilogue(

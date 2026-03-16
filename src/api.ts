@@ -119,7 +119,7 @@ export class MeliesAPI {
     return this.request('/v2/models', { method: 'GET' });
   }
 
-  // V2 Tool execution (image, video, poster)
+  // V2 Tool execution (image, video, poster, upscale, remove-bg)
   async executeTool(toolId: string, params: Record<string, unknown>): Promise<{ assetId: string; status: string }> {
     return this.request(`/v2/tools/${toolId}`, {
       method: 'POST',
@@ -160,5 +160,25 @@ export class MeliesAPI {
         ...(options?.toolId ? { toolId: options.toolId } : {}),
       },
     });
+  }
+
+  // Sref style references
+  async getSrefStyle(code: string): Promise<{ code: string; imageUrl: string; keywords?: string[] } | null> {
+    try {
+      return await this.request(`/sref-styles/${code}`, { method: 'GET' });
+    } catch {
+      return null;
+    }
+  }
+
+  async searchSrefStyles(keyword: string): Promise<any> {
+    return this.request('/sref-styles/search', {
+      method: 'GET',
+      query: { q: keyword },
+    });
+  }
+
+  async getTopSrefKeywords(): Promise<any> {
+    return this.request('/sref-styles/top-keywords', { method: 'GET' });
   }
 }

@@ -1,7 +1,7 @@
 ---
 name: melies
-description: AI image and video generation CLI. Generate images, videos, and movie posters using 50+ models including Flux, Kling, Veo, Wan, and more. Text-to-image, text-to-video, image-to-video, style transfer, and consistent character references. Built for filmmakers, content creators, YouTube thumbnails, and AI agents.
-version: 1.1.1
+description: "AI filmmaking CLI with 148 built-in actors, 98 visual styles, and smart model selection. Generate images, videos, posters, and thumbnails without prompt engineering. Text-to-image, text-to-video, image-to-video pipeline, upscaling, background removal. Use --actor, --art-style, --lighting, --mood flags instead of writing prompts."
+version: 2.0.0
 user-invocable: false
 allowed-tools: Bash(melies:*)
 homepage: https://melies.co
@@ -25,7 +25,7 @@ metadata:
 
 # Melies CLI
 
-AI filmmaking from the command line. Generate movie posters, YouTube thumbnails, character portraits, images, and videos using 50+ AI models.
+AI filmmaking from the command line. 148 AI actors, 98 visual styles, 50+ models. Generate images, videos, posters, and YouTube thumbnails without prompt engineering.
 
 ## Install
 
@@ -34,8 +34,6 @@ npm install -g melies
 ```
 
 ## Authentication
-
-Most users sign up via Google/SSO. To authenticate the CLI:
 
 1. Go to [melies.co/settings](https://melies.co/settings) > User
 2. Copy your API token
@@ -51,51 +49,199 @@ Or set as environment variable:
 export MELIES_TOKEN=your_jwt_token
 ```
 
-Email/password login also works if you have a password set:
+## Quick Start
 
 ```bash
-melies login -e your@email.com -p yourpassword
+# Generate an image with an AI actor, Ghibli style, and golden lighting
+melies image "portrait in a café" --actor mei --art-style ghibli --lighting golden --sync
+
+# Generate a movie poster with a preset style
+melies poster "Neon Shadows" --style noir --actor james --sync
+
+# Image → video pipeline in one command
+melies pipeline "warrior on a cliff at sunset" --actor mei --best --sync
+
+# Generate 4 YouTube thumbnails
+melies thumbnail "shocked face reacting to AI news" --actor aria -n 4 --sync
+
+# Preview cost before generating
+melies image "sunset" --quality --actor hailey --dry-run
 ```
 
-Token is stored in `~/.melies/config.json`. Environment variable takes precedence.
+## Smart Model Selection
 
-## Core Workflow
+No model names needed. Use quality presets:
 
-The typical workflow for an agent:
+| Flag | Image Model | Video Model |
+|------|------------|-------------|
+| (default / `--fast`) | flux-schnell (2cr) | kling-v2 (30cr) |
+| `--quality` | flux-pro (8cr) | kling-v3-pro (100cr) |
+| `--best` | seedream-3 (6cr) | veo-3.1 (400cr) |
+| `-m <id>` | exact model | exact model |
 
-1. **Check credits** before generating
-2. **Pick a model** (list available models)
-3. **Generate** the asset (image, video, or poster)
-4. **Poll for completion** (use `--sync` or check status manually)
-5. **Use the URL** from the completed asset
+`-m` overrides quality presets. Use `melies models` to list all available models.
+
+## Visual Style Flags
+
+Add these flags to any `image`, `video`, `thumbnail`, or `pipeline` command:
+
+| Flag | Example Values |
+|------|---------------|
+| `--camera` | eye-level, high, low, overhead, dutch, ots, profile, three-quarter |
+| `--shot` | ecu, close-up, medium, cowboy, full-body, wide, tighter, wider |
+| `--expression` | smile, laugh, serious, surprised, villain-smirk, seductive, horrified |
+| `--lighting` | soft, golden, noir, rembrandt, backlit, neon, candle, hard |
+| `--time` | dawn, sunrise, golden, dusk, night, morning, midday |
+| `--weather` | clear, fog, rain, storm, snow, overcast, mist |
+| `--color-grade` | natural, teal-orange, mono, warm, cool, filmic, sepia |
+| `--mood` | romantic, mysterious, tense, ethereal, gritty, epic, nostalgic |
+| `--art-style` | film-still, blockbuster, noir, anime, ghibli, shinkai, oil, watercolor, concept |
+| `--era` | victorian, 1920s, 1980s, modern, dystopian, medieval |
+
+Multiple flags combine. Example:
 
 ```bash
-# 1. Check balance
-melies credits
-
-# 2. Browse models
-melies models -t image
-
-# 3. Generate with --sync to wait for result
-melies image "A cyberpunk cityscape at night" -m flux-dev -a 16:9 --sync
-
-# 4. Result includes the URL directly
+melies image "woman in a café" --lighting golden --mood romantic --art-style ghibli --sync
 ```
 
 ## Commands
 
-### melies login
+### melies image \<prompt\>
 
-Log in and store your auth token.
+Generate images from text.
 
 ```bash
-melies login -e user@example.com -p password
-melies login --token your_jwt_token
+melies image "sunset over mountains" --quality --sync
+melies image "portrait" --actor mei --lighting golden --sync
+melies image "cyberpunk city" --art-style neo-noir --mood gritty -n 4 --sync
+melies image "product photo" -a 1:1 --best --sync --output photo.webp
+```
+
+**Options:**
+- `-m, --model` Model override (use quality presets instead)
+- `-a, --aspectRatio` 1:1, 16:9, 9:16, 4:3, 3:4 (default: 1:1)
+- `-n, --numOutputs` 1-4 images (default: 1)
+- `-r, --resolution` Output resolution (model-dependent)
+- `-i, --imageUrl` Reference image for img2img
+- `--ref` Reference ID for custom characters (see `melies ref`)
+- `--actor` Built-in AI actor name (see `melies actors`)
+- `--sref` Style reference code (see `melies styles`)
+- `--fast` / `--quality` / `--best` Quality presets
+- `--camera`, `--shot`, `--expression`, `--lighting`, `--time`, `--weather`, `--color-grade`, `--mood`, `--art-style`, `--era` Visual style flags
+- `--seed` Reproducible generation
+- `--dry-run` Preview prompt, model, and cost without generating
+- `-o, --output` Save file to path (use with --sync)
+- `-s, --sync` Wait for completion
+
+### melies video \<prompt\>
+
+Generate videos from text or images.
+
+```bash
+melies video "drone shot over forest" --quality --sync
+melies video "walking down the street" --actor mei --camera low --sync
+melies video "zoom into product" -i https://example.com/product.jpg --sync
+```
+
+**Options:** Same as `image` plus:
+- `-d, --duration` Video duration in seconds
+- Default aspect ratio is 16:9
+- Sync timeout is 5 minutes
+
+### melies poster \<title\>
+
+Generate movie posters with style presets.
+
+```bash
+melies poster "Neon Shadows" --style noir --sync
+melies poster "The Last Garden" --style anime --genre drama --actor mei --sync
+melies poster "Blood Moon" -l "A detective hunts a killer" -g horror --quality --sync
+```
+
+**Options:**
+- `-l, --logline` Short synopsis
+- `-g, --genre` Genre (horror, sci-fi, comedy, drama, etc.)
+- `--style` Poster preset: cinematic, anime, retro, film-noir, minimalist, horror, sci-fi, watercolor, comic-book, art-deco, grindhouse, bollywood, western, pixel-art, surrealist, documentary, cartoon, epic-fantasy, indie-film, neon-noir
+- `--actor` AI actor name
+- `--fast` / `--quality` / `--best` Quality presets
+- `--seed`, `--dry-run`, `--output`, `--sync`
+
+### melies thumbnail \<prompt\>
+
+Generate YouTube thumbnails (forced 16:9, optimized for click-through).
+
+```bash
+melies thumbnail "shocked face reacting to AI news" --actor aria -n 4 --sync
+melies thumbnail "cooking tutorial intro" --actor sofia --expression smile --quality --sync
+```
+
+**Options:** Same as `image`. Aspect ratio is always 16:9. Default expression is smile, default lighting is soft.
+
+### melies pipeline \<prompt\>
+
+Generate an image then animate it into a video. One command, both steps.
+
+```bash
+melies pipeline "warrior on a cliff at sunset" --actor mei --art-style concept --best --sync
+melies pipeline "serene lake at dawn" --mood ethereal --lighting golden --sync
+```
+
+**Options:**
+- `--im` Image model override
+- `--vm` Video model override
+- `-a, --aspectRatio` Ratio for both steps (default: 16:9)
+- `-d, --duration` Video duration
+- All style flags, `--actor`, quality presets, `--dry-run`, `--output`
+- Sync defaults to true
+
+Returns `{ imageUrl, videoUrl }`.
+
+### melies upscale \<imageUrl\>
+
+Upscale an image to higher resolution.
+
+```bash
+melies upscale "https://..." --model esrgan --scale 2 --sync
+melies upscale "https://..." --model clarity --scale 4 --sync
+```
+
+Models: esrgan (3cr), clarity (8cr), seedvr2 (5cr). Scale 4x costs double.
+
+### melies remove-bg \<imageUrl\>
+
+Remove background from an image. Returns transparent PNG.
+
+```bash
+melies remove-bg "https://..." --sync
+```
+
+Cost: 3 credits.
+
+### melies actors
+
+Browse 148 built-in AI actors.
+
+```bash
+melies actors                              # List all actors
+melies actors --type influencer            # Filter by type
+melies actors --gender female --age 20s    # Filter by gender and age
+melies actors search "asian"               # Search by name/tags
+melies actors search "male 30s"            # Multi-word search
+```
+
+### melies styles
+
+Browse and search style references (sref codes).
+
+```bash
+melies styles search "cyberpunk"           # Search by keyword
+melies styles top                          # Popular keywords
+melies styles info 1234567                 # Details for a code
 ```
 
 ### melies credits
 
-Check your credit balance and usage history.
+Check credit balance and usage.
 
 ```bash
 melies credits
@@ -104,211 +250,120 @@ melies credits -g day
 
 ### melies models
 
-List available AI models. No authentication needed.
+List available AI models.
 
 ```bash
 melies models                    # All models
 melies models -t image           # Image models only
 melies models -t video           # Video models only
-melies models -t sound           # Sound/music models
 ```
-
-### melies image \<prompt\>
-
-Generate an image from a text prompt.
-
-```bash
-melies image "A sunset over mountains" -m flux-schnell
-melies image "Product photo of sneakers" -m flux-dev -a 1:1
-melies image "YouTube thumbnail" -m flux-pro -a 16:9 --sync
-melies image "Portrait" -m flux-schnell -n 4 --sync
-```
-
-**Options:**
-- `-m, --model` Image model (default: flux-schnell). See `melies models -t image`.
-- `-a, --aspectRatio` Ratio: 1:1, 16:9, 9:16, 4:3, 3:4 (default: 1:1)
-- `-n, --numOutputs` Number of images 1-4 (default: 1)
-- `-r, --resolution` Output resolution (model-dependent)
-- `-i, --imageUrl` Reference image URL for image-to-image generation
-- `--ref` Reference ID for consistent character/object (see `melies ref`)
-- `-s, --sync` Wait for completion and return the URL
-
-### melies video \<prompt\>
-
-Generate a video from a text prompt. Optionally provide a reference image.
-
-```bash
-melies video "A drone shot flying over a forest" -m kling-v2
-melies video "Camera slowly pans across a cityscape" -m veo-3 -a 16:9 --sync
-melies video "Zoom into the product" -m kling-v2 -i https://example.com/product.jpg
-melies video "Timelapse of clouds" -m wan-v2 -d 10 --sync
-```
-
-**Options:**
-- `-m, --model` Video model (default: kling-v2). See `melies models -t video`.
-- `-i, --imageUrl` Reference image URL for image-to-video
-- `-a, --aspectRatio` Ratio: 16:9, 9:16, 1:1 (default: 16:9)
-- `-d, --duration` Duration in seconds (model-dependent)
-- `-r, --resolution` Output resolution (model-dependent)
-- `--ref` Reference ID for consistent character/object (see `melies ref`)
-- `-s, --sync` Wait for completion and return the URL (timeout: 5 min)
-
-### melies poster \<title\>
-
-Generate a cinematic movie poster.
-
-```bash
-melies poster "The Last Horizon" -g sci-fi --sync
-melies poster "Blood Moon" -l "A detective hunts a killer under a blood moon" -g horror --sync
-melies poster "Summer Love" -g comedy -m flux-dev --sync
-```
-
-**Options:**
-- `-l, --logline` Short synopsis for the poster
-- `-g, --genre` Genre: horror, sci-fi, comedy, drama, action, thriller, fantasy, etc.
-- `-m, --model` Image model (default: flux-dev)
-- `--ref` Reference ID for consistent character/object (see `melies ref`)
-- `-s, --sync` Wait for completion and return the URL
 
 ### melies status \<assetId\>
 
-Check the status of a generation job.
+Check generation job status.
 
 ```bash
 melies status 6502a3b1f2e4a123456789ab
 ```
 
-Returns: assetId, status (pending/completed/failed), url, prompt, model.
-
 ### melies assets
 
-List your recently generated assets.
+List recent generated assets.
 
 ```bash
 melies assets
-melies assets -l 50
-melies assets -t text_to_image
-melies assets -t text_to_video
-melies assets -t poster_generator
+melies assets -l 50 -t text_to_image
 ```
-
-**Options:**
-- `-l, --limit` Number of assets (default: 20, max: 100)
-- `-o, --offset` Pagination offset
-- `-t, --type` Filter by tool type
 
 ### melies ref
 
-Manage AI actor and object references for consistent characters across generations.
+Manage custom AI actor/object references.
 
 ```bash
-melies ref list                                    # List your references
-melies ref create "John" -i https://example.com/john.jpg    # Create actor reference
-melies ref create "Red Chair" -i https://example.com/chair.jpg -t object  # Create object reference
-melies ref delete 6502a3b1f2e4a123456789ab         # Delete a reference
-```
-
-**Subcommands:**
-- `melies ref list` List saved references (actors, objects)
-- `melies ref create <label> -i <imageUrl>` Create a new reference from an image
-- `melies ref delete <id>` Delete a reference
-
-**Using references in generation:**
-
-```bash
-# Get reference ID from list
-REF_ID=$(melies ref list | jq -r '.[0].id')
-
-# Use in any generation command
-melies image "Portrait of John in a forest" --ref "$REF_ID" --sync
-melies poster "The Last Stand" --ref "$REF_ID" -g action --sync
-melies video "John walks toward camera" --ref "$REF_ID" --sync
+melies ref list
+melies ref create "John" -i https://example.com/john.jpg
+melies ref delete <id>
 ```
 
 ## Common Patterns
 
-### YouTube Thumbnail Pipeline
+### YouTube Thumbnail Pipeline with AI Actors
 
 ```bash
-# Generate 4 thumbnail options
-melies image "YouTube thumbnail: shocked face reacting to AI news, bold text overlay, bright colors" -m flux-dev -a 16:9 -n 4 --sync
-```
-
-### Movie Poster Batch
-
-```bash
-# Generate posters for multiple projects
-melies poster "Neon Requiem" -g cyberpunk --sync
-melies poster "Whispers in the Dark" -g horror -l "A blind woman hears the dead" --sync
-melies poster "Starbound" -g sci-fi -l "Humanity's last colony ship" --sync
-```
-
-### Image to Video
-
-```bash
-# First generate an image, then animate it
-RESULT=$(melies image "A serene lake at dawn" -m flux-dev --sync)
-IMAGE_URL=$(echo $RESULT | jq -r '.url')
-melies video "Slow camera push forward, water ripples gently" -m kling-v2 -i "$IMAGE_URL" --sync
+melies thumbnail "shocked face reacting to AI news" \
+  --actor aria --expression surprised -n 4 --sync
 ```
 
 ### Consistent Character Across Media
 
 ```bash
-# Create an actor reference from a photo
-melies ref create "Sarah" -i https://example.com/sarah.jpg
-
-# Get the reference ID
-REF_ID=$(melies ref list | jq -r '.[0].id')
-
-# Generate consistent images and videos with that character
-melies image "Sarah standing on a cliff at sunset" --ref "$REF_ID" -m flux-dev --sync
-melies poster "The Sarah Chronicles" --ref "$REF_ID" -g drama --sync
+# Same actor in different scenes
+melies image "Mei in a coffee shop" --actor mei --lighting soft --sync
+melies image "Mei on a mountain" --actor mei --mood epic --sync
+melies video "Mei walks toward camera" --actor mei --camera low --sync
 ```
 
-### Image to Image (Style Transfer)
+### Image → Video Pipeline
 
 ```bash
-# Use an existing image as reference for style/composition
-melies image "Same scene but in watercolor style" -i https://example.com/photo.jpg -m flux-dev --sync
+melies pipeline "a warrior on a cliff at sunset" \
+  --actor mei --art-style concept --lighting golden \
+  --best --sync
 ```
 
-### Check and Generate
+### Movie Poster Batch
 
 ```bash
-# Always check credits before expensive generation
+melies poster "Neon Requiem" --style neon-noir --sync
+melies poster "Whispers in the Dark" --style horror -l "A blind woman hears the dead" --sync
+melies poster "Starbound" --style sci-fi -l "Humanity's last colony ship" --sync
+```
+
+### Dry Run Before Expensive Generation
+
+```bash
+# Preview everything without spending credits
+melies pipeline "epic battle scene" --actor james --best --dry-run
+```
+
+### Budget-Aware Generation
+
+```bash
 CREDITS=$(melies credits | jq '.credits')
 if [ "$CREDITS" -gt 100 ]; then
-  melies video "Epic aerial shot" -m veo-3 --sync
+  melies video "Epic aerial shot" --best --sync
 else
-  echo "Low credits: $CREDITS remaining"
+  melies image "Epic aerial shot" --fast --sync
 fi
 ```
 
 ## Credit Costs
 
-Credit costs vary by model. Check with `melies models`.
-
-Typical ranges:
-- **Fast images** (flux-schnell): 1-5 credits
-- **Quality images** (flux-dev, flux-pro): 5-25 credits
-- **Videos** (kling, wan): 30-100 credits
-- **Premium videos** (veo-3, veo-3.1): 200-400 credits
-
-Video costs can increase with duration and resolution. Audio generation may also add a multiplier.
+| Command | Cost |
+|---------|------|
+| Image (--fast) | 2 credits |
+| Image (--quality) | 8 credits |
+| Image (--best) | 6 credits |
+| Video (--fast) | 30 credits |
+| Video (--quality) | 100 credits |
+| Video (--best) | 400 credits |
+| Upscale (esrgan, 2x) | 3 credits |
+| Upscale (clarity, 2x) | 8 credits |
+| Remove background | 3 credits |
+| Pipeline | image + video cost combined |
 
 ## Gotchas
 
-1. **Generation is async by default.** Without `--sync`, you get an assetId immediately. Use `melies status` to check later.
-2. **Video generation takes time.** Expect 30s to 3min depending on model and duration. Use `--sync` to wait automatically.
-3. **Credits are deducted upfront.** If generation fails, credits are refunded automatically.
-4. **Token expiry.** If you get 401 errors, run `melies login` again.
-5. **Model names are case-sensitive.** Use exact IDs from `melies models`.
-6. **Aspect ratio matters.** Some models only support certain ratios. 16:9 is safest for video.
-7. **Image-to-video needs a public URL.** The `--imageUrl` flag requires a publicly accessible image URL.
-8. **Poster prompt is auto-generated.** The `poster` command builds a prompt from title, logline, and genre. You don't need to write one.
-9. **Rate limits apply.** Don't exceed 1000 requests per 15 minutes.
-10. **`--sync` has timeouts.** Images timeout at 2 min, videos at 5 min. For longer generation, use async + `melies status`.
+1. **Generation is async by default.** Use `--sync` to wait for results.
+2. **Video generation takes time.** 30s to 3min depending on model. `--sync` waits up to 5 min.
+3. **Credits are deducted upfront.** Refunded automatically on failure.
+4. **Actor names are case-insensitive.** `--actor Mei` and `--actor mei` both work.
+5. **Style flags combine.** `--lighting golden --mood romantic --art-style ghibli` all apply to one generation.
+6. **Pipeline defaults to sync.** It needs to wait for the image before generating the video.
+7. **--dry-run shows the full prompt.** Useful for debugging what modifiers get applied.
+8. **Poster --style is separate from --art-style.** Poster styles are preset poster designs. Art styles are visual rendering options.
+9. **Token expiry.** If you get 401 errors, run `melies login` again.
+10. **Rate limits.** Max 1000 requests per 15 minutes.
 
 ## Environment Variables
 
@@ -320,23 +375,21 @@ Video costs can increase with duration and resolution. Audio generation may also
 ## Quick Reference
 
 ```bash
-melies login --token TOKEN             # Log in with token
-melies credits                         # Check balance
-melies models -t image                 # List image models
-melies models -t video                 # List video models
-melies image "prompt" -m model --sync  # Generate image
-melies image "prompt" -i url --sync    # Image-to-image
-melies video "prompt" -m model --sync  # Generate video
-melies video "prompt" -i url --sync    # Image-to-video
-melies poster "title" -g genre --sync  # Generate poster
-melies ref list                        # List actor/object refs
-melies ref create "name" -i url        # Create reference
-melies image "prompt" --ref ID --sync  # Use ref in generation
-melies status <assetId>                # Check job status
-melies assets                          # List your assets
+melies image "prompt" --actor <name> --art-style <style> --quality --sync
+melies video "prompt" --actor <name> --lighting <light> --best --sync
+melies poster "title" --style <preset> -g <genre> --sync
+melies thumbnail "prompt" --actor <name> -n 4 --sync
+melies pipeline "prompt" --actor <name> --best --sync
+melies upscale <url> --scale 2 --sync
+melies remove-bg <url> --sync
+melies actors search "query"
+melies styles search "keyword"
+melies credits
+melies models
 ```
 
 ## Links
 
 - [melies.co](https://melies.co)
+- [Documentation](https://melies.co/docs)
 - [Agent Skills Directory](https://agentskill.sh)

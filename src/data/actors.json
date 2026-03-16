@@ -1,0 +1,2397 @@
+[
+  {
+    "name": "Aria",
+    "id": "aria",
+    "modifier": "young East Asian woman, dark straight hair, natural minimal makeup, single eyelid, gentle warm expression",
+    "r2Url": "https://asset.melies.co/actors/aria-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Asian",
+      "Influencer",
+      "Natural"
+    ]
+  },
+  {
+    "name": "Zara",
+    "id": "zara",
+    "modifier": "elegant Black woman in her 30s, natural afro hair, warm brown skin, high cheekbones, confident refined expression",
+    "r2Url": "https://asset.melies.co/actors/zara-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "30s",
+      "African",
+      "Actor",
+      "Elegant"
+    ]
+  },
+  {
+    "name": "Leo",
+    "id": "leo",
+    "modifier": "white man in his early 30s, short brown hair, light stubble, rugged features, approachable expression, strong jawline",
+    "r2Url": "https://asset.melies.co/actors/leo-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "European",
+      "Everyday",
+      "Rugged"
+    ]
+  },
+  {
+    "name": "Mei",
+    "id": "mei",
+    "modifier": "young Southeast Asian woman, long wavy dark hair, expressive eyes, youthful radiant face, warm gentle smile",
+    "r2Url": "https://asset.melies.co/actors/mei-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "Asian",
+      "Everyday",
+      "Youthful"
+    ]
+  },
+  {
+    "name": "James",
+    "id": "james",
+    "modifier": "distinguished Black man in his 50s, salt-and-pepper beard, authoritative wise expression, strong facial features, silver temples",
+    "r2Url": "https://asset.melies.co/actors/james-full.webp",
+    "gender": "Male",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "50s",
+      "African",
+      "Actor",
+      "Distinguished"
+    ]
+  },
+  {
+    "name": "Sofia",
+    "id": "sofia",
+    "modifier": "Mediterranean woman in her 40s, olive skin, dark curly hair, expressive eyes, charismatic passionate expression",
+    "r2Url": "https://asset.melies.co/actors/sofia-full.webp",
+    "gender": "Female",
+    "ageGroup": "40s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "40s",
+      "Mediterranean",
+      "Actor",
+      "Charismatic"
+    ]
+  },
+  {
+    "name": "Kai",
+    "id": "kai",
+    "modifier": "androgynous person with mixed heritage, short textured hair, sharp angular features, modern streetwear style, cool direct gaze",
+    "r2Url": "https://asset.melies.co/actors/kai-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Non-binary",
+      "20s",
+      "Mixed",
+      "Influencer",
+      "Streetwear"
+    ]
+  },
+  {
+    "name": "Riku",
+    "id": "riku",
+    "modifier": "young Japanese man in his early 20s, clean-cut black hair, gentle thoughtful expression, smooth skin, subtle sophistication",
+    "r2Url": "https://asset.melies.co/actors/riku-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "Asian",
+      "Everyday",
+      "Clean-cut"
+    ]
+  },
+  {
+    "name": "Amara",
+    "id": "amara",
+    "modifier": "young West African woman, high cheekbones, radiant dark skin, vibrant expressive eyes, natural hair",
+    "r2Url": "https://asset.melies.co/actors/amara-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "African",
+      "Influencer",
+      "Vibrant"
+    ]
+  },
+  {
+    "name": "Viktor",
+    "id": "viktor",
+    "modifier": "Eastern European man in his 40s, strong jawline, piercing light grey eyes, grey temples, stoic commanding presence",
+    "r2Url": "https://asset.melies.co/actors/viktor-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "40s",
+      "European",
+      "Actor",
+      "Stoic"
+    ]
+  },
+  {
+    "name": "Luna",
+    "id": "luna",
+    "modifier": "Latina woman in her 30s, wavy dark hair, warm olive skin, bright smile, vivacious expressive face",
+    "r2Url": "https://asset.melies.co/actors/luna-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "30s",
+      "Latin",
+      "Actor",
+      "Vivacious"
+    ]
+  },
+  {
+    "name": "Chen",
+    "id": "chen",
+    "modifier": "Chinese man in his 50s, silver-streaked black hair, intellectual calm demeanor, authoritative expression, distinguished features",
+    "r2Url": "https://asset.melies.co/actors/chen-full.webp",
+    "gender": "Male",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "50s",
+      "Asian",
+      "Actor",
+      "Intellectual"
+    ]
+  },
+  {
+    "name": "Yuki",
+    "id": "yuki",
+    "modifier": "young Japanese woman with gap between front teeth, straight dark blunt bangs, single eyelid, round face, pale skin with flush",
+    "r2Url": "https://asset.melies.co/actors/yuki-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Asian",
+      "Influencer",
+      "Gap teeth"
+    ]
+  },
+  {
+    "name": "Elena",
+    "id": "elena",
+    "modifier": "Ukrainian woman, pale porcelain skin, high cheekbones, ice-blue eyes, straight blonde hair, intense quiet expression",
+    "r2Url": "https://asset.melies.co/actors/elena-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "European",
+      "Everyday",
+      "Blue eyes"
+    ]
+  },
+  {
+    "name": "Priya",
+    "id": "priya",
+    "modifier": "Indian woman, warm medium-brown skin, large almond eyes, long dark wavy hair, small gold nose ring, full lips",
+    "r2Url": "https://asset.melies.co/actors/priya-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "South Asian",
+      "Influencer",
+      "Nose ring"
+    ]
+  },
+  {
+    "name": "Fatimah",
+    "id": "fatimah",
+    "modifier": "Somali woman, very deep blue-black skin, angular sharp face, high forehead, natural tight coils, slender neck, quiet intensity",
+    "r2Url": "https://asset.melies.co/actors/fatimah-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "African",
+      "Everyday",
+      "Dark skin"
+    ]
+  },
+  {
+    "name": "Ingrid",
+    "id": "ingrid",
+    "modifier": "Swedish woman, 55, silver pixie cut, pale skin with fine lines, strong jaw, pale grey eyes, powerful presence",
+    "r2Url": "https://asset.melies.co/actors/ingrid-full.webp",
+    "gender": "Female",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "50s",
+      "European",
+      "Actor",
+      "Silver hair"
+    ]
+  },
+  {
+    "name": "Yara",
+    "id": "yara",
+    "modifier": "Brazilian mixed-race woman, medium-warm skin, thick curly dark hair, full lips, wide nose, athletic build",
+    "r2Url": "https://asset.melies.co/actors/yara-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "30s",
+      "Latin",
+      "Actor",
+      "Curly hair"
+    ]
+  },
+  {
+    "name": "Claire",
+    "id": "claire",
+    "modifier": "French woman, pale freckled skin, wavy auburn hair, natural brows, slight tiredness around eyes, intellectual warmth",
+    "r2Url": "https://asset.melies.co/actors/claire-full.webp",
+    "gender": "Female",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "40s",
+      "European",
+      "Everyday",
+      "Freckles"
+    ]
+  },
+  {
+    "name": "Marta",
+    "id": "marta",
+    "modifier": "Polish woman, light skin, dirty blonde hair, deep-set brown eyes, slight under-eye circles, genuine warm expression",
+    "r2Url": "https://asset.melies.co/actors/marta-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "European",
+      "Everyday",
+      "Authentic"
+    ]
+  },
+  {
+    "name": "Amira",
+    "id": "amira",
+    "modifier": "Moroccan woman in her 50s, deep olive skin, silver-streaked hair in bun, crow's feet, strong matriarchal dignified presence",
+    "r2Url": "https://asset.melies.co/actors/amira-full.webp",
+    "gender": "Female",
+    "ageGroup": "50s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "50s",
+      "Middle Eastern",
+      "Everyday",
+      "Silver hair"
+    ]
+  },
+  {
+    "name": "Adaeze",
+    "id": "adaeze",
+    "modifier": "young Igbo-Nigerian woman, very dark skin, long thin box braids, high cheekbones, wide bright eyes, Gen Z energy",
+    "r2Url": "https://asset.melies.co/actors/adaeze-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "African",
+      "Influencer",
+      "Braids"
+    ]
+  },
+  {
+    "name": "Hana",
+    "id": "hana",
+    "modifier": "Korean woman, single eyelid, pale skin, delicate fine features, long straight dark hair, minimal makeup, soft expression",
+    "r2Url": "https://asset.melies.co/actors/hana-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Asian",
+      "Influencer",
+      "Minimal"
+    ]
+  },
+  {
+    "name": "Vera",
+    "id": "vera",
+    "modifier": "Serbian woman, 59, white hair pulled back, strong Slavic features, pale sun-spotted skin, deep crow's feet, dignified",
+    "r2Url": "https://asset.melies.co/actors/vera-full.webp",
+    "gender": "Female",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "50s",
+      "European",
+      "Actor",
+      "White hair"
+    ]
+  },
+  {
+    "name": "Meiying",
+    "id": "meiying",
+    "modifier": "Taiwanese woman, straight black hair, thin gold reading glasses, medium-light skin, professional capable expression",
+    "r2Url": "https://asset.melies.co/actors/meiying-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "Asian",
+      "Everyday",
+      "Glasses"
+    ]
+  },
+  {
+    "name": "Cleo",
+    "id": "cleo",
+    "modifier": "Caribbean woman, medium warm brown skin, wild natural curls full volume, small gold hoops, bright confident expression",
+    "r2Url": "https://asset.melies.co/actors/cleo-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "30s",
+      "African",
+      "Influencer",
+      "Natural hair"
+    ]
+  },
+  {
+    "name": "Roshni",
+    "id": "roshni",
+    "modifier": "Indian woman, dusky medium-brown skin, thick defined brows, straight dark hair, small nose stud, natural authentic look",
+    "r2Url": "https://asset.melies.co/actors/roshni-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "South Asian",
+      "Everyday",
+      "Nose stud"
+    ]
+  },
+  {
+    "name": "Agnes",
+    "id": "agnes",
+    "modifier": "elderly Swedish woman, layered silver bob, sun-spotted skin, sharp blue eyes, deep smile lines, energetic vital presence",
+    "r2Url": "https://asset.melies.co/actors/agnes-full.webp",
+    "gender": "Female",
+    "ageGroup": "60s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "60s",
+      "European",
+      "Actor",
+      "Silver hair"
+    ]
+  },
+  {
+    "name": "Irem",
+    "id": "irem",
+    "modifier": "Turkish woman, warm olive skin, strong arched brows, long straight dark hair, modern direct confident expression",
+    "r2Url": "https://asset.melies.co/actors/irem-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "Middle Eastern",
+      "Everyday",
+      "Strong brows"
+    ]
+  },
+  {
+    "name": "Mai",
+    "id": "mai",
+    "modifier": "Vietnamese woman, slim oval face, straight black hair, very minimal makeup, quiet composed reserved expression",
+    "r2Url": "https://asset.melies.co/actors/mai-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "Asian",
+      "Everyday",
+      "Quiet"
+    ]
+  },
+  {
+    "name": "Lucia",
+    "id": "lucia",
+    "modifier": "Argentine woman, light Mediterranean tan, long straight dark hair, fine forehead lines, high cheekbones, elegant presence",
+    "r2Url": "https://asset.melies.co/actors/lucia-full.webp",
+    "gender": "Female",
+    "ageGroup": "40s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "40s",
+      "Latin",
+      "Actor",
+      "Elegant"
+    ]
+  },
+  {
+    "name": "Adesuwa",
+    "id": "adesuwa",
+    "modifier": "elderly Nigerian woman, very deep dark skin, long grey sisterlocks, strong matriarch face, commanding dignified presence",
+    "r2Url": "https://asset.melies.co/actors/adesuwa-full.webp",
+    "gender": "Female",
+    "ageGroup": "60s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "60s",
+      "African",
+      "Actor",
+      "Locs"
+    ]
+  },
+  {
+    "name": "Chiamaka",
+    "id": "chiamaka",
+    "modifier": "Nigerian woman, dark brown skin, cornrows going back, subtle artistic liner, direct gaze, creative confident energy",
+    "r2Url": "https://asset.melies.co/actors/chiamaka-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "30s",
+      "African",
+      "Influencer",
+      "Braids"
+    ]
+  },
+  {
+    "name": "Yolanda",
+    "id": "yolanda",
+    "modifier": "Brazilian woman in her late 50s, rich warm brown skin, curly salt-and-pepper hair, bright genuine smile, warm crow's feet",
+    "r2Url": "https://asset.melies.co/actors/yolanda-full.webp",
+    "gender": "Female",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "50s",
+      "Latin",
+      "Actor",
+      "Natural hair"
+    ]
+  },
+  {
+    "name": "Astrid",
+    "id": "astrid",
+    "modifier": "Icelandic woman, 19, extremely pale skin, near-white eyebrows and lashes, pale grey-blue eyes, delicate elfin features",
+    "r2Url": "https://asset.melies.co/actors/astrid-full.webp",
+    "gender": "Female",
+    "ageGroup": "Teens",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "Teens",
+      "European",
+      "Everyday",
+      "Pale"
+    ]
+  },
+  {
+    "name": "Pilar",
+    "id": "pilar",
+    "modifier": "Colombian woman, tanned olive skin, dark curly hair with grey strands, laugh lines, warm grounded community-leader presence",
+    "r2Url": "https://asset.melies.co/actors/pilar-full.webp",
+    "gender": "Female",
+    "ageGroup": "50s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "50s",
+      "Latin",
+      "Everyday",
+      "Natural"
+    ]
+  },
+  {
+    "name": "Soyeon",
+    "id": "soyeon",
+    "modifier": "Korean woman, round soft face, double eyelid, pale skin with flush, small gap between front teeth, shy genuine smile",
+    "r2Url": "https://asset.melies.co/actors/soyeon-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "Asian",
+      "Everyday",
+      "Gap teeth"
+    ]
+  },
+  {
+    "name": "Adela",
+    "id": "adela",
+    "modifier": "Mexican-Indigenous woman, warm dark brown skin, broad indigenous features, silver-streaked dark braid, deep unhurried dignity",
+    "r2Url": "https://asset.melies.co/actors/adela-full.webp",
+    "gender": "Female",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "40s",
+      "Latin",
+      "Everyday",
+      "Indigenous"
+    ]
+  },
+  {
+    "name": "Deepa",
+    "id": "deepa",
+    "modifier": "Tamil Indian woman, dark rich brown skin, long straight black hair, professional composed bearing, small diamond nose stud",
+    "r2Url": "https://asset.melies.co/actors/deepa-full.webp",
+    "gender": "Female",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "40s",
+      "South Asian",
+      "Everyday",
+      "Professional"
+    ]
+  },
+  {
+    "name": "Gabriella",
+    "id": "gabriella",
+    "modifier": "Italian woman, olive skin, expressive dark eyes, eye crinkle lines, dark wavy hair natural volume, warm charismatic",
+    "r2Url": "https://asset.melies.co/actors/gabriella-full.webp",
+    "gender": "Female",
+    "ageGroup": "40s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "40s",
+      "European",
+      "Actor",
+      "Expressive"
+    ]
+  },
+  {
+    "name": "Camille",
+    "id": "camille",
+    "modifier": "French woman, very pale skin, soft brown eyes, small upturned nose, brunette in loose bun, natural Parisian nonchalance",
+    "r2Url": "https://asset.melies.co/actors/camille-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "30s",
+      "European",
+      "Actor",
+      "Parisian"
+    ]
+  },
+  {
+    "name": "Nour",
+    "id": "nour",
+    "modifier": "Lebanese woman, olive skin, thick unplucked brows, dark curly hair, expressive open face, zero makeup, completely authentic",
+    "r2Url": "https://asset.melies.co/actors/nour-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "Middle Eastern",
+      "Everyday",
+      "Natural"
+    ]
+  },
+  {
+    "name": "Layla",
+    "id": "layla",
+    "modifier": "Palestinian woman, medium olive skin, long straight dark hair, dark almond eyes with natural kohl, calm steady expression",
+    "r2Url": "https://asset.melies.co/actors/layla-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "Middle Eastern",
+      "Everyday",
+      "Dark eyes"
+    ]
+  },
+  {
+    "name": "Zainab",
+    "id": "zainab",
+    "modifier": "Nigerian woman, deep dark skin, braided updo with gold cuff, full round face, kind eyes, warm generous presence",
+    "r2Url": "https://asset.melies.co/actors/zainab-full.webp",
+    "gender": "Female",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "40s",
+      "African",
+      "Everyday",
+      "Braids"
+    ]
+  },
+  {
+    "name": "Keiko",
+    "id": "keiko",
+    "modifier": "elderly Japanese woman, silver-streaked black hair in bun, deep smile lines, graceful aged face, refined elegant presence",
+    "r2Url": "https://asset.melies.co/actors/keiko-full.webp",
+    "gender": "Female",
+    "ageGroup": "60s",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "60s",
+      "Asian",
+      "Actor",
+      "Elegant"
+    ]
+  },
+  {
+    "name": "Salma",
+    "id": "salma",
+    "modifier": "Egyptian woman, medium olive-tan skin, naturally heavy dark brows, dark eyes, long straight dark hair, zero makeup, direct",
+    "r2Url": "https://asset.melies.co/actors/salma-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "Middle Eastern",
+      "Everyday",
+      "Strong brows"
+    ]
+  },
+  {
+    "name": "Paloma",
+    "id": "paloma",
+    "modifier": "Spanish woman, olive skin, dark wavy hair, small gold earring, relaxed authentic effortless expression",
+    "r2Url": "https://asset.melies.co/actors/paloma-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "European",
+      "Everyday",
+      "Bohemian"
+    ]
+  },
+  {
+    "name": "Marcus",
+    "id": "marcus",
+    "modifier": "Black American man, medium-dark skin, clean fade, strong wide neck, full lips, direct honest gaze",
+    "r2Url": "https://asset.melies.co/actors/marcus-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "African",
+      "Everyday",
+      "Fade"
+    ]
+  },
+  {
+    "name": "Tomas",
+    "id": "tomas",
+    "modifier": "Mexican man, dark olive-brown skin, salt-and-pepper thick mustache, strong jaw, deep-set dark eyes, weathered sun-worked face",
+    "r2Url": "https://asset.melies.co/actors/tomas-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "Latin",
+      "Everyday",
+      "Mustache"
+    ]
+  },
+  {
+    "name": "Finn",
+    "id": "finn",
+    "modifier": "Irish man, very pale freckled skin all over face, short wavy auburn hair, sunburned nose, wide genuine smile, green eyes",
+    "r2Url": "https://asset.melies.co/actors/finn-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "European",
+      "Everyday",
+      "Freckles"
+    ]
+  },
+  {
+    "name": "Kofi",
+    "id": "kofi",
+    "modifier": "Ghanaian man, very dark rich skin, close-cut natural fade, wide flat nose, warm bright open smile, strong neck",
+    "r2Url": "https://asset.melies.co/actors/kofi-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "African",
+      "Everyday",
+      "Warm smile"
+    ]
+  },
+  {
+    "name": "Carlos",
+    "id": "carlos",
+    "modifier": "Argentine man, tanned skin, wavy dark hair greying at temples, prominent aquiline nose, thoughtful intelligent expression",
+    "r2Url": "https://asset.melies.co/actors/carlos-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "Latin",
+      "Everyday",
+      "Greying"
+    ]
+  },
+  {
+    "name": "Bjorn",
+    "id": "bjorn",
+    "modifier": "Norwegian man in his 60s, pale weathered skin, full white beard, deep furrow lines, piercing pale blue eyes, stoic outdoorsman",
+    "r2Url": "https://asset.melies.co/actors/bjorn-full.webp",
+    "gender": "Male",
+    "ageGroup": "60s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "60s",
+      "European",
+      "Everyday",
+      "White beard"
+    ]
+  },
+  {
+    "name": "Sanjay",
+    "id": "sanjay",
+    "modifier": "Indian man, medium-dark brown skin, salt-and-pepper hair, heavy brow ridge, dark under-eye circles, thin wire glasses",
+    "r2Url": "https://asset.melies.co/actors/sanjay-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "South Asian",
+      "Everyday",
+      "Glasses"
+    ]
+  },
+  {
+    "name": "Derek",
+    "id": "derek",
+    "modifier": "Black American man in his late 50s, greying natural hair, deep laugh lines, warm authoritative expression, silver temples",
+    "r2Url": "https://asset.melies.co/actors/derek-full.webp",
+    "gender": "Male",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "50s",
+      "African",
+      "Actor",
+      "Distinguished"
+    ]
+  },
+  {
+    "name": "Andrei",
+    "id": "andrei",
+    "modifier": "Romanian man, medium olive skin, very defined sharp cheekbones, dark deep-set eyes, short dark hair, angular intense face",
+    "r2Url": "https://asset.melies.co/actors/andrei-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "30s",
+      "European",
+      "Actor",
+      "Cheekbones"
+    ]
+  },
+  {
+    "name": "Ibrahim",
+    "id": "ibrahim",
+    "modifier": "Sudanese man, very deep blue-black skin, angular sharp high-cheekbone face, close-cut natural hair, quiet contemplative intensity",
+    "r2Url": "https://asset.melies.co/actors/ibrahim-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "African",
+      "Everyday",
+      "Dark skin"
+    ]
+  },
+  {
+    "name": "Kwame",
+    "id": "kwame",
+    "modifier": "young Ghanaian man, very dark skin, early short locs, wide smile with gap teeth, Gen Z confidence",
+    "r2Url": "https://asset.melies.co/actors/kwame-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "20s",
+      "African",
+      "Influencer",
+      "Gap teeth"
+    ]
+  },
+  {
+    "name": "Oliver",
+    "id": "oliver",
+    "modifier": "British man, pale skin, disheveled brown hair, distinctive slight underbite, natural unpolished real face",
+    "r2Url": "https://asset.melies.co/actors/oliver-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "European",
+      "Everyday",
+      "Authentic"
+    ]
+  },
+  {
+    "name": "Paulo",
+    "id": "paulo",
+    "modifier": "Brazilian man, medium warm tanned skin, wavy dark hair pushed back, casual unposed confidence",
+    "r2Url": "https://asset.melies.co/actors/paulo-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "Latin",
+      "Everyday",
+      "Casual"
+    ]
+  },
+  {
+    "name": "Jerome",
+    "id": "jerome",
+    "modifier": "French-Congolese man, medium warm brown skin, shaved sides natural textured top, sharp jawline, expressive eyes, arresting presence",
+    "r2Url": "https://asset.melies.co/actors/jerome-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "30s",
+      "African",
+      "Actor",
+      "Cheekbones"
+    ]
+  },
+  {
+    "name": "Rob",
+    "id": "rob",
+    "modifier": "Australian man, sun-damaged pale freckled skin, salt-and-pepper stubble, outdoor squint lines, rugged lived-in face",
+    "r2Url": "https://asset.melies.co/actors/rob-full.webp",
+    "gender": "Male",
+    "ageGroup": "50s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "50s",
+      "European",
+      "Everyday",
+      "Weathered"
+    ]
+  },
+  {
+    "name": "Dayo",
+    "id": "dayo",
+    "modifier": "Nigerian man, very dark skin, bright white teeth, strong muscular neck, clean tight fade, natural influencer confidence",
+    "r2Url": "https://asset.melies.co/actors/dayo-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "20s",
+      "African",
+      "Influencer",
+      "Fade"
+    ]
+  },
+  {
+    "name": "Alejandro",
+    "id": "alejandro",
+    "modifier": "Colombian man, tanned skin, strong jaw with heavy stubble, slightly crooked nose, dark hair pushed back",
+    "r2Url": "https://asset.melies.co/actors/alejandro-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "Latin",
+      "Everyday",
+      "Stubble"
+    ]
+  },
+  {
+    "name": "Tobias",
+    "id": "tobias",
+    "modifier": "German man, light skin, dirty blond hair, angular face with mild acne scarring on cheeks, pale blue eyes, real unretouched skin",
+    "r2Url": "https://asset.melies.co/actors/tobias-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "European",
+      "Everyday",
+      "Acne scars"
+    ]
+  },
+  {
+    "name": "Hiro",
+    "id": "hiro",
+    "modifier": "Japanese man, thin narrow face, slightly receding hairline, neat dark hair, thin wire-rimmed rectangular glasses, intellectual calm",
+    "r2Url": "https://asset.melies.co/actors/hiro-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "Asian",
+      "Everyday",
+      "Glasses"
+    ]
+  },
+  {
+    "name": "Felix",
+    "id": "felix",
+    "modifier": "Swiss man in his 40s, salt-and-pepper neat hair, slight jowl forming, light eyes, clean-shaven, conservative composed",
+    "r2Url": "https://asset.melies.co/actors/felix-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "European",
+      "Everyday",
+      "Professional"
+    ]
+  },
+  {
+    "name": "Miguel",
+    "id": "miguel",
+    "modifier": "Puerto-Rican man, warm medium-brown skin, full dark beard, small neck tattoo just visible, compelling magnetic gaze",
+    "r2Url": "https://asset.melies.co/actors/miguel-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "30s",
+      "Latin",
+      "Actor",
+      "Beard"
+    ]
+  },
+  {
+    "name": "Pierre",
+    "id": "pierre",
+    "modifier": "Senegalese-French man, medium dark skin, very defined prominent cheekbones, clean fade, arresting fashion-forward presence",
+    "r2Url": "https://asset.melies.co/actors/pierre-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "30s",
+      "African",
+      "Actor",
+      "Cheekbones"
+    ]
+  },
+  {
+    "name": "Yusuf",
+    "id": "yusuf",
+    "modifier": "Somali man, extremely slender angular long face, very dark skin, natural short afro, quiet deeply contemplative expression",
+    "r2Url": "https://asset.melies.co/actors/yusuf-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "African",
+      "Everyday",
+      "Slender"
+    ]
+  },
+  {
+    "name": "Dante",
+    "id": "dante",
+    "modifier": "Dominican man, caramel light-brown skin, natural curly medium hair, wide flat nose, easy relaxed smile, laid-back",
+    "r2Url": "https://asset.melies.co/actors/dante-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "Latin",
+      "Everyday",
+      "Curly hair"
+    ]
+  },
+  {
+    "name": "Samuel",
+    "id": "samuel",
+    "modifier": "Ethiopian man, lean angular face, medium-dark skin, high forehead, close-cropped natural hair greying at temples, serious",
+    "r2Url": "https://asset.melies.co/actors/samuel-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "African",
+      "Everyday",
+      "Greying"
+    ]
+  },
+  {
+    "name": "Lars",
+    "id": "lars",
+    "modifier": "Danish man, very pale skin, straight reddish-brown hair pushed to side, scattered freckles, open friendly casual expression",
+    "r2Url": "https://asset.melies.co/actors/lars-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "European",
+      "Everyday",
+      "Freckles"
+    ]
+  },
+  {
+    "name": "Winston",
+    "id": "winston",
+    "modifier": "Zimbabwean man, dark medium-brown skin, slightly receding hairline, short greying hair, professional serious furrowed expression",
+    "r2Url": "https://asset.melies.co/actors/winston-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "African",
+      "Everyday",
+      "Professional"
+    ]
+  },
+  {
+    "name": "Tariq",
+    "id": "tariq",
+    "modifier": "Saudi man, warm medium tan skin, precisely trimmed beard, strong square jaw, dark eyes, modern urban professional",
+    "r2Url": "https://asset.melies.co/actors/tariq-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "Middle Eastern",
+      "Everyday",
+      "Beard"
+    ]
+  },
+  {
+    "name": "Kwabena",
+    "id": "kwabena",
+    "modifier": "Ghanaian elder man, very deep dark skin, completely white natural hair and full beard, wise face with deep lines, immense dignity",
+    "r2Url": "https://asset.melies.co/actors/kwabena-full.webp",
+    "gender": "Male",
+    "ageGroup": "60s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "60s",
+      "African",
+      "Actor",
+      "White hair"
+    ]
+  },
+  {
+    "name": "Matteo",
+    "id": "matteo",
+    "modifier": "Italian man, tanned Mediterranean skin, wavy dark hair natural volume, slight stubble, genuine open warmth",
+    "r2Url": "https://asset.melies.co/actors/matteo-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "European",
+      "Everyday",
+      "Mediterranean"
+    ]
+  },
+  {
+    "name": "Ben",
+    "id": "ben",
+    "modifier": "Israeli man, medium olive skin, dark curly untamed hair, direct honest gaze, slight stubble, casual tech aesthetic",
+    "r2Url": "https://asset.melies.co/actors/ben-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "Middle Eastern",
+      "Everyday",
+      "Curly hair"
+    ]
+  },
+  {
+    "name": "Kolade",
+    "id": "kolade",
+    "modifier": "Nigerian man, medium-dark brown skin, full wide face, professional fade haircut, wide jaw, composed confident",
+    "r2Url": "https://asset.melies.co/actors/kolade-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "African",
+      "Everyday",
+      "Professional"
+    ]
+  },
+  {
+    "name": "Rafael",
+    "id": "rafael",
+    "modifier": "Cuban man in his 50s, salt-and-pepper thick wavy hair, expressive warm brown eyes, lived-in face with character lines",
+    "r2Url": "https://asset.melies.co/actors/rafael-full.webp",
+    "gender": "Male",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "50s",
+      "Latin",
+      "Actor",
+      "Character face"
+    ]
+  },
+  {
+    "name": "Henrik",
+    "id": "henrik",
+    "modifier": "Norwegian man, blond going grey, blue eyes, outdoor rugged face with wind and sun damage, short beard",
+    "r2Url": "https://asset.melies.co/actors/henrik-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "European",
+      "Everyday",
+      "Outdoorsy"
+    ]
+  },
+  {
+    "name": "Babatunde",
+    "id": "babatunde",
+    "modifier": "Yoruba-Nigerian man, very deep dark skin, completely grey natural hair, strong forehead, powerful dignified wise presence",
+    "r2Url": "https://asset.melies.co/actors/babatunde-full.webp",
+    "gender": "Male",
+    "ageGroup": "50s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "50s",
+      "African",
+      "Actor",
+      "Silver hair"
+    ]
+  },
+  {
+    "name": "Ezra",
+    "id": "ezra",
+    "modifier": "young American-Jewish man, dark unruly curly hair, thin wire circular glasses, soft thoughtful face, intellectual creative",
+    "r2Url": "https://asset.melies.co/actors/ezra-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "European",
+      "Everyday",
+      "Glasses"
+    ]
+  },
+  {
+    "name": "Peter",
+    "id": "peter",
+    "modifier": "Czech man, pale skin, shaved head bald, strong square face, slightly heavy jaw and neck, direct no-nonsense expression",
+    "r2Url": "https://asset.melies.co/actors/peter-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "European",
+      "Everyday",
+      "Bald"
+    ]
+  },
+  {
+    "name": "Terrence",
+    "id": "terrence",
+    "modifier": "Black American man, medium dark skin, shaved head with silver stubble, strong defined face, silver beard, commanding",
+    "r2Url": "https://asset.melies.co/actors/terrence-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "40s",
+      "African",
+      "Actor",
+      "Shaved head"
+    ]
+  },
+  {
+    "name": "Nikolai",
+    "id": "nikolai",
+    "modifier": "Russian man, pale skin, strong square jaw, dark hair slight grey, permanent brow furrow, powerful cold intense presence",
+    "r2Url": "https://asset.melies.co/actors/nikolai-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Actor",
+    "tags": [
+      "Male",
+      "40s",
+      "European",
+      "Actor",
+      "Intense"
+    ]
+  },
+  {
+    "name": "Jamie",
+    "id": "jamie",
+    "modifier": "British man, light skin, brown hair with widow's peak, wire-rimmed glasses, genuine warm dad energy, approachable",
+    "r2Url": "https://asset.melies.co/actors/jamie-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "European",
+      "Everyday",
+      "Glasses"
+    ]
+  },
+  {
+    "name": "Taylor",
+    "id": "taylor",
+    "modifier": "androgynous non-binary person, mixed heritage, platinum short hair, sharp features, direct confident creative expression",
+    "r2Url": "https://asset.melies.co/actors/taylor-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Non-binary",
+      "20s",
+      "Mixed",
+      "Influencer",
+      "Platinum hair"
+    ]
+  },
+  {
+    "name": "River",
+    "id": "river",
+    "modifier": "androgynous non-binary person, pale skin, long loose brown hair, soft rounded features, calm introspective expression",
+    "r2Url": "https://asset.melies.co/actors/river-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Non-binary",
+      "30s",
+      "European",
+      "Everyday",
+      "Long hair"
+    ]
+  },
+  {
+    "name": "Alex",
+    "id": "alex",
+    "modifier": "androgynous non-binary person, SE Asian heritage, medium light skin, short textured black hair, composed quiet neutral",
+    "r2Url": "https://asset.melies.co/actors/alex-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Non-binary",
+      "20s",
+      "Asian",
+      "Everyday",
+      "Minimal"
+    ]
+  },
+  {
+    "name": "Sam",
+    "id": "sam",
+    "modifier": "androgynous non-binary person, medium-dark skin, natural twisted hair, expressive wide eyes, alternative creative bold",
+    "r2Url": "https://asset.melies.co/actors/sam-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Non-binary",
+      "20s",
+      "African",
+      "Influencer",
+      "Natural hair"
+    ]
+  },
+  {
+    "name": "Morgan",
+    "id": "morgan",
+    "modifier": "androgynous non-binary person, pale freckled skin, short auburn hair, angular features, direct confident strong presence",
+    "r2Url": "https://asset.melies.co/actors/morgan-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Non-binary",
+      "30s",
+      "European",
+      "Actor",
+      "Freckles"
+    ]
+  },
+  {
+    "name": "Kendall",
+    "id": "kendall",
+    "modifier": "androgynous non-binary person, light caramel skin, curly natural hair loose, warm open face, natural effortless style",
+    "r2Url": "https://asset.melies.co/actors/kendall-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Non-binary",
+      "20s",
+      "Mixed",
+      "Influencer",
+      "Curly hair"
+    ]
+  },
+  {
+    "name": "Reese",
+    "id": "reese",
+    "modifier": "androgynous non-binary person, pale skin, dark straight blunt-cut hair, round soft face, rectangular glasses, quiet gentle",
+    "r2Url": "https://asset.melies.co/actors/reese-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Non-binary",
+      "20s",
+      "Asian",
+      "Everyday",
+      "Glasses"
+    ]
+  },
+  {
+    "name": "Quinn",
+    "id": "quinn",
+    "modifier": "androgynous non-binary person, medium brown skin, shaved sides natural textured top, strong cheekbones, intense direct gaze",
+    "r2Url": "https://asset.melies.co/actors/quinn-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "30s",
+    "type": "Actor",
+    "tags": [
+      "Non-binary",
+      "30s",
+      "Mixed",
+      "Actor",
+      "Cheekbones"
+    ]
+  },
+  {
+    "name": "Blake",
+    "id": "blake",
+    "modifier": "androgynous non-binary person, pale skin, wavy blonde hair, soft jaw, light grey-blue eyes, genuinely gender-neutral",
+    "r2Url": "https://asset.melies.co/actors/blake-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Non-binary",
+      "20s",
+      "European",
+      "Everyday",
+      "Blonde"
+    ]
+  },
+  {
+    "name": "Drew",
+    "id": "drew",
+    "modifier": "androgynous non-binary person, medium-dark skin, very short natural hair, strong angular features, composed direct grounded",
+    "r2Url": "https://asset.melies.co/actors/drew-full.webp",
+    "gender": "Non-binary",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Non-binary",
+      "40s",
+      "African",
+      "Everyday",
+      "Natural"
+    ]
+  },
+  {
+    "name": "Ingenue",
+    "id": "ingenue",
+    "modifier": "very pale porcelain-skinned French woman 20, jet-black dyed blunt bob, dark brown eyes, dark red lipstick, artsy alternative style, subtle dark eyeliner, moody striking",
+    "r2Url": "https://asset.melies.co/actors/ingenue-full.webp",
+    "gender": "Female",
+    "ageGroup": "Teens",
+    "type": "Actor",
+    "tags": [
+      "Female",
+      "Teens",
+      "European",
+      "Actor",
+      "Alternative"
+    ]
+  },
+  {
+    "name": "Ming",
+    "id": "ming",
+    "modifier": "young Chinese woman, baby-round face, monolid, light skin, dark straight hair with pink-dyed tips, Gen Z effortless shy",
+    "r2Url": "https://asset.melies.co/actors/ming-full.webp",
+    "gender": "Female",
+    "ageGroup": "Teens",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "Teens",
+      "Asian",
+      "Everyday",
+      "Dyed hair"
+    ]
+  },
+  {
+    "name": "Rodrigo",
+    "id": "rodrigo",
+    "modifier": "young Brazilian man, warm medium tanned skin, dark wavy hair pushed back, slight stubble, relaxed surfer-adjacent unpretentious",
+    "r2Url": "https://asset.melies.co/actors/rodrigo-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "Latin",
+      "Everyday",
+      "Casual"
+    ]
+  },
+  {
+    "name": "Jake",
+    "id": "jake",
+    "modifier": "white American teen boy 17, casual skater style, messy medium brown hair, clear skin slight freckles, relaxed confident expression",
+    "r2Url": "https://asset.melies.co/actors/jake-full.webp",
+    "gender": "Male",
+    "ageGroup": "Teens",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "Teens",
+      "White",
+      "Everyday",
+      "Sporty",
+      "Street"
+    ]
+  },
+  {
+    "name": "Ethan",
+    "id": "ethan",
+    "modifier": "half Japanese half white teen boy 16, indie look, dark wavy hair, dark-rimmed glasses, thoughtful intelligent expression, quiet charm",
+    "r2Url": "https://asset.melies.co/actors/ethan-full.webp",
+    "gender": "Male",
+    "ageGroup": "Teens",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "Teens",
+      "Asian",
+      "Everyday",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Noah",
+    "id": "noah-t",
+    "modifier": "young Black American teen boy 18, athletic look, close-cropped natural hair, strong jaw, bright confident expression",
+    "r2Url": "https://asset.melies.co/actors/noah-t-full.webp",
+    "gender": "Male",
+    "ageGroup": "Teens",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "Teens",
+      "Black",
+      "Everyday",
+      "Sporty"
+    ]
+  },
+  {
+    "name": "Bella",
+    "id": "bella",
+    "modifier": "young Latina woman 23, beautiful influencer look, long wavy dark hair with caramel highlights, full lips, expressive dark eyes, effortlessly glamorous",
+    "r2Url": "https://asset.melies.co/actors/bella-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Latina",
+      "Influencer",
+      "Cute",
+      "Glam"
+    ]
+  },
+  {
+    "name": "Chloe",
+    "id": "chloe",
+    "modifier": "Korean-American woman 24, stunning influencer, straight black hair curtain bangs, large bright eyes, clear porcelain skin, cute button nose",
+    "r2Url": "https://asset.melies.co/actors/chloe-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Korean",
+      "Influencer",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Kenzo",
+    "id": "kenzo",
+    "modifier": "Korean man 22, K-pop influenced style, perfectly styled dark hair swept to side, soft handsome features, flawless clear skin, bright expressive eyes",
+    "r2Url": "https://asset.melies.co/actors/kenzo-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "20s",
+      "Korean",
+      "Influencer",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Sophie",
+    "id": "sophie",
+    "modifier": "white British woman 32, lifestyle influencer, long wavy golden brown hair, warm freckled skin, bright friendly blue eyes, effortless natural beauty",
+    "r2Url": "https://asset.melies.co/actors/sophie-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "30s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Boho"
+    ]
+  },
+  {
+    "name": "Ryan",
+    "id": "ryan",
+    "modifier": "white American man 29, fitness influencer, handsome clean-cut, short light brown hair, strong jawline, bright smile, healthy glowing skin",
+    "r2Url": "https://asset.melies.co/actors/ryan-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "30s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Sporty"
+    ]
+  },
+  {
+    "name": "Fiona",
+    "id": "fiona",
+    "modifier": "Irish-American woman 26, natural redhead vivid auburn-copper hair, fair freckled skin, bright green eyes, distinctive naturally pretty",
+    "r2Url": "https://asset.melies.co/actors/fiona-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Everyday",
+      "Ginger",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Declan",
+    "id": "declan",
+    "modifier": "Irish man 28, natural dark ginger-red hair, full ginger beard, fair freckled skin, blue-green eyes, rugged friendly expression",
+    "r2Url": "https://asset.melies.co/actors/declan-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "White",
+      "Everyday",
+      "Ginger"
+    ]
+  },
+  {
+    "name": "Thor",
+    "id": "thor",
+    "modifier": "white man 32, heavy metal style, very long straight black hair past shoulders, strong angular jaw, slight beard, intense brooding expression",
+    "r2Url": "https://asset.melies.co/actors/thor-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "White",
+      "Everyday",
+      "Metal",
+      "Edgy"
+    ]
+  },
+  {
+    "name": "Mason",
+    "id": "mason",
+    "modifier": "white American man 31, hipster, dark brown hair messy bun, full beard, ironic knowing expression, creative intellectual",
+    "r2Url": "https://asset.melies.co/actors/mason-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "White",
+      "Everyday",
+      "Hipster"
+    ]
+  },
+  {
+    "name": "Zoe",
+    "id": "zoe",
+    "modifier": "mixed heritage woman 23, punk aesthetic, short electric blue-black dyed hair with undercut, multiple ear piercings, bold eye makeup, rebellious expression",
+    "r2Url": "https://asset.melies.co/actors/zoe-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "Mixed",
+      "Everyday",
+      "Punk",
+      "Edgy"
+    ]
+  },
+  {
+    "name": "Chad",
+    "id": "chad",
+    "modifier": "white American man 24, preppy Ivy League look, sandy blond hair neatly parted, clean-shaven, strong jaw, confident self-assured expression",
+    "r2Url": "https://asset.melies.co/actors/chad-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "White",
+      "Everyday",
+      "Preppy"
+    ]
+  },
+  {
+    "name": "Cole",
+    "id": "cole",
+    "modifier": "white Australian man 25, surfer, sun-bleached sandy blond hair tousled, deeply tanned skin, easy-going bright smile, relaxed carefree",
+    "r2Url": "https://asset.melies.co/actors/cole-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "White",
+      "Everyday",
+      "Sporty",
+      "Surfer"
+    ]
+  },
+  {
+    "name": "Raven",
+    "id": "raven",
+    "modifier": "white woman 22, goth aesthetic, dyed jet black hair blunt fringe, very pale skin, dark dramatic eye makeup, septum piercing, intense gaze",
+    "r2Url": "https://asset.melies.co/actors/raven-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Everyday",
+      "Goth",
+      "Edgy"
+    ]
+  },
+  {
+    "name": "Brock",
+    "id": "brock",
+    "modifier": "Black American man 28, bodybuilder, shaved head, strong powerful face, defined jaw, confident intense masculine expression",
+    "r2Url": "https://asset.melies.co/actors/brock-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "Black",
+      "Everyday",
+      "Sporty",
+      "Athletic"
+    ]
+  },
+  {
+    "name": "Meadow",
+    "id": "meadow",
+    "modifier": "white woman 29, bohemian hippie, long wavy natural honey-brown hair, warm glowing skin, soft dreamy eyes, free-spirited gentle expression",
+    "r2Url": "https://asset.melies.co/actors/meadow-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "White",
+      "Everyday",
+      "Boho"
+    ]
+  },
+  {
+    "name": "Nova",
+    "id": "nova",
+    "modifier": "East Asian woman 20, e-girl aesthetic, pastel pink hair in space buns, large expressive eyes with colorful dramatic makeup, cute edgy expression",
+    "r2Url": "https://asset.melies.co/actors/nova-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "Asian",
+      "Everyday",
+      "Edgy",
+      "Street"
+    ]
+  },
+  {
+    "name": "Richard",
+    "id": "richard",
+    "modifier": "white American man 42, corporate executive, silver-streaked dark hair perfectly groomed, clean-shaven, sharp features, authoritative confident expression",
+    "r2Url": "https://asset.melies.co/actors/richard-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "White",
+      "Everyday",
+      "Preppy",
+      "Professional"
+    ]
+  },
+  {
+    "name": "Sasha",
+    "id": "sasha",
+    "modifier": "young white woman 21, platinum silver chin-length bob, light natural makeup, confident cool smirk, sharp cheekbones, trendy edgy style",
+    "r2Url": "https://asset.melies.co/actors/sasha-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Street"
+    ]
+  },
+  {
+    "name": "Mila",
+    "id": "mila",
+    "modifier": "young white woman 20, long straight brown hair, sweet girl-next-door look, warm friendly smile, minimal natural makeup, small hoop earrings",
+    "r2Url": "https://asset.melies.co/actors/mila-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Everyday",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Jade",
+    "id": "jade",
+    "modifier": "young white woman 22, long straight blonde hair, bright confident smile, sparkling blue eyes, light glamorous makeup, bubbly energetic expression",
+    "r2Url": "https://asset.melies.co/actors/jade-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Glam"
+    ]
+  },
+  {
+    "name": "Kira",
+    "id": "kira",
+    "modifier": "young mixed-race woman 21, light brown skin, dark voluminous curly hair, energetic bright smile, athletic vibrant look, minimal dewy makeup",
+    "r2Url": "https://asset.melies.co/actors/kira-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Mixed",
+      "Influencer",
+      "Cute",
+      "Athletic"
+    ]
+  },
+  {
+    "name": "Noa",
+    "id": "noa",
+    "modifier": "young Mediterranean woman 23, olive skin, long dark brown wavy hair, dark expressive eyes, warm soft smile, sun-kissed natural beauty",
+    "r2Url": "https://asset.melies.co/actors/noa-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Mediterranean",
+      "Influencer",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Lexi",
+    "id": "lexi",
+    "modifier": "stunningly beautiful white woman 22, top model, long honey blonde waves, perfect symmetrical face, full glamorous smoky eye makeup, high cheekbones, piercing green eyes, flawless skin",
+    "r2Url": "https://asset.melies.co/actors/lexi-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Glam"
+    ]
+  },
+  {
+    "name": "Valentina",
+    "id": "valentina",
+    "modifier": "breathtakingly gorgeous Latina woman 23, supermodel beauty, long straight dark hair middle part, flawless caramel skin, full glossy lips, dramatic winged eyeliner, dark sultry eyes, perfect bone structure",
+    "r2Url": "https://asset.melies.co/actors/valentina-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Latina",
+      "Influencer",
+      "Cute",
+      "Glam"
+    ]
+  },
+  {
+    "name": "Hailey",
+    "id": "hailey",
+    "modifier": "young white woman 21, sporty cute, dirty blonde messy ponytail, light natural makeup rosy cheeks, bright hazel eyes, playful energetic smile, sun-kissed freckled skin",
+    "r2Url": "https://asset.melies.co/actors/hailey-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Sporty"
+    ]
+  },
+  {
+    "name": "Yuna",
+    "id": "yuna",
+    "modifier": "young Korean woman 21, K-beauty aesthetic, shoulder-length dark hair curtain bangs, soft dewy makeup gradient pink lips, large bright doe eyes, glowing porcelain skin, adorable sweet smile",
+    "r2Url": "https://asset.melies.co/actors/yuna-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Korean",
+      "Influencer",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Tessa",
+    "id": "tessa",
+    "modifier": "young white woman 22, striking natural redhead, long flowing copper-auburn hair, freckles, bold winged liner and red lip, bright blue-green eyes, confident fierce slight smile",
+    "r2Url": "https://asset.melies.co/actors/tessa-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Ginger"
+    ]
+  },
+  {
+    "name": "Axel",
+    "id": "axel",
+    "modifier": "young Scandinavian man 24, model looks, sandy blonde textured hair swept back, chiseled jaw, light stubble, icy blue eyes, sharp Nordic features, handsome relaxed expression",
+    "r2Url": "https://asset.melies.co/actors/axel-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "20s",
+      "White",
+      "Influencer",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Marco",
+    "id": "marco",
+    "modifier": "young Italian man 25, dark wavy hair pushed back, olive skin, dark brown eyes, designer stubble, strong jaw, warm charming smolder, classically handsome",
+    "r2Url": "https://asset.melies.co/actors/marco-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "20s",
+      "Mediterranean",
+      "Influencer",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Jayden",
+    "id": "jayden",
+    "modifier": "young mixed-race man 22, light brown skin, short curly fade, athletic, bright white smile, warm brown eyes, clean-shaven, high cheekbones, charismatic friendly",
+    "r2Url": "https://asset.melies.co/actors/jayden-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "20s",
+      "Mixed",
+      "Influencer",
+      "Cute",
+      "Athletic"
+    ]
+  },
+  {
+    "name": "Theo",
+    "id": "theo",
+    "modifier": "young French man 23, soft wavy brown hair falling across forehead, warm brown eyes, light stubble, gentle charming smile, tousled romantic look, soft defined features",
+    "r2Url": "https://asset.melies.co/actors/theo-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "White",
+      "Everyday",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Dae",
+    "id": "dae",
+    "modifier": "young Korean man 22, K-pop inspired, perfectly styled dark hair comma bangs, flawless clear skin, sharp expressive eyes, soft handsome features, cool confident slight smile",
+    "r2Url": "https://asset.melies.co/actors/dae-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Male",
+      "20s",
+      "Korean",
+      "Influencer",
+      "Cute"
+    ]
+  },
+  {
+    "name": "Titan",
+    "id": "titan",
+    "modifier": "massive white male bodybuilder 32, extremely muscular huge arms and chest, thick neck, short buzzcut, tanned skin, veiny, intense focused expression, enormous physique",
+    "r2Url": "https://asset.melies.co/actors/titan-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "White",
+      "Everyday",
+      "Muscular",
+      "Athletic"
+    ]
+  },
+  {
+    "name": "Serena",
+    "id": "serena",
+    "modifier": "muscular Black female bodybuilder 28, very defined shoulders and arms, powerful athletic build, dark skin, short cropped natural hair, strong confident expression",
+    "r2Url": "https://asset.melies.co/actors/serena-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "20s",
+      "African",
+      "Everyday",
+      "Muscular",
+      "Athletic"
+    ]
+  },
+  {
+    "name": "Gus",
+    "id": "gus",
+    "modifier": "very fat white man 44, large round face double chin, very overweight obese, short messy brown hair, scruffy beard, warm jovial big smile, rosy cheeks",
+    "r2Url": "https://asset.melies.co/actors/gus-full.webp",
+    "gender": "Male",
+    "ageGroup": "40s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "40s",
+      "White",
+      "Everyday",
+      "Plus-Size"
+    ]
+  },
+  {
+    "name": "Rosie",
+    "id": "rosie",
+    "modifier": "very fat white woman 34, plus-size obese, large round face full cheeks double chin, long curly red-brown hair, bright blue eyes, confident radiant smile, bold red lipstick",
+    "r2Url": "https://asset.melies.co/actors/rosie-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "30s",
+      "White",
+      "Everyday",
+      "Plus-Size"
+    ]
+  },
+  {
+    "name": "Amani",
+    "id": "amani",
+    "modifier": "beautiful Black woman with vitiligo 25, striking patches of depigmented white skin across face and neck, dark brown skin, short natural hair, large dark eyes, confident serene expression",
+    "r2Url": "https://asset.melies.co/actors/amani-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "African",
+      "Influencer",
+      "Unique"
+    ]
+  },
+  {
+    "name": "Edith",
+    "id": "edith",
+    "modifier": "very old white grandmother 82, deeply wrinkled weathered face, thin white curly hair, kind warm gentle smile, soft pale blue eyes, small round glasses, pearl earrings, loving grandmotherly",
+    "r2Url": "https://asset.melies.co/actors/edith-full.webp",
+    "gender": "Female",
+    "ageGroup": "80s+",
+    "type": "Everyday",
+    "tags": [
+      "Female",
+      "80s+",
+      "White",
+      "Everyday"
+    ]
+  },
+  {
+    "name": "Tommy",
+    "id": "tommy",
+    "modifier": "young white man with Down syndrome 22, characteristic almond-shaped eyes flat nasal bridge, short brown hair neatly combed, bright warm genuine happy smile, joyful friendly expression",
+    "r2Url": "https://asset.melies.co/actors/tommy-full.webp",
+    "gender": "Male",
+    "ageGroup": "20s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "20s",
+      "White",
+      "Everyday",
+      "Unique"
+    ]
+  },
+  {
+    "name": "Nia",
+    "id": "nia",
+    "modifier": "stunning African woman with albinism 24, very pale white skin African features, long straight white-blonde hair, light blue-grey eyes, ethereal otherworldly beauty, serene confident",
+    "r2Url": "https://asset.melies.co/actors/nia-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "African",
+      "Influencer",
+      "Unique"
+    ]
+  },
+  {
+    "name": "Sage",
+    "id": "sage",
+    "modifier": "white woman with alopecia 31, completely bald smooth head, striking bold, large green eyes, bold dramatic eye makeup dark liner, defined cheekbones, fierce confident powerful expression",
+    "r2Url": "https://asset.melies.co/actors/sage-full.webp",
+    "gender": "Female",
+    "ageGroup": "30s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "30s",
+      "White",
+      "Influencer",
+      "Edgy",
+      "Unique"
+    ]
+  },
+  {
+    "name": "Rex",
+    "id": "rex",
+    "modifier": "heavily tattooed white man 33, full neck and face tattoos, sleeve tattoos both arms, shaved head, strong jaw short dark beard, intense piercing blue eyes, multiple piercings, tough calm expression",
+    "r2Url": "https://asset.melies.co/actors/rex-full.webp",
+    "gender": "Male",
+    "ageGroup": "30s",
+    "type": "Everyday",
+    "tags": [
+      "Male",
+      "30s",
+      "White",
+      "Everyday",
+      "Tattooed",
+      "Edgy"
+    ]
+  },
+  {
+    "name": "Sienna",
+    "id": "sienna",
+    "modifier": "impossibly gorgeous white woman 21, top model thin, long blown-out chestnut hair, full contoured TikTok makeup, sculpted cheekbones bronzer, fluffy lash extensions, glossy nude lip, flawless skin, doe-eyed seductive innocent",
+    "r2Url": "https://asset.melies.co/actors/sienna-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "White",
+      "Influencer",
+      "Cute",
+      "Glam"
+    ]
+  },
+  {
+    "name": "Lola",
+    "id": "lola",
+    "modifier": "stunningly beautiful Black woman 22, TikTok influencer, long sleek straight dark hair, rich dark skin, full glam makeup highlight cheekbones, bold winged liner, long lashes, glossy berry lips, supermodel confident",
+    "r2Url": "https://asset.melies.co/actors/lola-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Black",
+      "Influencer",
+      "Cute",
+      "Glam"
+    ]
+  },
+  {
+    "name": "Mika",
+    "id": "mika",
+    "modifier": "incredibly cute half-Asian half-white woman 20, thin model face, wispy curtain bangs long dark hair, dewy glass skin soft blush shimmer, gradient cherry lips, sparkly eyes subtle liner, sweet flirty TikTok smile",
+    "r2Url": "https://asset.melies.co/actors/mika-full.webp",
+    "gender": "Female",
+    "ageGroup": "20s",
+    "type": "Influencer",
+    "tags": [
+      "Female",
+      "20s",
+      "Asian",
+      "Mixed",
+      "Influencer",
+      "Cute",
+      "Glam"
+    ]
+  }
+]
