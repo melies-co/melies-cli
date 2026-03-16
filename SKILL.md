@@ -11,6 +11,9 @@ metadata:
     requires:
       env:
         - MELIES_TOKEN
+        - MELIES_API_URL
+      config:
+        - ~/.melies/config.json
       bins:
         - melies
     primaryEnv: MELIES_TOKEN
