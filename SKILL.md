@@ -1,7 +1,7 @@
 ---
 name: melies
 description: AI image and video generation CLI. Generate images, videos, and movie posters using 50+ models including Flux, Kling, Veo, Wan, and more. Text-to-image, text-to-video, image-to-video, style transfer, and consistent character references. Built for filmmakers, content creators, YouTube thumbnails, and AI agents.
-version: 1.1.0
+version: 1.1.1
 user-invocable: false
 allowed-tools: Bash(melies:*)
 homepage: https://melies.co
