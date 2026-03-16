@@ -1,8 +1,23 @@
 ---
 name: melies
-description: Generate movie posters, images, and videos with AI. Access 50+ models including Flux, Kling, Veo, and more. Built for filmmakers, content creators, and AI agents.
+description: AI image and video generation CLI. Generate images, videos, and movie posters using 50+ models including Flux, Kling, Veo, Wan, and more. Text-to-image, text-to-video, image-to-video, style transfer, and consistent character references. Built for filmmakers, content creators, YouTube thumbnails, and AI agents.
+version: 1.1.0
 user-invocable: false
 allowed-tools: Bash(melies:*)
+homepage: https://melies.co
+metadata:
+  openclaw:
+    emoji: "🎬"
+    requires:
+      env:
+        - MELIES_TOKEN
+      bins:
+        - melies
+    primaryEnv: MELIES_TOKEN
+    install:
+      - kind: node
+        package: melies
+        bins: [melies]
 ---
 
 # Melies CLI
