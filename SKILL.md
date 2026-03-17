@@ -35,19 +35,18 @@ npm install -g melies
 
 ## Authentication
 
-1. Go to [melies.co/settings](https://melies.co/settings) > User
-2. Copy your API token
-3. Run:
-
 ```bash
+# Browser login (opens melies.co, authenticates automatically)
+melies login
+
+# Or use an API token directly (for CI/agents)
 melies login --token YOUR_TOKEN
+
+# Or set as environment variable
+export MELIES_TOKEN=your_token
 ```
 
-Or set as environment variable:
-
-```bash
-export MELIES_TOKEN=your_jwt_token
-```
+Generate an API token at [melies.co](https://melies.co) > Settings > API.
 
 ## Quick Start
 
@@ -390,6 +389,7 @@ melies models
 
 ## Links
 
-- [melies.co](https://melies.co)
+- [Melies Agent Page](https://melies.co/agent)
 - [Documentation](https://melies.co/docs)
-- [Agent Skills Directory](https://agentskill.sh)
+- [agentskill.sh](https://agentskill.sh/@melies-co/melies-cli)
+- [ClawHub](https://clawhub.ai/romainsimon/melies)

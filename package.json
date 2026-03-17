@@ -1,5 +1,5 @@
 {
-  "name": "@melies/cli",
+  "name": "melies",
   "version": "2.0.0",
   "description": "CLI for Melies - Generate movie posters, images, and videos from the command line",
   "main": "dist/index.js",
