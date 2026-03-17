@@ -3,7 +3,7 @@ import { MeliesAPI } from '../api';
 import { getToken } from '../config';
 import { pollAsset } from './image';
 import { resolveModel, getPresetCredits } from '../utils/model-resolver';
-import { buildPrompt, type StyleOptions } from '../utils/prompt-builder';
+import type { StyleOptions } from '../utils/prompt-builder';
 import { findActor } from '../utils/actors';
 import { downloadFile } from '../utils/download';
 import { addStyleOptions, addQualityOptions, addActorOption, addGenerationOptions } from '../utils/style-options';
@@ -87,27 +87,29 @@ export const thumbnailCommand: CommandModule<{}, ThumbnailArgs> = {
         actorRef = actor.r2Url;
       }
 
-      // Build thumbnail-optimized prompt
-      const styleOptions: StyleOptions = {
-        camera: argv.camera,
-        shot: argv.shot,
-        expression: argv.expression || 'smile',
-        lighting: argv.lighting || 'soft',
-        time: argv.time,
-        weather: argv.weather,
-        colorGrade: argv.colorGrade,
-        mood: argv.mood,
-        artStyle: argv.artStyle,
-        era: argv.era,
-      };
-      const basePrompt = `YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`;
-      const finalPrompt = buildPrompt(basePrompt, styleOptions, actorModifier);
+      // Collect style options (resolved server-side)
+      const styleOptions: StyleOptions = {};
+      styleOptions.expression = argv.expression || 'smile';
+      styleOptions.lighting = argv.lighting || 'soft';
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+
+      const rawPrompt = actorModifier
+        ? `${actorModifier}, YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`
+        : `YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`;
 
       if (argv.dryRun) {
         const credits = getPresetCredits('image', argv);
         console.log(JSON.stringify({
           model,
-          prompt: finalPrompt,
+          prompt: rawPrompt,
+          styleOptions,
           credits: credits || 'varies by model',
           aspectRatio: '16:9',
           numOutputs: argv.numOutputs,
@@ -121,10 +123,11 @@ export const thumbnailCommand: CommandModule<{}, ThumbnailArgs> = {
       const api = new MeliesAPI(token);
 
       const params: Record<string, unknown> = {
-        prompt: finalPrompt,
+        prompt: rawPrompt,
         model,
         aspectRatio: '16:9',
         numOutputs: argv.numOutputs,
+        styleOptions,
       };
       if (argv.ref) params.refs = [argv.ref];
       if (argv.seed) params.seed = argv.seed;

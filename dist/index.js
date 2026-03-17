@@ -360,550 +360,6 @@ function getPresetCredits(type, options) {
   return PRESETS[type].fast.credits;
 }
 
-// src/data/variation-presets.json
-var variation_presets_default = {
-  camera: {
-    "eye-level": {
-      label: "Eye level",
-      modifier: "eye level camera, neutral horizontal perspective"
-    },
-    high: {
-      label: "High angle",
-      modifier: "high angle shot, camera positioned above looking down at subject"
-    },
-    low: {
-      label: "Low angle",
-      modifier: "low angle shot, camera below eye level looking up at subject, imposing perspective"
-    },
-    overhead: {
-      label: "Overhead / Top-down",
-      modifier: "overhead top-down shot, camera directly above, 90 degree downward view"
-    },
-    ground: {
-      label: "Ground level",
-      modifier: "ground level camera, extremely low angle looking steeply upward, floor-level perspective"
-    },
-    dutch: {
-      label: "Dutch tilt",
-      modifier: "Dutch tilt, canted camera angle, diagonal frame, tension and unease"
-    },
-    ots: {
-      label: "Over-the-shoulder",
-      modifier: "over-the-shoulder framing, camera behind figure, partial shoulder in foreground"
-    },
-    profile: {
-      label: "Profile view",
-      modifier: "profile shot, side view, camera at 90 degrees to subject"
-    },
-    "three-quarter": {
-      label: "Three-quarter",
-      modifier: "three-quarter angle, face 45 degrees toward camera, classic portrait framing"
-    }
-  },
-  shot: {
-    tighter: {
-      label: "Tighter (zoom in)",
-      modifier: "tighter framing, closer crop on subject, reduced background area"
-    },
-    wider: {
-      label: "Wider (zoom out)",
-      modifier: "wider framing, more environment visible, pulled back from subject"
-    },
-    ecu: {
-      label: "Extreme close-up",
-      modifier: "extreme close-up, face fills entire frame, maximum intimacy, forehead to chin"
-    },
-    cu: {
-      label: "Close-up",
-      modifier: "close-up shot, head and upper shoulders, intimate portrait framing"
-    },
-    mcu: {
-      label: "Medium close-up",
-      modifier: "medium close-up, chest to head framing, shoulders visible, standard dialogue shot"
-    },
-    medium: {
-      label: "Medium shot",
-      modifier: "medium shot, waist up framing, standard conversational distance"
-    },
-    cowboy: {
-      label: "Cowboy shot",
-      modifier: "cowboy shot, mid-thigh upward framing, classic western composition"
-    },
-    "full-body": {
-      label: "Full body",
-      modifier: "full body shot, entire figure visible head to toe, full length framing"
-    },
-    wide: {
-      label: "Wide shot",
-      modifier: "wide establishing shot, subjects within large environment, location context prominent"
-    }
-  },
-  expression: {
-    neutral: {
-      label: "Neutral",
-      modifier: "neutral facial expression, relaxed features, calm composed look"
-    },
-    smile: {
-      label: "Natural smile",
-      modifier: "warm natural smile, genuine happiness, eyes slightly crinkled"
-    },
-    laugh: {
-      label: "Laughing",
-      modifier: "open-mouth laugh, teeth visible, eyes squinting with joy"
-    },
-    serious: {
-      label: "Serious",
-      modifier: "serious focused expression, pressed lips, intent gaze, composed"
-    },
-    surprised: {
-      label: "Surprised",
-      modifier: "surprised expression, wide eyes, raised eyebrows, mouth slightly open"
-    },
-    sad: {
-      label: "Sad",
-      modifier: "sad expression, downturned mouth, mournful heavy eyes"
-    },
-    angry: {
-      label: "Angry",
-      modifier: "angry expression, furrowed brow, intense narrowed gaze, tense jaw"
-    },
-    crying: {
-      label: "Crying",
-      modifier: "crying expression, tears on cheeks, reddened eyes, emotional distress"
-    },
-    wink: {
-      label: "Wink",
-      modifier: "playful wink, one eye closed, slight smile, flirty expression"
-    },
-    tongue: {
-      label: "Tongue out",
-      modifier: "tongue out playfully, mischievous bright eyes, fun silly expression"
-    },
-    duckface: {
-      label: "Duck face",
-      modifier: "duck face pout, lips pushed forward and pursed, cheeks slightly sucked in"
-    },
-    kiss: {
-      label: "Blowing a kiss",
-      modifier: "blowing a kiss, lips fully puckered and pursed, soft warm flirtatious eyes"
-    },
-    smize: {
-      label: "Smize",
-      modifier: "smize, model smiling eyes, eyes crinkled and warm, lips neutral, high-fashion editorial gaze"
-    },
-    "bite-lip": {
-      label: "Biting lip",
-      modifier: "biting lower lip, lower lip between teeth, tense jaw, coy focused eyes"
-    },
-    "villain-smirk": {
-      label: "Villain smirk",
-      modifier: "villain smirk, one-sided sinister smile, cold calculating narrowed eyes, menacing confidence"
-    },
-    "thousand-yard": {
-      label: "Thousand-yard stare",
-      modifier: "thousand-yard stare, vacant unfocused distant gaze, glassy haunted eyes, slack neutral mouth"
-    },
-    seductive: {
-      label: "Seductive",
-      modifier: "seductive alluring look, heavy-lidded half-closed eyes, lips slightly parted, knowing gaze at camera"
-    },
-    horrified: {
-      label: "Horrified",
-      modifier: "horrified expression, mouth wide open in terror, eyes stretched wide, extreme fear and shock"
-    },
-    wonder: {
-      label: "Wonder / Awe",
-      modifier: "wonder and awe, wide open eyes, mouth slightly agape, amazed disbelief, childlike wonder"
-    },
-    triumphant: {
-      label: "Triumphant",
-      modifier: "triumphant victorious expression, wide beaming smile, eyes lit with pride, chin raised"
-    },
-    exhausted: {
-      label: "Exhausted",
-      modifier: "exhausted expression, heavy drooping eyelids, glassy eyes, slightly open mouth, completely drained"
-    },
-    nervous: {
-      label: "Nervous",
-      modifier: "nervous anxious expression, wide tense eyes, tightly compressed lips, tense jaw, furrowed brow"
-    },
-    contemplative: {
-      label: "Contemplative",
-      modifier: "contemplative expression, gaze toward middle distance, gently parted lips, lightly furrowed brow, lost in thought"
-    },
-    grieving: {
-      label: "Grieving",
-      modifier: "grieving expression, devastated profound sorrow, heavy downcast glistening eyes, downturned mouth, irreparable loss"
-    },
-    skeptical: {
-      label: "Skeptical",
-      modifier: "skeptical expression, one eyebrow arched, slight squint, mouth pulled sideways, look of disbelief"
-    }
-  },
-  time: {
-    dawn: {
-      label: "Dawn",
-      modifier: "pre-sunrise dawn, dark blue-purple sky, cool low ambient light, quiet atmosphere"
-    },
-    sunrise: {
-      label: "Sunrise",
-      modifier: "sunrise light, warm golden-orange from horizon, long horizontal shadows, sky brightening"
-    },
-    morning: {
-      label: "Morning",
-      modifier: "mid-morning light, clear bright daylight, slightly warm, soft shadows, fresh energetic mood"
-    },
-    midday: {
-      label: "Midday",
-      modifier: "midday overhead sun, harsh direct light, short dense shadows below, high contrast neutral tones"
-    },
-    golden: {
-      label: "Golden hour",
-      modifier: "golden hour, warm orange-amber low-angle sun, long soft shadows, glowing warm tones, magic hour"
-    },
-    dusk: {
-      label: "Dusk / Blue hour",
-      modifier: "blue hour dusk, cool blue twilight, soft ambient no shadows, warm practical lights glowing"
-    },
-    night: {
-      label: "Night",
-      modifier: "night scene, artificial ambient light only, deep shadows, cool dark atmosphere, stars or moon"
-    }
-  },
-  weather: {
-    clear: {
-      label: "Clear / Sunny",
-      modifier: "clear sunny day, bright blue sky, crisp sunlight, vivid colors, clean visibility"
-    },
-    overcast: {
-      label: "Overcast",
-      modifier: "overcast sky, flat grey diffuse light, no hard shadows, muted desaturated colors"
-    },
-    fog: {
-      label: "Foggy",
-      modifier: "dense fog, heavy atmospheric haze, reduced visibility, soft hazy outlines, mysterious mood"
-    },
-    mist: {
-      label: "Misty",
-      modifier: "morning mist, light atmospheric haze, soft milky air, ethereal romantic mood"
-    },
-    rain: {
-      label: "Rainy",
-      modifier: "active rain, diagonal rain streaks, wet reflective surfaces, puddles, grey overcast, moody wet"
-    },
-    storm: {
-      label: "Stormy",
-      modifier: "dramatic storm, dark turbulent storm clouds, high contrast dramatic sky, threatening powerful atmosphere"
-    },
-    snow: {
-      label: "Snowy",
-      modifier: "snowfall, soft white flakes, snow on surfaces, muted colors, cold clean quiet winter atmosphere"
-    }
-  },
-  "color-grade": {
-    natural: {
-      label: "Natural",
-      modifier: "natural color grading, accurate realistic colors, balanced exposure, no stylization"
-    },
-    "teal-orange": {
-      label: "Teal & Orange",
-      modifier: "teal and orange color grade, teal shadows, orange skin tones, cinematic blockbuster look"
-    },
-    mono: {
-      label: "Monochrome",
-      modifier: "black and white monochrome, full desaturation, preserved tonal contrast, classic cinematic look"
-    },
-    warm: {
-      label: "Warm amber",
-      modifier: "warm amber color grade, golden-orange warmth, lifted warm shadows, cozy inviting mood"
-    },
-    cool: {
-      label: "Cool blue",
-      modifier: "cool blue color grade, desaturated warms, cool blue-grey cast, clinical melancholy mood"
-    },
-    filmic: {
-      label: "Filmic / Faded",
-      modifier: "filmic color grade, lifted faded blacks, subtle desaturation, warm midtones, analog film aesthetic"
-    },
-    bleach: {
-      label: "Bleach bypass",
-      modifier: "bleach bypass grade, desaturated high contrast, retained silver shadows, gritty silvery industrial look"
-    },
-    sepia: {
-      label: "Sepia",
-      modifier: "sepia tone, warm brown monochrome, antique photographic look, nostalgic aged aesthetic"
-    },
-    desat: {
-      label: "Desaturated",
-      modifier: "desaturated color grade, muted subdued colors, washed out, low saturation, introspective mood"
-    },
-    saturated: {
-      label: "Hyper-saturated",
-      modifier: "hyper-saturated color grade, maximum vibrancy, vivid punchy colors, bold energetic look"
-    }
-  },
-  mood: {
-    romantic: {
-      label: "Romantic",
-      modifier: "romantic atmosphere, soft warm intimate light, gentle bokeh, tender dreamy mood, warm amber-rose tones"
-    },
-    mysterious: {
-      label: "Mysterious",
-      modifier: "mysterious enigmatic atmosphere, deep shadows, cool desaturated, moody low-key, sense of concealment"
-    },
-    tense: {
-      label: "Tense / Thriller",
-      modifier: "tense thriller atmosphere, high contrast harsh light, cool clinical tones, sharp shadows, psychological dread"
-    },
-    ethereal: {
-      label: "Ethereal / Dreamy",
-      modifier: "ethereal dreamy atmosphere, soft hazy glow, desaturated pastels, dreamlike bloom, otherworldly weightless feel"
-    },
-    gritty: {
-      label: "Gritty / Raw",
-      modifier: "gritty raw atmosphere, high contrast, desaturated dirty colors, harsh light, urban texture, unpolished authentic"
-    },
-    melancholic: {
-      label: "Melancholic",
-      modifier: "melancholic atmosphere, muted desaturated palette, cool blue-grey tones, quiet sadness, contemplative stillness"
-    },
-    epic: {
-      label: "Epic / Heroic",
-      modifier: "epic heroic atmosphere, dramatic powerful light, warm golden tones, grandiose scale, cinematic scope"
-    },
-    nostalgic: {
-      label: "Nostalgic",
-      modifier: "nostalgic atmosphere, warm faded tones, slightly desaturated, soft vignette, analog warmth, bittersweet memory"
-    },
-    eerie: {
-      label: "Eerie / Unsettling",
-      modifier: "eerie unsettling atmosphere, uncanny off-colors, unnatural light, oppressive stillness, cold sickly palette"
-    },
-    joyful: {
-      label: "Joyful / Uplifting",
-      modifier: "joyful uplifting atmosphere, bright warm light, vivid saturated colors, airy light feel, positive cheerful energy"
-    },
-    serene: {
-      label: "Serene / Peaceful",
-      modifier: "serene peaceful atmosphere, soft balanced light, quiet stillness, gentle muted tones, harmonious calm"
-    },
-    foreboding: {
-      label: "Dark / Foreboding",
-      modifier: "dark foreboding atmosphere, heavy oppressive light, deep cold shadows, ominous weight, desaturated dark palette"
-    }
-  },
-  "art-style": {
-    "film-still": {
-      label: "Cinematic film still",
-      modifier: "cinematic film still, photorealistic 35mm quality, natural film grain, cinematic color science, prestige film frame"
-    },
-    blockbuster: {
-      label: "Hollywood blockbuster",
-      modifier: "Hollywood blockbuster aesthetic, high-budget commercial film, crisp VFX quality, teal-orange grade, cinematic production value"
-    },
-    arthouse: {
-      label: "Arthouse / Indie",
-      modifier: "European arthouse film, naturalistic muted palette, contemplative stillness, motivated natural light, slow cinema aesthetic"
-    },
-    noir: {
-      label: "Classic film noir",
-      modifier: "classic film noir, black and white, hard shadows, venetian blind light, 1940s detective aesthetic, chiaroscuro"
-    },
-    "neo-noir": {
-      label: "Neo-noir",
-      modifier: "neo-noir, color film noir, neon-drenched rain-slicked, deep shadows with colored light, teal-purple shadows, amber highlights"
-    },
-    documentary: {
-      label: "Documentary",
-      modifier: "documentary film style, handheld natural light, authentic candid realism, cinema verit\xE9, reportage quality"
-    },
-    anime: {
-      label: "Anime",
-      modifier: "anime style, Japanese animation, cel-shaded outlines, vibrant flat colors, expressive anime features, dynamic linework"
-    },
-    ghibli: {
-      label: "Studio Ghibli",
-      modifier: "Studio Ghibli style, painterly watercolor backgrounds, soft cel shading, Miyazaki aesthetic, warm pastoral dreamlike, magical realism"
-    },
-    shinkai: {
-      label: "Makoto Shinkai",
-      modifier: "Makoto Shinkai style, hyper-detailed backgrounds, luminous lens flare, blue-purple haze, romantic soft lighting, Your Name aesthetic"
-    },
-    comic: {
-      label: "Comic book",
-      modifier: "American comic book style, bold ink outlines, Ben-Day halftone dots, vibrant primary colors, superhero graphic novel"
-    },
-    pixar: {
-      label: "Pixar / 3D animation",
-      modifier: "Pixar 3D animation style, photorealistic CGI, subsurface scattering, soft studio lighting, polished digital animation"
-    },
-    oil: {
-      label: "Oil painting",
-      modifier: "oil painting style, thick impasto brushstrokes, rich saturated pigments, classical depth, old masters painterly texture"
-    },
-    watercolor: {
-      label: "Watercolor",
-      modifier: "watercolor painting style, soft translucent washes, paper texture, delicate bleeding edges, transparent overlays, airy illustration"
-    },
-    charcoal: {
-      label: "Charcoal sketch",
-      modifier: "charcoal sketch style, grainy monochrome, gestural marks, smudged shadows, raw artistic energy, hand-drawn quality"
-    },
-    concept: {
-      label: "Concept art",
-      modifier: "concept art style, digital matte painting quality, cinematic environmental storytelling, film previs aesthetic, dramatic detail"
-    },
-    synthwave: {
-      label: "Synthwave / 80s",
-      modifier: "synthwave 80s aesthetic, neon pink and cyan, retro-futuristic, VHS texture, Miami Vice palette, retrowave neon glow"
-    },
-    fashion: {
-      label: "Fashion editorial",
-      modifier: "fashion editorial photograph, polished magazine quality, high contrast dramatic styling, professional studio, Vogue aesthetic"
-    }
-  },
-  era: {
-    victorian: {
-      label: "Victorian / 1880s",
-      modifier: "Victorian 1880s era, period clothing, daguerreotype quality, sepia tones, gaslight aesthetic, Victorian environment"
-    },
-    "1920s": {
-      label: "1920s Art Deco",
-      modifier: "1920s Art Deco era, Jazz Age aesthetic, period clothing and hair, art deco geometry, early photographic quality"
-    },
-    "1950s": {
-      label: "1950s post-war",
-      modifier: "1950s post-war era, period clothing and hair, Technicolor palette, pastel suburban aesthetic, mid-century Americana"
-    },
-    "1960s": {
-      label: "1960s / Mod",
-      modifier: "1960s mod era, psychedelic colors, swinging sixties fashion, pop art influence, vibrant saturated counterculture aesthetic"
-    },
-    "1970s": {
-      label: "1970s / New Hollywood",
-      modifier: "1970s New Hollywood era, warm orange-yellow tones, 16mm grain, period fashion, exploitation cinema aesthetic"
-    },
-    "1980s": {
-      label: "1980s / Neon",
-      modifier: "1980s era, neon color palette, VHS quality, period hair and fashion, Miami Vice aesthetic, bright saturated pop"
-    },
-    "1990s": {
-      label: "1990s / Grunge",
-      modifier: "1990s grunge era, desaturated washed-out palette, period clothing and hair, lo-fi grain, disposable camera quality"
-    },
-    "2000s": {
-      label: "Early 2000s",
-      modifier: "early 2000s Y2K aesthetic, early digital camera quality, teal-orange color correction, period fashion, internet pop culture"
-    },
-    modern: {
-      label: "Modern contemporary",
-      modifier: "modern contemporary aesthetic, clean crisp digital quality, current fashion and styling, present-day visual language"
-    },
-    "near-future": {
-      label: "Near future",
-      modifier: "near future aesthetic, sleek minimalist tech, futuristic design elements, advanced materials, cool blue-grey sci-fi"
-    },
-    dystopian: {
-      label: "Dystopian future",
-      modifier: "dystopian future, post-apocalyptic decay, desaturated grimy palette, survival gear, oppressive industrial aesthetic"
-    },
-    medieval: {
-      label: "Medieval / Fantasy",
-      modifier: "medieval fantasy era, period armor and clothing, stone architecture, torchlight, fantasy world, epic production quality"
-    }
-  },
-  lighting: {
-    soft: {
-      label: "Soft / Diffused",
-      modifier: "soft diffused lighting, gentle shadows, flattering even illumination"
-    },
-    hard: {
-      label: "Hard / Dramatic",
-      modifier: "hard directional light, crisp sharp shadows, high contrast illumination"
-    },
-    golden: {
-      label: "Golden hour",
-      modifier: "golden hour sunlight, warm orange-amber cast, long soft shadows"
-    },
-    blue: {
-      label: "Blue hour / Dusk",
-      modifier: "blue hour light, cool blue twilight tones, low ambient, dusk atmosphere"
-    },
-    noir: {
-      label: "Low-key Noir",
-      modifier: "low-key noir lighting, high contrast chiaroscuro, deep shadows, single hard light source"
-    },
-    highkey: {
-      label: "High-key Bright",
-      modifier: "high-key lighting, bright evenly lit, minimal shadows, light airy atmosphere"
-    },
-    rembrandt: {
-      label: "Rembrandt",
-      modifier: "Rembrandt lighting, single directional side light, triangular highlight on shadowed cheek"
-    },
-    backlit: {
-      label: "Backlit / Rim",
-      modifier: "backlit rim lighting, light source behind subject, glowing edge highlights"
-    },
-    candle: {
-      label: "Candlelight",
-      modifier: "candlelight illumination, warm flickering orange glow, intimate soft shadows"
-    },
-    neon: {
-      label: "Neon glow",
-      modifier: "neon light color cast, vibrant colored illumination, urban night atmosphere"
-    }
-  }
-};
-
-// src/utils/prompt-builder.ts
-var FLAG_TO_CATEGORY = {
-  camera: "camera",
-  shot: "shot",
-  expression: "expression",
-  lighting: "lighting",
-  time: "time",
-  weather: "weather",
-  colorGrade: "color-grade",
-  mood: "mood",
-  artStyle: "art-style",
-  era: "era"
-};
-function lookupModifier(category, value) {
-  const categoryPresets = variation_presets_default[category];
-  if (!categoryPresets) return null;
-  if (categoryPresets[value]) return categoryPresets[value].modifier;
-  const lower = value.toLowerCase();
-  for (const [key, preset] of Object.entries(categoryPresets)) {
-    if (key.toLowerCase() === lower || preset.label.toLowerCase() === lower) {
-      return preset.modifier;
-    }
-  }
-  return null;
-}
-function buildPrompt(base, options, actorModifier) {
-  let prompt = base;
-  if (actorModifier) {
-    prompt = `${actorModifier}, ${prompt}`;
-  }
-  const modifiers = [];
-  for (const [flag, category] of Object.entries(FLAG_TO_CATEGORY)) {
-    const value = options[flag];
-    if (value) {
-      const modifier = lookupModifier(category, value);
-      if (modifier) {
-        modifiers.push(modifier);
-      } else {
-        modifiers.push(value);
-      }
-    }
-  }
-  if (modifiers.length > 0) {
-    prompt = `${prompt}, ${modifiers.join(", ")}`;
-  }
-  return prompt;
-}
-
 // src/data/actors.json
 var actors_default = [
   {
@@ -3362,7 +2818,7 @@ async function downloadFile(url, outputPath) {
 
 // src/utils/style-options.ts
 function addStyleOptions(yargs2) {
-  return yargs2.option("camera", { type: "string", description: "Camera angle (eye-level, high, low, overhead, dutch, ots, profile, three-quarter)" }).option("shot", { type: "string", description: "Shot size (ecu, close-up, medium, cowboy, full-body, wide, tighter, wider)" }).option("expression", { type: "string", description: "Expression (smile, laugh, serious, surprised, villain-smirk, seductive, horrified)" }).option("lighting", { type: "string", description: "Lighting (soft, golden, noir, rembrandt, backlit, neon, candle, hard)" }).option("time", { type: "string", description: "Time of day (dawn, sunrise, golden, dusk, night, morning, midday)" }).option("weather", { type: "string", description: "Weather (clear, fog, rain, storm, snow, overcast, mist)" }).option("colorGrade", { alias: "color-grade", type: "string", description: "Color grade (natural, teal-orange, mono, warm, cool, filmic, sepia)" }).option("mood", { type: "string", description: "Mood (romantic, mysterious, tense, ethereal, gritty, epic, nostalgic)" }).option("artStyle", { alias: "art-style", type: "string", description: "Art style (film-still, blockbuster, noir, anime, ghibli, oil, watercolor, concept)" }).option("era", { type: "string", description: "Era (victorian, 1920s, 1980s, modern, dystopian, medieval)" });
+  return yargs2.option("camera", { type: "string", description: "Camera angle (eye-level, high, low, overhead, dutch, ots, profile, three-quarter)" }).option("shot", { type: "string", description: "Shot size (ecu, close-up, medium, cowboy, full-body, wide, tighter, wider)" }).option("expression", { type: "string", description: "Expression (smile, laugh, serious, surprised, villain-smirk, seductive, horrified)" }).option("lighting", { type: "string", description: "Lighting (soft, golden, noir, rembrandt, backlit, neon, candle, hard)" }).option("time", { type: "string", description: "Time of day (dawn, sunrise, golden, dusk, night, morning, midday)" }).option("weather", { type: "string", description: "Weather (clear, fog, rain, storm, snow, overcast, mist)" }).option("colorGrade", { alias: "color-grade", type: "string", description: "Color grade (natural, teal-orange, mono, warm, cool, filmic, sepia)" }).option("mood", { type: "string", description: "Mood (romantic, mysterious, tense, ethereal, gritty, epic, nostalgic)" }).option("artStyle", { alias: "art-style", type: "string", description: "Art style (film-still, blockbuster, noir, anime, ghibli, oil, watercolor, concept)" }).option("era", { type: "string", description: "Era (victorian, 1920s, 1980s, modern, dystopian, medieval)" }).option("movement", { type: "string", description: "Camera movement for video (dolly-in, pan-left, orbit-360, crane-up, slow-zoom-in, handheld, static)" });
 }
 function addQualityOptions(yargs2) {
   return yargs2.option("fast", { type: "boolean", description: "Use the fastest model (default)" }).option("quality", { type: "boolean", description: "Use a higher quality model" }).option("best", { type: "boolean", description: "Use the best available model" });
@@ -3437,24 +2893,24 @@ var imageCommand = {
         actorModifier = actor.modifier;
         actorRef = actor.r2Url;
       }
-      const styleOptions = {
-        camera: argv.camera,
-        shot: argv.shot,
-        expression: argv.expression,
-        lighting: argv.lighting,
-        time: argv.time,
-        weather: argv.weather,
-        colorGrade: argv.colorGrade,
-        mood: argv.mood,
-        artStyle: argv.artStyle,
-        era: argv.era
-      };
-      const finalPrompt = buildPrompt(argv.prompt, styleOptions, actorModifier);
+      const styleOptions = {};
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.expression) styleOptions.expression = argv.expression;
+      if (argv.lighting) styleOptions.lighting = argv.lighting;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+      const rawPrompt = actorModifier ? `${actorModifier}, ${argv.prompt}` : argv.prompt;
       if (argv.dryRun) {
         const credits = getPresetCredits("image", argv);
         console.log(JSON.stringify({
           model,
-          prompt: finalPrompt,
+          prompt: rawPrompt,
+          styleOptions: Object.keys(styleOptions).length > 0 ? styleOptions : void 0,
           credits: credits || "varies by model",
           aspectRatio: argv.aspectRatio,
           numOutputs: argv.numOutputs,
@@ -3467,11 +2923,12 @@ var imageCommand = {
       const token = getToken();
       const api = new MeliesAPI(token);
       const params = {
-        prompt: finalPrompt,
+        prompt: rawPrompt,
         model,
         aspectRatio: argv.aspectRatio,
         numOutputs: argv.numOutputs
       };
+      if (Object.keys(styleOptions).length > 0) params.styleOptions = styleOptions;
       if (argv.resolution) params.resolution = argv.resolution;
       if (argv.imageUrl) params.imageUrl = argv.imageUrl;
       if (argv.seed) params.seed = argv.seed;
@@ -3599,24 +3056,25 @@ var videoCommand = {
         actorModifier = actor.modifier;
         actorRef = actor.r2Url;
       }
-      const styleOptions = {
-        camera: argv.camera,
-        shot: argv.shot,
-        expression: argv.expression,
-        lighting: argv.lighting,
-        time: argv.time,
-        weather: argv.weather,
-        colorGrade: argv.colorGrade,
-        mood: argv.mood,
-        artStyle: argv.artStyle,
-        era: argv.era
-      };
-      const finalPrompt = buildPrompt(argv.prompt, styleOptions, actorModifier);
+      const styleOptions = {};
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.expression) styleOptions.expression = argv.expression;
+      if (argv.lighting) styleOptions.lighting = argv.lighting;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+      if (argv.movement) styleOptions.movement = argv.movement;
+      const rawPrompt = actorModifier ? `${actorModifier}, ${argv.prompt}` : argv.prompt;
       if (argv.dryRun) {
         const credits = getPresetCredits("video", argv);
         console.log(JSON.stringify({
           model,
-          prompt: finalPrompt,
+          prompt: rawPrompt,
+          styleOptions: Object.keys(styleOptions).length > 0 ? styleOptions : void 0,
           credits: credits || "varies by model",
           aspectRatio: argv.aspectRatio,
           duration: argv.duration || null,
@@ -3628,10 +3086,11 @@ var videoCommand = {
       const token = getToken();
       const api = new MeliesAPI(token);
       const params = {
-        prompt: finalPrompt,
+        prompt: rawPrompt,
         model,
         aspectRatio: argv.aspectRatio
       };
+      if (Object.keys(styleOptions).length > 0) params.styleOptions = styleOptions;
       if (argv.imageUrl) params.imageUrl = argv.imageUrl;
       if (argv.duration) params.duration = argv.duration;
       if (argv.resolution) params.resolution = argv.resolution;
@@ -3880,29 +3339,29 @@ var posterCommand = {
         }
         actorModifiers.push(actor.modifier);
       }
-      const styleOptions = {
-        camera: argv.camera,
-        shot: argv.shot,
-        expression: argv.expression,
-        lighting: argv.lighting,
-        time: argv.time,
-        weather: argv.weather,
-        colorGrade: argv.colorGrade,
-        mood: argv.mood,
-        artStyle: argv.artStyle,
-        era: argv.era
-      };
-      let basePrompt = `Movie poster for "${argv.title}"`;
-      if (argv.logline) basePrompt += `. ${argv.logline}`;
-      if (argv.genre) basePrompt += `. Genre: ${argv.genre}`;
-      if (actorModifiers.length > 0) basePrompt += `. Starring: ${actorModifiers.join(" and ")}`;
-      if (styleSuffix) basePrompt += `. ${styleSuffix}`;
-      const prompt = buildPrompt(basePrompt, styleOptions);
+      const styleOptions = {};
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.expression) styleOptions.expression = argv.expression;
+      if (argv.lighting) styleOptions.lighting = argv.lighting;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+      let rawPrompt = `Movie poster for "${argv.title}"`;
+      if (argv.logline) rawPrompt += `. ${argv.logline}`;
+      if (argv.genre) rawPrompt += `. Genre: ${argv.genre}`;
+      if (actorModifiers.length > 0) rawPrompt += `. Starring: ${actorModifiers.join(" and ")}`;
+      if (styleSuffix) rawPrompt += `. ${styleSuffix}`;
+      const hasStyleOptions = Object.keys(styleOptions).length > 0;
       if (argv.dryRun) {
         const credits = getPresetCredits("image", { ...argv, model: argv.model || "flux-dev" });
         console.log(JSON.stringify({
           model,
-          prompt,
+          prompt: rawPrompt,
+          styleOptions: hasStyleOptions ? styleOptions : void 0,
           credits: credits || "varies by model",
           aspectRatio: argv.aspectRatio,
           style: argv.style || null,
@@ -3914,10 +3373,11 @@ var posterCommand = {
       const token = getToken();
       const api = new MeliesAPI(token);
       const params = {
-        prompt,
+        prompt: rawPrompt,
         model,
         aspectRatio: argv.aspectRatio
       };
+      if (hasStyleOptions) params.styleOptions = styleOptions;
       if (argv.ref) params.refs = [argv.ref];
       if (argv.seed) params.seed = argv.seed;
       const result = await api.executeTool("poster_generator", params);
@@ -4418,25 +3878,24 @@ var thumbnailCommand = {
         actorModifier = actor.modifier;
         actorRef = actor.r2Url;
       }
-      const styleOptions = {
-        camera: argv.camera,
-        shot: argv.shot,
-        expression: argv.expression || "smile",
-        lighting: argv.lighting || "soft",
-        time: argv.time,
-        weather: argv.weather,
-        colorGrade: argv.colorGrade,
-        mood: argv.mood,
-        artStyle: argv.artStyle,
-        era: argv.era
-      };
-      const basePrompt = `YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`;
-      const finalPrompt = buildPrompt(basePrompt, styleOptions, actorModifier);
+      const styleOptions = {};
+      styleOptions.expression = argv.expression || "smile";
+      styleOptions.lighting = argv.lighting || "soft";
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+      const rawPrompt = actorModifier ? `${actorModifier}, YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition` : `YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`;
       if (argv.dryRun) {
         const credits = getPresetCredits("image", argv);
         console.log(JSON.stringify({
           model,
-          prompt: finalPrompt,
+          prompt: rawPrompt,
+          styleOptions,
           credits: credits || "varies by model",
           aspectRatio: "16:9",
           numOutputs: argv.numOutputs,
@@ -4448,10 +3907,11 @@ var thumbnailCommand = {
       const token = getToken();
       const api = new MeliesAPI(token);
       const params = {
-        prompt: finalPrompt,
+        prompt: rawPrompt,
         model,
         aspectRatio: "16:9",
-        numOutputs: argv.numOutputs
+        numOutputs: argv.numOutputs,
+        styleOptions
       };
       if (argv.ref) params.refs = [argv.ref];
       if (argv.seed) params.seed = argv.seed;
@@ -4531,19 +3991,20 @@ var pipelineCommand = {
         actorModifier = actor.modifier;
         actorRef = actor.r2Url;
       }
-      const styleOptions = {
-        camera: argv.camera,
-        shot: argv.shot,
-        expression: argv.expression,
-        lighting: argv.lighting,
-        time: argv.time,
-        weather: argv.weather,
-        colorGrade: argv.colorGrade,
-        mood: argv.mood,
-        artStyle: argv.artStyle,
-        era: argv.era
-      };
-      const finalPrompt = buildPrompt(argv.prompt, styleOptions, actorModifier);
+      const styleOptions = {};
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.expression) styleOptions.expression = argv.expression;
+      if (argv.lighting) styleOptions.lighting = argv.lighting;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+      if (argv.movement) styleOptions.movement = argv.movement;
+      const rawPrompt = actorModifier ? `${actorModifier}, ${argv.prompt}` : argv.prompt;
+      const hasStyleOptions = Object.keys(styleOptions).length > 0;
       if (argv.dryRun) {
         const imageCredits = getPresetCredits("image", { ...argv, model: argv.imageModel });
         const videoCredits = getPresetCredits("video", { ...argv, model: argv.videoModel });
@@ -4558,7 +4019,8 @@ var pipelineCommand = {
             model: videoModel,
             credits: videoCredits || "varies by model"
           },
-          prompt: finalPrompt,
+          prompt: rawPrompt,
+          styleOptions: hasStyleOptions ? styleOptions : void 0,
           aspectRatio: argv.aspectRatio,
           duration: argv.duration || null,
           actor: argv.actor || null,
@@ -4570,11 +4032,12 @@ var pipelineCommand = {
       const api = new MeliesAPI(token);
       console.error("Step 1/2: Generating image...");
       const imageParams = {
-        prompt: finalPrompt,
+        prompt: rawPrompt,
         model: imageModel,
         aspectRatio: argv.aspectRatio,
         numOutputs: 1
       };
+      if (hasStyleOptions) imageParams.styleOptions = styleOptions;
       if (argv.seed) imageParams.seed = argv.seed;
       if (actorRef) imageParams.imageUrl = actorRef;
       const imageResult = await api.executeTool("text_to_image", imageParams);
@@ -4600,7 +4063,7 @@ var pipelineCommand = {
         imageAssetId: imageAsset.assetId,
         videoUrl: videoAsset.url || null,
         videoAssetId: videoAsset.assetId,
-        prompt: finalPrompt
+        prompt: rawPrompt
       };
       if (videoAsset.url && argv.output) {
         const filePath = await downloadFile(videoAsset.url, argv.output);

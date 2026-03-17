@@ -449,6 +449,124 @@
       "modifier": "medieval fantasy era, period armor and clothing, stone architecture, torchlight, fantasy world, epic production quality"
     }
   },
+  "movement": {
+    "slow-zoom-in": {
+      "label": "Slow zoom in",
+      "modifier": "slow zoom in, subtle push toward subject, cinematic tension building"
+    },
+    "slow-zoom-out": {
+      "label": "Slow zoom out",
+      "modifier": "slow zoom out, reveal shot, pulling away from subject"
+    },
+    "crash-zoom-in": {
+      "label": "Crash zoom in",
+      "modifier": "crash zoom in, fast dramatic snap zoom toward subject, sudden impact, intense"
+    },
+    "crash-zoom-out": {
+      "label": "Crash zoom out",
+      "modifier": "crash zoom out, rapid pull-back reveal, dramatic sudden wide shot"
+    },
+    "dolly-in": {
+      "label": "Dolly in",
+      "modifier": "dolly in camera movement, physically moving toward subject, depth of field shift"
+    },
+    "dolly-out": {
+      "label": "Dolly out",
+      "modifier": "dolly out camera movement, physically pulling away from subject"
+    },
+    "dolly-left": {
+      "label": "Dolly left",
+      "modifier": "dolly left, camera physically sliding left on track, smooth lateral movement"
+    },
+    "dolly-right": {
+      "label": "Dolly right",
+      "modifier": "dolly right, camera physically sliding right on track, smooth lateral movement"
+    },
+    "pan-left": {
+      "label": "Pan left",
+      "modifier": "horizontal pan left camera movement, smooth pivot"
+    },
+    "pan-right": {
+      "label": "Pan right",
+      "modifier": "horizontal pan right camera movement, smooth pivot"
+    },
+    "tilt-up": {
+      "label": "Tilt up",
+      "modifier": "tilt up camera movement, vertical pivot upward, gradual reveal of sky or ceiling"
+    },
+    "tilt-down": {
+      "label": "Tilt down",
+      "modifier": "tilt down camera movement, vertical pivot downward, gradual reveal of ground or table"
+    },
+    "whip-pan": {
+      "label": "Whip pan",
+      "modifier": "whip pan transition, fast horizontal camera swipe, energetic, motion blur"
+    },
+    "orbit-360": {
+      "label": "360 Orbit",
+      "modifier": "full 360 degree orbit around subject, smooth continuous circular arc, cinematic revolve"
+    },
+    "arc-left": {
+      "label": "Arc left",
+      "modifier": "arc left camera movement, partial orbit sweeping left around subject, curved dolly"
+    },
+    "arc-right": {
+      "label": "Arc right",
+      "modifier": "arc right camera movement, partial orbit sweeping right around subject, curved dolly"
+    },
+    "crane-up": {
+      "label": "Crane up",
+      "modifier": "crane up camera movement, rising upward reveal shot, ascending smoothly"
+    },
+    "crane-down": {
+      "label": "Crane down",
+      "modifier": "crane down camera movement, descending from above, lowering smoothly"
+    },
+    "crane-over": {
+      "label": "Crane over",
+      "modifier": "crane up and over the subject, camera rises and tilts down to reveal from above"
+    },
+    "fpv-drone": {
+      "label": "FPV drone",
+      "modifier": "FPV drone shot, dynamic aerial movement, immersive first-person perspective, racing through scene"
+    },
+    "aerial-pullback": {
+      "label": "Aerial pullback",
+      "modifier": "aerial pullback shot, camera rises and pulls away from subject, dramatic scale reveal from above"
+    },
+    "overhead": {
+      "label": "Overhead",
+      "modifier": "overhead top-down camera movement, bird's eye view looking straight down, flat lay perspective"
+    },
+    "tracking": {
+      "label": "Tracking shot",
+      "modifier": "tracking shot following subject movement, camera moves alongside subject at same speed, smooth parallel travel"
+    },
+    "push-in": {
+      "label": "Push in",
+      "modifier": "slow deliberate push in toward subject, building intensity, camera advancing forward"
+    },
+    "handheld": {
+      "label": "Handheld",
+      "modifier": "handheld camera, subtle organic shake, documentary feel, intimate, raw"
+    },
+    "dolly-zoom": {
+      "label": "Dolly zoom",
+      "modifier": "dolly zoom vertigo effect, background zooms opposite to dolly, Hitchcock technique, disorienting perspective shift"
+    },
+    "dutch-angle": {
+      "label": "Dutch angle",
+      "modifier": "dutch angle tilted camera, canted frame, diagonal horizon, disorienting and dramatic"
+    },
+    "hyperlapse": {
+      "label": "Hyperlapse",
+      "modifier": "hyperlapse time-lapse with camera movement, compressed time, smooth long-distance travel through scene"
+    },
+    "static": {
+      "label": "Static",
+      "modifier": "static locked camera on tripod, no movement, composed stillness"
+    }
+  },
   "lighting": {
     "soft": {
       "label": "Soft / Diffused",

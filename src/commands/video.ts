@@ -3,7 +3,7 @@ import { MeliesAPI } from '../api';
 import { getToken } from '../config';
 import { pollAsset } from './image';
 import { resolveModel, getPresetCredits } from '../utils/model-resolver';
-import { buildPrompt, type StyleOptions } from '../utils/prompt-builder';
+import type { StyleOptions } from '../utils/prompt-builder';
 import { findActor } from '../utils/actors';
 import { downloadFile } from '../utils/download';
 import { addStyleOptions, addQualityOptions, addActorOption, addGenerationOptions } from '../utils/style-options';
@@ -31,6 +31,7 @@ interface VideoArgs {
   mood?: string;
   artStyle?: string;
   era?: string;
+  movement?: string;
   dryRun?: boolean;
   seed?: number;
   output?: string;
@@ -105,27 +106,30 @@ export const videoCommand: CommandModule<{}, VideoArgs> = {
         actorRef = actor.r2Url;
       }
 
-      // Build enhanced prompt
-      const styleOptions: StyleOptions = {
-        camera: argv.camera,
-        shot: argv.shot,
-        expression: argv.expression,
-        lighting: argv.lighting,
-        time: argv.time,
-        weather: argv.weather,
-        colorGrade: argv.colorGrade,
-        mood: argv.mood,
-        artStyle: argv.artStyle,
-        era: argv.era,
-      };
-      const finalPrompt = buildPrompt(argv.prompt, styleOptions, actorModifier);
+      // Collect style options (resolved server-side)
+      const styleOptions: StyleOptions = {};
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.expression) styleOptions.expression = argv.expression;
+      if (argv.lighting) styleOptions.lighting = argv.lighting;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+      if (argv.movement) styleOptions.movement = argv.movement;
+
+      // Prepend actor modifier to prompt
+      const rawPrompt = actorModifier ? `${actorModifier}, ${argv.prompt}` : argv.prompt;
 
       // Dry run
       if (argv.dryRun) {
         const credits = getPresetCredits('video', argv);
         console.log(JSON.stringify({
           model,
-          prompt: finalPrompt,
+          prompt: rawPrompt,
+          styleOptions: Object.keys(styleOptions).length > 0 ? styleOptions : undefined,
           credits: credits || 'varies by model',
           aspectRatio: argv.aspectRatio,
           duration: argv.duration || null,
@@ -139,10 +143,11 @@ export const videoCommand: CommandModule<{}, VideoArgs> = {
       const api = new MeliesAPI(token);
 
       const params: Record<string, unknown> = {
-        prompt: finalPrompt,
+        prompt: rawPrompt,
         model,
         aspectRatio: argv.aspectRatio,
       };
+      if (Object.keys(styleOptions).length > 0) params.styleOptions = styleOptions;
       if (argv.imageUrl) params.imageUrl = argv.imageUrl;
       if (argv.duration) params.duration = argv.duration;
       if (argv.resolution) params.resolution = argv.resolution;

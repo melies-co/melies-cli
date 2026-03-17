@@ -1,84 +1,28 @@
 import type { CommandModule } from 'yargs';
-import { MeliesAPI } from '../api';
-import { saveConfig } from '../config';
-import * as readline from 'readline';
-
-function prompt(question: string, hidden = false): Promise<string> {
-  return new Promise((resolve) => {
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
-
-    if (hidden) {
-      // For password input, suppress echo
-      const stdin = process.stdin;
-      const wasRaw = stdin.isRaw;
-      if (stdin.isTTY) {
-        stdin.setRawMode(true);
-      }
-
-      process.stdout.write(question);
-      let input = '';
-
-      const onData = (char: Buffer) => {
-        const c = char.toString();
-        if (c === '\n' || c === '\r') {
-          stdin.removeListener('data', onData);
-          if (stdin.isTTY && wasRaw !== undefined) {
-            stdin.setRawMode(wasRaw);
-          }
-          process.stdout.write('\n');
-          rl.close();
-          resolve(input);
-        } else if (c === '\u0003') {
-          // Ctrl+C
-          process.exit(0);
-        } else if (c === '\u007F' || c === '\b') {
-          // Backspace
-          if (input.length > 0) {
-            input = input.slice(0, -1);
-          }
-        } else {
-          input += c;
-        }
-      };
-
-      stdin.on('data', onData);
-    } else {
-      rl.question(question, (answer) => {
-        rl.close();
-        resolve(answer);
-      });
-    }
-  });
-}
+import { loadConfig, saveConfig } from '../config';
+import * as http from 'http';
+import { exec } from 'child_process';
 
 interface LoginArgs {
-  email?: string;
-  password?: string;
   token?: string;
+}
+
+function openBrowser(url: string): void {
+  const platform = process.platform;
+  const cmd = platform === 'darwin' ? 'open' :
+              platform === 'win32' ? 'start' : 'xdg-open';
+  exec(`${cmd} "${url}"`);
 }
 
 export const loginCommand: CommandModule<{}, LoginArgs> = {
   command: 'login',
-  describe: 'Log in to Melies and store your auth token',
+  describe: 'Log in to Melies via browser or with an API token',
   builder: (yargs) =>
     yargs
-      .option('email', {
-        alias: 'e',
-        type: 'string',
-        description: 'Your Melies email',
-      })
-      .option('password', {
-        alias: 'p',
-        type: 'string',
-        description: 'Your Melies password',
-      })
       .option('token', {
         alias: 't',
         type: 'string',
-        description: 'Provide a JWT token directly (skip email/password)',
+        description: 'Provide an API token directly (for CI/agents)',
       }),
   handler: async (argv) => {
     try {
@@ -89,29 +33,77 @@ export const loginCommand: CommandModule<{}, LoginArgs> = {
         return;
       }
 
-      // Interactive login
-      const email = argv.email || await prompt('Email: ');
-      const password = argv.password || await prompt('Password: ', true);
+      // Browser-based login flow
+      const config = loadConfig();
+      const baseUrl = config.apiUrl.replace(/\/api$/, '');
 
-      if (!email || !password) {
-        console.error(JSON.stringify({ error: 'Email and password are required' }));
+      const server = http.createServer();
+
+      // Listen on a random available port
+      await new Promise<void>((resolve) => {
+        server.listen(0, '127.0.0.1', () => resolve());
+      });
+
+      const address = server.address();
+      if (!address || typeof address === 'string') {
+        console.error(JSON.stringify({ error: 'Failed to start local server' }));
         process.exit(1);
       }
 
-      const api = new MeliesAPI();
-      const result = await api.login(email, password);
+      const port = address.port;
+      const authUrl = `${baseUrl}/auth/cli?port=${port}`;
 
-      if (result.token) {
-        saveConfig({ token: result.token });
-        console.log(JSON.stringify({
-          success: true,
-          user: result.user.name || result.user.email,
-          plan: result.user.accountIds?.[0]?.plan || 'free',
-        }));
-      } else {
-        console.error(JSON.stringify({ error: 'Login failed. Check your credentials.' }));
-        process.exit(1);
-      }
+      console.error(`Opening browser for authentication...`);
+      console.error(`If the browser doesn't open, visit: ${authUrl}`);
+      console.error('');
+      console.error(`Waiting for authentication...`);
+
+      openBrowser(authUrl);
+
+      // Wait for the callback with a timeout
+      const token = await new Promise<string>((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          server.close();
+          reject(new Error('Authentication timed out after 60 seconds. Use "melies login --token <token>" to paste a token manually.'));
+        }, 60000);
+
+        server.on('request', (req, res) => {
+          const url = new URL(req.url || '/', `http://localhost:${port}`);
+
+          if (url.pathname === '/callback') {
+            const callbackToken = url.searchParams.get('token');
+
+            // Send a success page to the browser
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(`
+              <html>
+                <body style="background:#0a0a0a;color:#a5b4fc;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh;margin:0">
+                  <div style="text-align:center">
+                    <h1 style="font-size:1.5rem;margin-bottom:0.5rem">CLI authenticated</h1>
+                    <p style="color:#6b7280">You can close this tab.</p>
+                  </div>
+                </body>
+              </html>
+            `);
+
+            clearTimeout(timeout);
+
+            if (callbackToken) {
+              resolve(callbackToken);
+            } else {
+              reject(new Error('No token received from callback'));
+            }
+          } else {
+            res.writeHead(404);
+            res.end();
+          }
+        });
+      });
+
+      server.close();
+
+      saveConfig({ token });
+      console.log(JSON.stringify({ success: true, message: 'Authenticated successfully' }));
     } catch (error: any) {
       console.error(JSON.stringify({ error: error.message }));
       process.exit(1);

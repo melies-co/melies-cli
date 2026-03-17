@@ -93,14 +93,6 @@ export class MeliesAPI {
     return response.json();
   }
 
-  // Auth
-  async login(email: string, password: string): Promise<{ token: string; user: User }> {
-    return this.request('/user/login', {
-      method: 'POST',
-      body: { email, password },
-    });
-  }
-
   // User
   async getUser(): Promise<{ user: User }> {
     return this.request('/user', { method: 'GET' });

@@ -3,9 +3,10 @@ import { MeliesAPI } from '../api';
 import { getToken } from '../config';
 import { pollAsset } from './image';
 import { resolveModel, getPresetCredits } from '../utils/model-resolver';
+import type { StyleOptions } from '../utils/prompt-builder';
 import { findActor } from '../utils/actors';
 import { downloadFile } from '../utils/download';
-import { addQualityOptions, addActorOption, addGenerationOptions } from '../utils/style-options';
+import { addStyleOptions, addQualityOptions, addActorOption, addGenerationOptions } from '../utils/style-options';
 import posterStyles from '../data/poster-styles.json';
 
 interface PosterArgs {
@@ -14,8 +15,9 @@ interface PosterArgs {
   genre?: string;
   style?: string;
   model?: string;
+  aspectRatio?: string;
   ref?: string;
-  actor?: string;
+  actor?: string[];
   sync?: boolean;
   fast?: boolean;
   quality?: boolean;
@@ -23,6 +25,16 @@ interface PosterArgs {
   dryRun?: boolean;
   seed?: number;
   output?: string;
+  camera?: string;
+  shot?: string;
+  expression?: string;
+  lighting?: string;
+  time?: string;
+  weather?: string;
+  colorGrade?: string;
+  mood?: string;
+  artStyle?: string;
+  era?: string;
 }
 
 export const posterCommand: CommandModule<{}, PosterArgs> = {
@@ -54,6 +66,17 @@ export const posterCommand: CommandModule<{}, PosterArgs> = {
         type: 'string',
         description: 'Image model to use (overrides quality presets)',
       })
+      .option('aspectRatio', {
+        alias: 'a',
+        type: 'string',
+        default: '3:4',
+        description: 'Aspect ratio (3:4, 2:3, 1:1, 4:3)',
+      })
+      .option('actor', {
+        type: 'string',
+        array: true,
+        description: 'AI actor name(s). Use multiple --actor flags for multiple actors.',
+      })
       .option('ref', {
         type: 'string',
         description: 'Reference ID (actor/object) for consistent characters',
@@ -64,8 +87,8 @@ export const posterCommand: CommandModule<{}, PosterArgs> = {
         default: false,
         description: 'Wait for generation to complete and return the URL',
       });
+    y = addStyleOptions(y);
     y = addQualityOptions(y);
-    y = addActorOption(y);
     y = addGenerationOptions(y);
     return y as any;
   },
@@ -78,7 +101,6 @@ export const posterCommand: CommandModule<{}, PosterArgs> = {
       if (argv.style) {
         const styleLower = argv.style.toLowerCase();
         const styles = posterStyles as Array<{ id: string; name: string; promptSuffix: string }>;
-        // Match by id, name, or partial id match
         const found = styles.find((s) =>
           s.id === styleLower ||
           s.name.toLowerCase() === styleLower ||
@@ -95,35 +117,49 @@ export const posterCommand: CommandModule<{}, PosterArgs> = {
         }
       }
 
-      // Resolve actor
-      let actorModifier: string | undefined;
-      let actorRef: string | undefined;
-      if (argv.actor) {
-        const actor = findActor(argv.actor);
+      // Resolve actors (supports multiple, text-only for posters)
+      const actorModifiers: string[] = [];
+      const actors = argv.actor || [];
+      for (const actorName of actors) {
+        const actor = findActor(actorName);
         if (!actor) {
-          console.error(JSON.stringify({ error: `Actor "${argv.actor}" not found. Run "melies actors" to see available actors.` }));
+          console.error(JSON.stringify({ error: `Actor "${actorName}" not found. Run "melies actors" to see available actors.` }));
           process.exit(1);
         }
-        actorModifier = actor.modifier;
-        actorRef = actor.r2Url;
+        actorModifiers.push(actor.modifier);
       }
 
-      // Build poster prompt
-      let prompt = `Movie poster for "${argv.title}"`;
-      if (argv.logline) prompt += `. ${argv.logline}`;
-      if (argv.genre) prompt += `. Genre: ${argv.genre}`;
-      if (actorModifier) prompt += `. Starring: ${actorModifier}`;
-      if (styleSuffix) prompt += `. ${styleSuffix}`;
+      // Collect style options (resolved server-side)
+      const styleOptions: StyleOptions = {};
+      if (argv.camera) styleOptions.camera = argv.camera;
+      if (argv.shot) styleOptions.shot = argv.shot;
+      if (argv.expression) styleOptions.expression = argv.expression;
+      if (argv.lighting) styleOptions.lighting = argv.lighting;
+      if (argv.time) styleOptions.time = argv.time;
+      if (argv.weather) styleOptions.weather = argv.weather;
+      if (argv.colorGrade) styleOptions.colorGrade = argv.colorGrade;
+      if (argv.mood) styleOptions.mood = argv.mood;
+      if (argv.artStyle) styleOptions.artStyle = argv.artStyle;
+      if (argv.era) styleOptions.era = argv.era;
+
+      let rawPrompt = `Movie poster for "${argv.title}"`;
+      if (argv.logline) rawPrompt += `. ${argv.logline}`;
+      if (argv.genre) rawPrompt += `. Genre: ${argv.genre}`;
+      if (actorModifiers.length > 0) rawPrompt += `. Starring: ${actorModifiers.join(' and ')}`;
+      if (styleSuffix) rawPrompt += `. ${styleSuffix}`;
+      const hasStyleOptions = Object.keys(styleOptions).length > 0;
 
       // Dry run
       if (argv.dryRun) {
         const credits = getPresetCredits('image', { ...argv, model: argv.model || 'flux-dev' });
         console.log(JSON.stringify({
           model,
-          prompt,
+          prompt: rawPrompt,
+          styleOptions: hasStyleOptions ? styleOptions : undefined,
           credits: credits || 'varies by model',
+          aspectRatio: argv.aspectRatio,
           style: argv.style || null,
-          actor: argv.actor || null,
+          actors: actors.length > 0 ? actors : null,
           seed: argv.seed || null,
         }, null, 2));
         return;
@@ -133,12 +169,13 @@ export const posterCommand: CommandModule<{}, PosterArgs> = {
       const api = new MeliesAPI(token);
 
       const params: Record<string, unknown> = {
-        prompt,
+        prompt: rawPrompt,
         model,
+        aspectRatio: argv.aspectRatio,
       };
+      if (hasStyleOptions) params.styleOptions = styleOptions;
       if (argv.ref) params.refs = [argv.ref];
       if (argv.seed) params.seed = argv.seed;
-      if (actorRef) params.imageUrl = actorRef;
 
       const result = await api.executeTool('poster_generator', params);
 

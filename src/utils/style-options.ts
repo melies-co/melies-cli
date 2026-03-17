@@ -15,6 +15,7 @@ export function addStyleOptions<T>(yargs: Argv<T>): Argv<T & {
   mood?: string;
   artStyle?: string;
   era?: string;
+  movement?: string;
 }> {
   return yargs
     .option('camera', { type: 'string', description: 'Camera angle (eye-level, high, low, overhead, dutch, ots, profile, three-quarter)' })
@@ -26,7 +27,8 @@ export function addStyleOptions<T>(yargs: Argv<T>): Argv<T & {
     .option('colorGrade', { alias: 'color-grade', type: 'string', description: 'Color grade (natural, teal-orange, mono, warm, cool, filmic, sepia)' })
     .option('mood', { type: 'string', description: 'Mood (romantic, mysterious, tense, ethereal, gritty, epic, nostalgic)' })
     .option('artStyle', { alias: 'art-style', type: 'string', description: 'Art style (film-still, blockbuster, noir, anime, ghibli, oil, watercolor, concept)' })
-    .option('era', { type: 'string', description: 'Era (victorian, 1920s, 1980s, modern, dystopian, medieval)' }) as any;
+    .option('era', { type: 'string', description: 'Era (victorian, 1920s, 1980s, modern, dystopian, medieval)' })
+    .option('movement', { type: 'string', description: 'Camera movement for video (dolly-in, pan-left, orbit-360, crane-up, slow-zoom-in, handheld, static)' }) as any;
 }
 
 /**
