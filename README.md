@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <strong>Generate images, videos, movie posters, and YouTube thumbnails from the command line.</strong><br>
-  Built for AI agents, filmmakers, and content creators.
+  <strong>150 AI actors. 220+ visual styles. 50+ models. Zero prompt engineering.</strong><br>
+  Generate images, videos, movie posters, and YouTube thumbnails from the command line.
 </p>
 
 <p align="center">
