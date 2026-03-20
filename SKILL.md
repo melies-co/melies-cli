@@ -30,10 +30,8 @@ AI filmmaking from the command line. 148 AI actors, 98 visual styles, 50+ models
 ## Install
 
 ```bash
-npx melies
+npm install -g melies
 ```
-
-For frequent use, install globally: `npm install -g melies`
 
 ## Authentication
 
