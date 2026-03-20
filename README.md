@@ -28,7 +28,7 @@
 
 ```bash
 npx melies login
-npx melies image "portrait in a café" --actor mei --art-style ghibli --lighting golden --sync
+melies image "portrait in a café" --actor mei --art-style ghibli --lighting golden --sync
 ```
 
 That's it. No config files, no API keys to paste. The login command opens your browser, authenticates, and you're generating.
@@ -56,31 +56,31 @@ That's it. No config files, no API keys to paste. The login command opens your b
 ### Generate an image with an AI actor
 
 ```bash
-npx melies image "cinematic portrait in golden hour" --actor mei --art-style ghibli --lighting golden --sync
+melies image "cinematic portrait in golden hour" --actor mei --art-style ghibli --lighting golden --sync
 ```
 
 ### Generate a movie poster
 
 ```bash
-npx melies poster "Midnight Protocol" --actor dante --actor elena --style anime --sync
+melies poster "Midnight Protocol" --actor dante --actor elena --style anime --sync
 ```
 
 ### Image → Video pipeline in one command
 
 ```bash
-npx melies pipeline "tracking shot through neon Tokyo" --actor hailey --best --sync
+melies pipeline "tracking shot through neon Tokyo" --actor hailey --best --sync
 ```
 
 ### Generate 4 YouTube thumbnails
 
 ```bash
-npx melies thumbnail "shocked face reacting to AI news" --actor aria -n 4 --sync
+melies thumbnail "shocked face reacting to AI news" --actor aria -n 4 --sync
 ```
 
 ### Preview cost before generating
 
 ```bash
-npx melies image "sunset" --quality --actor hailey --dry-run
+melies image "sunset" --quality --actor hailey --dry-run
 ```
 
 ---
@@ -103,7 +103,7 @@ Combine freely on any `image`, `video`, `thumbnail`, or `pipeline` command. [Bro
 Plus: `--time`, `--weather`, `--composition`, `--dof`, `--focal-length`, `--aperture`, `--lens`, `--exposure`, `--camera-model`, `--movement`
 
 ```bash
-npx melies image "woman in a café" --lighting golden --mood romantic --art-style ghibli --era 1920s --sync
+melies image "woman in a café" --lighting golden --mood romantic --art-style ghibli --era 1920s --sync
 ```
 
 ---
@@ -118,7 +118,7 @@ Use quality presets instead of model names:
 | `--quality` | flux-pro | 8 cr | kling-v3-pro | 100 cr |
 | `--best` | seedream-3 | 6 cr | veo-3.1 | 400 cr |
 
-Override with `-m <model>`. Run `npx melies models` or [browse all models](https://melies.co/docs/models).
+Override with `-m <model>`. Run `melies models` or [browse all models](https://melies.co/docs/models).
 
 ---
 
@@ -127,12 +127,12 @@ Override with `-m <model>`. Run `npx melies models` or [browse all models](https
 148 built-in characters with identity consistency across every generation. [Browse all actors](https://melies.co/docs/actors).
 
 ```bash
-npx melies actors                              # List all actors
-npx melies actors --gender female --age 20s    # Filter
-npx melies actors search "asian"               # Search
+melies actors                              # List all actors
+melies actors --gender female --age 20s    # Filter
+melies actors search "asian"               # Search
 
 # Create a custom actor from any face
-npx melies ref create "jean-pierre" -i photo.jpg
+melies ref create "jean-pierre" -i photo.jpg
 ```
 
 ---
@@ -166,7 +166,7 @@ Melies is built for AI agents. Generation commands always output JSON. Browse co
 
 ```bash
 # Token auth for CI/agents
-npx melies login --token YOUR_TOKEN
+melies login --token YOUR_TOKEN
 
 # Or set as environment variable
 export MELIES_TOKEN=your_token
