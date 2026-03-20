@@ -158,7 +158,7 @@ npx melies ref create "jean-pierre" -i photo.jpg
 
 ## For AI Agents
 
-Melies is built for AI agents. Every command outputs structured JSON, flags are predictable, and the CLI ships with a [SKILL.md](./SKILL.md) file that any agent can read for auto-discovery.
+Melies is built for AI agents. Generation commands always output JSON. Browse commands (`credits`, `models`, `actors`, `assets`, `styles`) show tables by default. Use `--json` to get structured JSON output for parsing. The CLI ships with a [SKILL.md](./SKILL.md) file that any agent can read for auto-discovery.
 
 **Works with:** Claude Code, Cursor, Windsurf, GitHub Copilot, Cline, Codex, Gemini, Goose, Amp, Trae, Vibe, Replit, OpenCode, Manus, and any agent that reads SKILL.md.
 

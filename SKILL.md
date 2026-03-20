@@ -50,6 +50,12 @@ export MELIES_TOKEN=your_token
 
 Generate an API token at [melies.co](https://melies.co) > Settings > API.
 
+## Output Format
+
+By default, browse commands (`credits`, `models`, `actors`, `assets`, `styles`) display human-readable tables. **Agents should always use `--json`** to get structured JSON output for parsing.
+
+Generation commands (`image`, `video`, `poster`, `thumbnail`, `pipeline`, `upscale`, `remove-bg`) always output JSON.
+
 ## Quick Start
 
 ```bash
@@ -227,17 +233,18 @@ melies actors                              # List all actors
 melies actors --type influencer            # Filter by type
 melies actors --gender female --age 20s    # Filter by gender and age
 melies actors search "asian"               # Search by name/tags
-melies actors search "male 30s"            # Multi-word search
+melies actors --json                       # JSON output for parsing
 ```
 
 ### melies styles
 
-Browse and search style references (sref codes).
+Browse 220+ visual style flags (art styles, lighting, camera angles, expressions, moods, and more).
 
 ```bash
-melies styles search "cyberpunk"           # Search by keyword
-melies styles top                          # Popular keywords
-melies styles info 1234567                 # Details for a code
+melies styles                              # Overview of all categories
+melies styles --type lighting              # All values for a category
+melies styles search "neon"                # Search across all categories
+melies styles --json                       # JSON output for parsing
 ```
 
 ### melies credits
@@ -245,7 +252,8 @@ melies styles info 1234567                 # Details for a code
 Check credit balance and usage.
 
 ```bash
-melies credits
+melies credits                             # Human-readable table
+melies credits --json                      # JSON output for parsing
 melies credits -g day
 ```
 
@@ -257,6 +265,7 @@ List available AI models.
 melies models                    # All models
 melies models -t image           # Image models only
 melies models -t video           # Video models only
+melies models --json             # JSON output for parsing
 ```
 
 ### melies status \<assetId\>
@@ -272,8 +281,9 @@ melies status 6502a3b1f2e4a123456789ab
 List recent generated assets.
 
 ```bash
-melies assets
-melies assets -l 50 -t text_to_image
+melies assets                              # Recent assets
+melies assets -l 50 -t text_to_image       # Filter by type
+melies assets --json                       # JSON output for parsing
 ```
 
 ### melies ref
@@ -330,7 +340,7 @@ melies pipeline "epic battle scene" --actor james --best --dry-run
 ### Budget-Aware Generation
 
 ```bash
-CREDITS=$(melies credits | jq '.credits')
+CREDITS=$(melies credits --json | jq '.credits')
 if [ "$CREDITS" -gt 100 ]; then
   melies video "Epic aerial shot" --best --sync
 else
