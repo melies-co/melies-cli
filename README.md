@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/banner.jpg" alt="Melies CLI — AI Agent Creative Toolkit" width="100%" />
+  <img src="docs/banner.gif" alt="Melies CLI — AI Agent Creative Toolkit" width="100%" />
 </p>
 
 <h1 align="center">Melies CLI — AI Agent Creative Toolkit</h1>
@@ -27,13 +27,29 @@
 ## Quick Start
 
 ```bash
-npx melies login
-melies image "portrait in a café" --actor mei --art-style ghibli --lighting golden --sync
+npm install -g melies
 ```
 
-That's it. No config files, no API keys to paste. The login command opens your browser, authenticates, and you're generating.
+Then authenticate:
 
-> For frequent use, install globally: `npm install -g melies`
+```bash
+# Browser login (opens melies.co, authenticates automatically)
+melies login
+
+# Or use an API token directly (for CI/agents)
+melies login --token YOUR_TOKEN
+
+# Or set as environment variable
+export MELIES_TOKEN=your_token
+```
+
+Generate an API token at [melies.co](https://melies.co) > Settings > API.
+
+Start generating:
+
+```bash
+melies image "portrait in a café" --actor mei --art-style ghibli --lighting golden --sync
+```
 
 ---
 
