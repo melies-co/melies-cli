@@ -1,7 +1,7 @@
 import type { CommandModule } from 'yargs';
 import { loadConfig, saveConfig } from '../config';
 import * as http from 'http';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 
 interface LoginArgs {
   token?: string;
@@ -11,7 +11,7 @@ function openBrowser(url: string): void {
   const platform = process.platform;
   const cmd = platform === 'darwin' ? 'open' :
               platform === 'win32' ? 'start' : 'xdg-open';
-  exec(`${cmd} "${url}"`);
+  execFile(cmd, [url]);
 }
 
 export const loginCommand: CommandModule<{}, LoginArgs> = {

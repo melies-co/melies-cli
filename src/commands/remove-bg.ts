@@ -3,6 +3,7 @@ import { MeliesAPI } from '../api';
 import { getToken } from '../config';
 import { pollAsset } from './image';
 import { downloadFile } from '../utils/download';
+import { getModelCredits } from '../utils/model-resolver';
 
 interface RemoveBgArgs {
   imageUrl: string;
@@ -13,7 +14,7 @@ interface RemoveBgArgs {
 
 export const removeBgCommand: CommandModule<{}, RemoveBgArgs> = {
   command: 'remove-bg <imageUrl>',
-  describe: 'Remove the background from an image (3 credits)',
+  describe: 'Remove the background from an image',
   builder: (yargs) =>
     yargs
       .positional('imageUrl', {
@@ -40,9 +41,10 @@ export const removeBgCommand: CommandModule<{}, RemoveBgArgs> = {
   handler: async (argv) => {
     try {
       if (argv.dryRun) {
+        const credits = await getModelCredits('remove-background');
         console.log(JSON.stringify({
           tool: 'remove-background',
-          credits: 3,
+          credits: credits ?? 'unknown',
           imageUrl: argv.imageUrl,
         }, null, 2));
         return;

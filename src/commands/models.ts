@@ -55,7 +55,7 @@ export const modelsCommand: CommandModule<{}, ModelsArgs> = {
         const id = (m.id || '').padEnd(24);
         const name = (m.name || '').slice(0, 27).padEnd(28);
         const type = (m.type || '').padEnd(8);
-        const credits = m.credits != null ? String(m.credits) : '—';
+        const credits = m.credits != null ? String(m.credits) : '-';
         console.log(`  ${id} ${name} ${type} ${credits}`);
       }
 

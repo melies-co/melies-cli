@@ -3,6 +3,7 @@ import { MeliesAPI } from '../api';
 import { getToken } from '../config';
 import { pollAsset } from './image';
 import { downloadFile } from '../utils/download';
+import { getModelCredits } from '../utils/model-resolver';
 
 interface UpscaleArgs {
   imageUrl: string;
@@ -12,12 +13,6 @@ interface UpscaleArgs {
   dryRun?: boolean;
   output?: string;
 }
-
-const UPSCALE_MODELS: Record<string, { credits: number; description: string }> = {
-  esrgan: { credits: 3, description: 'Fast general-purpose upscaling' },
-  clarity: { credits: 8, description: 'High quality with detail enhancement' },
-  seedvr2: { credits: 5, description: 'Balanced quality and speed' },
-};
 
 export const upscaleCommand: CommandModule<{}, UpscaleArgs> = {
   command: 'upscale <imageUrl>',
@@ -60,10 +55,9 @@ export const upscaleCommand: CommandModule<{}, UpscaleArgs> = {
       }),
   handler: async (argv) => {
     try {
-      const modelInfo = UPSCALE_MODELS[argv.model || 'esrgan'];
-      const credits = modelInfo.credits * (argv.scale === 4 ? 2 : 1);
-
       if (argv.dryRun) {
+        const baseCredits = await getModelCredits(argv.model || 'esrgan');
+        const credits = baseCredits != null ? baseCredits * (argv.scale === 4 ? 2 : 1) : 'unknown';
         console.log(JSON.stringify({
           model: argv.model,
           scale: argv.scale,

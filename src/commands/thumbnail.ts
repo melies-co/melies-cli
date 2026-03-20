@@ -2,7 +2,7 @@ import type { CommandModule } from 'yargs';
 import { MeliesAPI } from '../api';
 import { getToken } from '../config';
 import { pollAsset } from './image';
-import { resolveModel, getPresetCredits } from '../utils/model-resolver';
+import { resolveModel, getModelCredits } from '../utils/model-resolver';
 import type { StyleOptions } from '../utils/prompt-builder';
 import { findActor } from '../utils/actors';
 import { downloadFile } from '../utils/download';
@@ -105,12 +105,12 @@ export const thumbnailCommand: CommandModule<{}, ThumbnailArgs> = {
         : `YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`;
 
       if (argv.dryRun) {
-        const credits = getPresetCredits('image', argv);
+        const credits = await getModelCredits(model);
         console.log(JSON.stringify({
           model,
           prompt: rawPrompt,
           styleOptions,
-          credits: credits || 'varies by model',
+          credits: credits ?? 'unknown',
           aspectRatio: '16:9',
           numOutputs: argv.numOutputs,
           actor: argv.actor || null,

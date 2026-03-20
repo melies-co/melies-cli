@@ -84,9 +84,9 @@ export const assetsCommand: CommandModule<{}, AssetsArgs> = {
 
       for (const a of output) {
         const status = (a.status || '').padEnd(10);
-        const model = (a.model || '—').slice(0, 19).padEnd(20);
-        const name = (a.name || '—').slice(0, 27).padEnd(28);
-        const when = a.createdAt ? timeAgo(a.createdAt).padEnd(8) : '—'.padEnd(8);
+        const model = (a.model || '-').slice(0, 19).padEnd(20);
+        const name = (a.name || '-').slice(0, 27).padEnd(28);
+        const when = a.createdAt ? timeAgo(a.createdAt).padEnd(8) : '-'.padEnd(8);
         const id = (a.id || '').slice(-8);
         console.log(`  ${status} ${model} ${name} ${when} ${id}`);
       }

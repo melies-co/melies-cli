@@ -2,7 +2,7 @@ import type { CommandModule } from 'yargs';
 import { MeliesAPI } from '../api';
 import { getToken } from '../config';
 import { pollAsset } from './image';
-import { resolveModel, getPresetCredits } from '../utils/model-resolver';
+import { resolveModel, getModelCredits } from '../utils/model-resolver';
 import type { StyleOptions } from '../utils/prompt-builder';
 import { findActor } from '../utils/actors';
 import { downloadFile } from '../utils/download';
@@ -115,18 +115,18 @@ export const pipelineCommand: CommandModule<{}, PipelineArgs> = {
 
       // Dry run
       if (argv.dryRun) {
-        const imageCredits = getPresetCredits('image', { ...argv, model: argv.imageModel });
-        const videoCredits = getPresetCredits('video', { ...argv, model: argv.videoModel });
+        const imageCredits = await getModelCredits(imageModel);
+        const videoCredits = await getModelCredits(videoModel);
         console.log(JSON.stringify({
           step1: {
             type: 'image',
             model: imageModel,
-            credits: imageCredits || 'varies by model',
+            credits: imageCredits ?? 'unknown',
           },
           step2: {
             type: 'video',
             model: videoModel,
-            credits: videoCredits || 'varies by model',
+            credits: videoCredits ?? 'unknown',
           },
           prompt: rawPrompt,
           styleOptions: hasStyleOptions ? styleOptions : undefined,

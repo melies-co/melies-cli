@@ -1,24 +1,23 @@
+import { MeliesAPI } from '../api';
+
 export type QualityPreset = 'fast' | 'quality' | 'best';
 export type GenerationType = 'image' | 'video';
 
-interface ModelConfig {
-  id: string;
-  credits: number;
-}
-
-const IMAGE_PRESETS: Record<QualityPreset, ModelConfig> = {
-  fast: { id: 'flux-schnell', credits: 2 },
-  quality: { id: 'flux-pro', credits: 8 },
-  best: { id: 'seedream-3', credits: 6 },
+// Preset model IDs: which model to use for each quality level.
+// These are CLI-side decisions (not API data).
+const IMAGE_PRESETS: Record<QualityPreset, string> = {
+  fast: 'flux-schnell',
+  quality: 'flux-pro',
+  best: 'seedream-3',
 };
 
-const VIDEO_PRESETS: Record<QualityPreset, ModelConfig> = {
-  fast: { id: 'kling-v2', credits: 30 },
-  quality: { id: 'kling-v3-pro', credits: 100 },
-  best: { id: 'veo-3.1', credits: 400 },
+const VIDEO_PRESETS: Record<QualityPreset, string> = {
+  fast: 'kling-v2',
+  quality: 'kling-v3-pro',
+  best: 'veo-3.1',
 };
 
-const PRESETS: Record<GenerationType, Record<QualityPreset, ModelConfig>> = {
+const PRESETS: Record<GenerationType, Record<QualityPreset, string>> = {
   image: IMAGE_PRESETS,
   video: VIDEO_PRESETS,
 };
@@ -27,23 +26,36 @@ export function resolveModel(
   type: GenerationType,
   options: { model?: string; fast?: boolean; quality?: boolean; best?: boolean }
 ): string {
-  // Explicit model always wins
   if (options.model) return options.model;
-
-  // Quality preset
-  if (options.best) return PRESETS[type].best.id;
-  if (options.quality) return PRESETS[type].quality.id;
-
-  // Default is fast
-  return PRESETS[type].fast.id;
+  if (options.best) return PRESETS[type].best;
+  if (options.quality) return PRESETS[type].quality;
+  return PRESETS[type].fast;
 }
 
-export function getPresetCredits(
-  type: GenerationType,
-  options: { model?: string; fast?: boolean; quality?: boolean; best?: boolean }
-): number | null {
-  if (options.model) return null; // Unknown for custom models
-  if (options.best) return PRESETS[type].best.credits;
-  if (options.quality) return PRESETS[type].quality.credits;
-  return PRESETS[type].fast.credits;
+// Credit costs are fetched from the API (single source of truth).
+// Cached per session to avoid repeated calls.
+let creditCache: Map<string, number> | null = null;
+
+async function loadCreditCache(): Promise<Map<string, number>> {
+  if (creditCache) return creditCache;
+  try {
+    const api = new MeliesAPI();
+    const { models } = await api.getModels();
+    creditCache = new Map();
+    for (const m of models) {
+      const id = m.id || (m as any).model;
+      if (id && m.credits != null) {
+        creditCache.set(id, m.credits);
+      }
+    }
+    return creditCache;
+  } catch {
+    creditCache = new Map();
+    return creditCache;
+  }
+}
+
+export async function getModelCredits(modelId: string): Promise<number | null> {
+  const cache = await loadCreditCache();
+  return cache.get(modelId) ?? null;
 }

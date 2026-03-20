@@ -79,7 +79,7 @@ var import_child_process = require("child_process");
 function openBrowser(url) {
   const platform = process.platform;
   const cmd = platform === "darwin" ? "open" : platform === "win32" ? "start" : "xdg-open";
-  (0, import_child_process.exec)(`${cmd} "${url}"`);
+  (0, import_child_process.execFile)(cmd, [url]);
 }
 var loginCommand = {
   command: "login",
@@ -259,18 +259,18 @@ var MeliesAPI = class {
       return null;
     }
   }
-  async searchSrefStyles(keyword) {
-    return this.request("/sref-styles/search", {
-      method: "GET",
-      query: { q: keyword }
-    });
-  }
-  async getTopSrefKeywords() {
-    return this.request("/sref-styles/top-keywords", { method: "GET" });
-  }
 };
 
 // src/commands/credits.ts
+var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function formatCredits(n) {
+  return n.toLocaleString("en-US");
+}
+function barChart(value, max, width = 20) {
+  if (max === 0) return "";
+  const filled = Math.round(value / max * width);
+  return "\u2588".repeat(filled) + "\u2591".repeat(width - filled);
+}
 var creditsCommand = {
   command: "credits",
   describe: "Check credit balance and usage stats",
@@ -280,6 +280,10 @@ var creditsCommand = {
     choices: ["day", "week", "month"],
     default: "month",
     description: "Granularity for usage stats"
+  }).option("json", {
+    type: "boolean",
+    default: false,
+    description: "Output raw JSON (for agents and scripts)"
   }),
   handler: async (argv) => {
     try {
@@ -288,13 +292,45 @@ var creditsCommand = {
       const { user } = await api.getUser();
       const account = user.accountIds?.[0];
       const { stats } = await api.getCreditStats(argv.granularity);
-      console.log(JSON.stringify({
-        plan: account?.plan || "free",
-        credits: account?.credits ?? 0,
-        usage: stats
-      }, null, 2));
+      const plan = account?.plan || "free";
+      const credits = account?.credits ?? 0;
+      if (argv.json) {
+        console.log(JSON.stringify({ plan, credits, usage: stats }, null, 2));
+        return;
+      }
+      console.log("");
+      console.log(`  Plan:     ${plan}`);
+      console.log(`  Credits:  ${formatCredits(credits)}`);
+      console.log("");
+      if (stats && stats.length > 0) {
+        const max = Math.max(...stats.map((s) => s.totalCredits));
+        console.log("  Usage");
+        console.log("  " + "\u2500".repeat(50));
+        for (const s of stats) {
+          const id = s._id;
+          let label;
+          if (id.day) {
+            label = `${MONTHS[id.month - 1]} ${String(id.day).padStart(2, " ")}`;
+          } else if (id.week) {
+            label = `${MONTHS[id.month - 1]} W${id.week}`;
+          } else {
+            label = `${MONTHS[id.month - 1]} ${id.year}`;
+          }
+          const bar = barChart(s.totalCredits, max);
+          const credits2 = formatCredits(s.totalCredits);
+          console.log(`  ${label.padEnd(10)} ${bar} ${credits2.padStart(7)}`);
+        }
+        console.log("  " + "\u2500".repeat(50));
+        const total = stats.reduce((sum, s) => sum + s.totalCredits, 0);
+        console.log(`  ${"Total".padEnd(10)} ${" ".repeat(20)} ${formatCredits(total).padStart(7)}`);
+      }
+      console.log("");
     } catch (error) {
-      console.error(JSON.stringify({ error: error.message }));
+      if (argv.json) {
+        console.error(JSON.stringify({ error: error.message }));
+      } else {
+        console.error(`  Error: ${error.message}`);
+      }
       process.exit(1);
     }
   }
@@ -309,6 +345,10 @@ var modelsCommand = {
     type: "string",
     choices: ["image", "video", "sound", "sound_effect"],
     description: "Filter by model type"
+  }).option("json", {
+    type: "boolean",
+    default: false,
+    description: "Output raw JSON (for agents and scripts)"
   }),
   handler: async (argv) => {
     try {
@@ -324,9 +364,29 @@ var modelsCommand = {
         type: m.type,
         credits: m.credits ?? null
       }));
-      console.log(JSON.stringify(output, null, 2));
+      if (argv.json) {
+        console.log(JSON.stringify(output, null, 2));
+        return;
+      }
+      console.log("");
+      console.log(`  ${filtered.length} models available${argv.type ? ` (${argv.type})` : ""}`);
+      console.log("");
+      console.log(`  ${"ID".padEnd(24)} ${"Name".padEnd(28)} ${"Type".padEnd(8)} Credits`);
+      console.log("  " + "\u2500".repeat(72));
+      for (const m of output) {
+        const id = (m.id || "").padEnd(24);
+        const name = (m.name || "").slice(0, 27).padEnd(28);
+        const type = (m.type || "").padEnd(8);
+        const credits = m.credits != null ? String(m.credits) : "-";
+        console.log(`  ${id} ${name} ${type} ${credits}`);
+      }
+      console.log("");
     } catch (error) {
-      console.error(JSON.stringify({ error: error.message }));
+      if (argv.json) {
+        console.error(JSON.stringify({ error: error.message }));
+      } else {
+        console.error(`  Error: ${error.message}`);
+      }
       process.exit(1);
     }
   }
@@ -334,14 +394,14 @@ var modelsCommand = {
 
 // src/utils/model-resolver.ts
 var IMAGE_PRESETS = {
-  fast: { id: "flux-schnell", credits: 2 },
-  quality: { id: "flux-pro", credits: 8 },
-  best: { id: "seedream-3", credits: 6 }
+  fast: "flux-schnell",
+  quality: "flux-pro",
+  best: "seedream-3"
 };
 var VIDEO_PRESETS = {
-  fast: { id: "kling-v2", credits: 30 },
-  quality: { id: "kling-v3-pro", credits: 100 },
-  best: { id: "veo-3.1", credits: 400 }
+  fast: "kling-v2",
+  quality: "kling-v3-pro",
+  best: "veo-3.1"
 };
 var PRESETS = {
   image: IMAGE_PRESETS,
@@ -349,15 +409,32 @@ var PRESETS = {
 };
 function resolveModel(type, options) {
   if (options.model) return options.model;
-  if (options.best) return PRESETS[type].best.id;
-  if (options.quality) return PRESETS[type].quality.id;
-  return PRESETS[type].fast.id;
+  if (options.best) return PRESETS[type].best;
+  if (options.quality) return PRESETS[type].quality;
+  return PRESETS[type].fast;
 }
-function getPresetCredits(type, options) {
-  if (options.model) return null;
-  if (options.best) return PRESETS[type].best.credits;
-  if (options.quality) return PRESETS[type].quality.credits;
-  return PRESETS[type].fast.credits;
+var creditCache = null;
+async function loadCreditCache() {
+  if (creditCache) return creditCache;
+  try {
+    const api = new MeliesAPI();
+    const { models } = await api.getModels();
+    creditCache = /* @__PURE__ */ new Map();
+    for (const m of models) {
+      const id = m.id || m.model;
+      if (id && m.credits != null) {
+        creditCache.set(id, m.credits);
+      }
+    }
+    return creditCache;
+  } catch {
+    creditCache = /* @__PURE__ */ new Map();
+    return creditCache;
+  }
+}
+async function getModelCredits(modelId) {
+  const cache = await loadCreditCache();
+  return cache.get(modelId) ?? null;
 }
 
 // src/data/actors.json
@@ -2906,12 +2983,12 @@ var imageCommand = {
       if (argv.era) styleOptions.era = argv.era;
       const rawPrompt = actorModifier ? `${actorModifier}, ${argv.prompt}` : argv.prompt;
       if (argv.dryRun) {
-        const credits = getPresetCredits("image", argv);
+        const credits = await getModelCredits(model);
         console.log(JSON.stringify({
           model,
           prompt: rawPrompt,
           styleOptions: Object.keys(styleOptions).length > 0 ? styleOptions : void 0,
-          credits: credits || "varies by model",
+          credits: credits ?? "unknown",
           aspectRatio: argv.aspectRatio,
           numOutputs: argv.numOutputs,
           actor: argv.actor || null,
@@ -3070,12 +3147,12 @@ var videoCommand = {
       if (argv.movement) styleOptions.movement = argv.movement;
       const rawPrompt = actorModifier ? `${actorModifier}, ${argv.prompt}` : argv.prompt;
       if (argv.dryRun) {
-        const credits = getPresetCredits("video", argv);
+        const credits = await getModelCredits(model);
         console.log(JSON.stringify({
           model,
           prompt: rawPrompt,
           styleOptions: Object.keys(styleOptions).length > 0 ? styleOptions : void 0,
-          credits: credits || "varies by model",
+          credits: credits ?? "unknown",
           aspectRatio: argv.aspectRatio,
           duration: argv.duration || null,
           actor: argv.actor || null,
@@ -3357,12 +3434,12 @@ var posterCommand = {
       if (styleSuffix) rawPrompt += `. ${styleSuffix}`;
       const hasStyleOptions = Object.keys(styleOptions).length > 0;
       if (argv.dryRun) {
-        const credits = getPresetCredits("image", { ...argv, model: argv.model || "flux-dev" });
+        const credits = await getModelCredits(model);
         console.log(JSON.stringify({
           model,
           prompt: rawPrompt,
           styleOptions: hasStyleOptions ? styleOptions : void 0,
-          credits: credits || "varies by model",
+          credits: credits ?? "unknown",
           aspectRatio: argv.aspectRatio,
           style: argv.style || null,
           actors: actors2.length > 0 ? actors2 : null,
@@ -3439,6 +3516,16 @@ var statusCommand = {
 };
 
 // src/commands/assets.ts
+function timeAgo(dateStr) {
+  const diff = Date.now() - new Date(dateStr).getTime();
+  const mins = Math.floor(diff / 6e4);
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 30) return `${days}d ago`;
+  return `${Math.floor(days / 30)}mo ago`;
+}
 var assetsCommand = {
   command: "assets",
   describe: "List your generated assets (images, videos)",
@@ -3457,6 +3544,10 @@ var assetsCommand = {
     type: "string",
     choices: ["text_to_image", "text_to_video", "poster_generator", "image_to_image"],
     description: "Filter by tool type"
+  }).option("json", {
+    type: "boolean",
+    default: false,
+    description: "Output raw JSON (for agents and scripts)"
   }),
   handler: async (argv) => {
     try {
@@ -3477,9 +3568,30 @@ var assetsCommand = {
         model: a.model || null,
         createdAt: a.createdAt
       }));
-      console.log(JSON.stringify({ assets: output }, null, 2));
+      if (argv.json) {
+        console.log(JSON.stringify({ assets: output }, null, 2));
+        return;
+      }
+      console.log("");
+      console.log(`  ${output.length} assets${argv.type ? ` (${argv.type})` : ""}`);
+      console.log("");
+      console.log(`  ${"Status".padEnd(10)} ${"Model".padEnd(20)} ${"Name".padEnd(28)} ${"When".padEnd(8)} ID`);
+      console.log("  " + "\u2500".repeat(80));
+      for (const a of output) {
+        const status = (a.status || "").padEnd(10);
+        const model = (a.model || "-").slice(0, 19).padEnd(20);
+        const name = (a.name || "-").slice(0, 27).padEnd(28);
+        const when = a.createdAt ? timeAgo(a.createdAt).padEnd(8) : "-".padEnd(8);
+        const id = (a.id || "").slice(-8);
+        console.log(`  ${status} ${model} ${name} ${when} ${id}`);
+      }
+      console.log("");
     } catch (error) {
-      console.error(JSON.stringify({ error: error.message }));
+      if (argv.json) {
+        console.error(JSON.stringify({ error: error.message }));
+      } else {
+        console.error(`  Error: ${error.message}`);
+      }
       process.exit(1);
     }
   }
@@ -3577,6 +3689,22 @@ var refCommand = {
 };
 
 // src/commands/actors.ts
+function printActorTable(actors2) {
+  console.log("");
+  console.log(`  ${actors2.length} actors`);
+  console.log("");
+  console.log(`  ${"Name".padEnd(16)} ${"Type".padEnd(12)} ${"Gender".padEnd(8)} ${"Age".padEnd(6)} Tags`);
+  console.log("  " + "\u2500".repeat(68));
+  for (const a of actors2) {
+    const name = (a.name || "").padEnd(16);
+    const type = (a.type || "").padEnd(12);
+    const gender = (a.gender || "").padEnd(8);
+    const age = (a.age || "").padEnd(6);
+    const tags = (a.tags || []).slice(0, 4).join(", ");
+    console.log(`  ${name} ${type} ${gender} ${age} ${tags}`);
+  }
+  console.log("");
+}
 var actorsSearchCommand = {
   command: "search <query>",
   describe: "Search actors by name, tags, or description",
@@ -3584,13 +3712,13 @@ var actorsSearchCommand = {
     type: "string",
     description: "Search query",
     demandOption: true
+  }).option("json", {
+    type: "boolean",
+    default: false,
+    description: "Output raw JSON (for agents and scripts)"
   }),
   handler: (argv) => {
     const results = searchActors(argv.query);
-    if (results.length === 0) {
-      console.log(JSON.stringify({ results: [], message: `No actors found for "${argv.query}"` }));
-      return;
-    }
     const output = results.map((a) => ({
       name: a.name,
       type: a.type,
@@ -3598,7 +3726,21 @@ var actorsSearchCommand = {
       age: a.ageGroup,
       tags: a.tags
     }));
-    console.log(JSON.stringify(output, null, 2));
+    if (argv.json) {
+      if (results.length === 0) {
+        console.log(JSON.stringify({ results: [], message: `No actors found for "${argv.query}"` }));
+      } else {
+        console.log(JSON.stringify(output, null, 2));
+      }
+      return;
+    }
+    if (results.length === 0) {
+      console.log(`
+  No actors found for "${argv.query}"
+`);
+      return;
+    }
+    printActorTable(output);
   }
 };
 var actorsCommand = {
@@ -3615,6 +3757,10 @@ var actorsCommand = {
   }).option("age", {
     type: "string",
     description: "Filter by age group (20s, 30s, 40s, 50s, 60s, 70s)"
+  }).option("json", {
+    type: "boolean",
+    default: false,
+    description: "Output raw JSON (for agents and scripts)"
   }),
   handler: (argv) => {
     const hasFilters = argv.type || argv.gender || argv.age;
@@ -3626,80 +3772,199 @@ var actorsCommand = {
       age: a.ageGroup,
       tags: a.tags
     }));
-    console.log(JSON.stringify(output, null, 2));
+    if (argv.json) {
+      console.log(JSON.stringify(output, null, 2));
+      return;
+    }
+    printActorTable(output);
   }
 };
 
 // src/commands/styles.ts
+var STYLE_CATEGORIES = {
+  "art-style": {
+    flag: "--art-style",
+    values: ["film-still", "blockbuster", "noir", "anime", "ghibli", "oil", "watercolor", "concept", "comic", "pixel", "photorealistic", "surreal", "pop-art", "sketch", "ukiyo-e", "art-deco", "neo-noir"]
+  },
+  "lighting": {
+    flag: "--lighting",
+    values: ["soft", "golden", "noir", "rembrandt", "backlit", "neon", "candle", "hard", "high-key", "low-key", "natural", "studio", "silhouette"]
+  },
+  "camera": {
+    flag: "--camera",
+    values: ["eye-level", "high", "low", "overhead", "dutch", "ots", "profile", "three-quarter", "worms-eye", "birds-eye"]
+  },
+  "shot": {
+    flag: "--shot",
+    values: ["ecu", "close-up", "medium", "cowboy", "full-body", "wide", "tighter", "wider"]
+  },
+  "expression": {
+    flag: "--expression",
+    values: ["smile", "laugh", "serious", "surprised", "villain-smirk", "seductive", "horrified", "pensive", "angry", "sad", "confident", "shy", "neutral", "dreamy", "intense", "mischievous", "stoic", "exhausted", "ecstatic", "disgusted", "fearful", "proud", "curious", "bored", "determined"]
+  },
+  "mood": {
+    flag: "--mood",
+    values: ["romantic", "mysterious", "tense", "ethereal", "gritty", "epic", "nostalgic", "serene", "chaotic", "melancholic", "triumphant"]
+  },
+  "color-grade": {
+    flag: "--color-grade",
+    values: ["natural", "teal-orange", "mono", "warm", "cool", "filmic", "sepia", "bleach-bypass", "cross-process", "vintage"]
+  },
+  "era": {
+    flag: "--era",
+    values: ["victorian", "1920s", "1950s", "1980s", "modern", "dystopian", "medieval", "renaissance", "art-nouveau", "cyberpunk", "steampunk"]
+  },
+  "time": {
+    flag: "--time",
+    values: ["dawn", "sunrise", "golden", "midday", "afternoon", "dusk", "twilight", "night", "blue-hour"]
+  },
+  "weather": {
+    flag: "--weather",
+    values: ["clear", "fog", "rain", "storm", "snow", "overcast", "mist", "haze"]
+  },
+  "composition": {
+    flag: "--composition",
+    values: ["rule-of-thirds", "symmetric", "leading-lines", "frame-within-frame", "diagonal", "golden-ratio", "centered", "off-center"]
+  },
+  "dof": {
+    flag: "--dof",
+    values: ["very-shallow", "shallow", "moderate", "deep", "tilt-shift"]
+  },
+  "focal-length": {
+    flag: "--focal-length",
+    values: ["14mm", "24mm", "35mm", "50mm", "85mm", "135mm", "200mm", "400mm"]
+  },
+  "aperture": {
+    flag: "--aperture",
+    values: ["f1.2", "f1.4", "f1.8", "f2.8", "f4", "f5.6", "f8", "f11", "f16", "f22"]
+  },
+  "lens": {
+    flag: "--lens",
+    values: ["anamorphic", "tilt-shift", "macro", "fish-eye", "pinhole", "soft-focus"]
+  },
+  "exposure": {
+    flag: "--exposure",
+    values: ["crushed", "underexposed", "normal", "overexposed", "blown-out"]
+  },
+  "camera-model": {
+    flag: "--camera-model",
+    values: ["arri-alexa", "red-v-raptor", "sony-venice", "super-8", "iphone", "polaroid", "hasselblad"]
+  },
+  "movement": {
+    flag: "--movement",
+    values: ["dolly-in", "dolly-out", "pan-left", "pan-right", "tilt-up", "tilt-down", "orbit-360", "crane-up", "crane-down", "slow-zoom-in", "slow-zoom-out", "handheld", "static", "fpv-drone", "steadicam"]
+  }
+};
+function searchStyles(query) {
+  const q = query.toLowerCase();
+  const results = [];
+  for (const [category, data] of Object.entries(STYLE_CATEGORIES)) {
+    if (category.includes(q)) {
+      for (const v of data.values) {
+        results.push({ category, flag: data.flag, value: v });
+      }
+    } else {
+      for (const v of data.values) {
+        if (v.includes(q)) {
+          results.push({ category, flag: data.flag, value: v });
+        }
+      }
+    }
+  }
+  return results;
+}
 var stylesSearchCommand = {
   command: "search <keyword>",
-  describe: "Search style references by keyword",
+  describe: "Search styles by keyword",
   builder: (yargs2) => yargs2.positional("keyword", {
     type: "string",
-    description: 'Keyword to search (e.g. "cyberpunk", "watercolor")',
+    description: 'Keyword to search (e.g. "neon", "noir", "golden")',
     demandOption: true
+  }).option("json", {
+    type: "boolean",
+    default: false,
+    description: "Output raw JSON"
   }),
-  handler: async (argv) => {
-    try {
-      const token = getToken();
-      const api = new MeliesAPI(token);
-      const results = await api.searchSrefStyles(argv.keyword);
+  handler: (argv) => {
+    const results = searchStyles(argv.keyword);
+    if (argv.json) {
       console.log(JSON.stringify(results, null, 2));
-    } catch (error) {
-      console.error(JSON.stringify({ error: error.message }));
-      process.exit(1);
+      return;
     }
-  }
-};
-var stylesTopCommand = {
-  command: "top",
-  describe: "Show popular style reference keywords",
-  handler: async () => {
-    try {
-      const token = getToken();
-      const api = new MeliesAPI(token);
-      const results = await api.getTopSrefKeywords();
-      console.log(JSON.stringify(results, null, 2));
-    } catch (error) {
-      console.error(JSON.stringify({ error: error.message }));
-      process.exit(1);
+    if (results.length === 0) {
+      console.log(`
+  No styles found for "${argv.keyword}"
+`);
+      return;
     }
-  }
-};
-var stylesInfoCommand = {
-  command: "info <code>",
-  describe: "Get details for a specific style reference code",
-  builder: (yargs2) => yargs2.positional("code", {
-    type: "string",
-    description: "Sref code to look up",
-    demandOption: true
-  }),
-  handler: async (argv) => {
-    try {
-      const token = getToken();
-      const api = new MeliesAPI(token);
-      const result = await api.getSrefStyle(argv.code);
-      console.log(JSON.stringify(result, null, 2));
-    } catch (error) {
-      console.error(JSON.stringify({ error: error.message }));
-      process.exit(1);
+    console.log("");
+    console.log(`  ${results.length} styles matching "${argv.keyword}"`);
+    console.log("");
+    console.log(`  ${"Flag".padEnd(22)} ${"Value".padEnd(20)} Category`);
+    console.log("  " + "\u2500".repeat(56));
+    for (const r of results) {
+      console.log(`  ${r.flag.padEnd(22)} ${r.value.padEnd(20)} ${r.category}`);
     }
+    console.log("");
   }
 };
 var stylesCommand = {
   command: "styles",
-  describe: "Browse and search style references (sref codes)",
-  builder: (yargs2) => yargs2.command(stylesSearchCommand).command(stylesTopCommand).command(stylesInfoCommand).demandCommand(1, 'Run "melies styles --help" to see subcommands'),
-  handler: () => {
+  describe: "Browse 220+ visual styles, lighting, camera angles, and more",
+  builder: (yargs2) => yargs2.command(stylesSearchCommand).option("type", {
+    alias: "t",
+    type: "string",
+    choices: Object.keys(STYLE_CATEGORIES),
+    description: "Show values for a specific style category"
+  }).option("json", {
+    type: "boolean",
+    default: false,
+    description: "Output raw JSON (for agents and scripts)"
+  }),
+  handler: (argv) => {
+    if (argv.json) {
+      if (argv.type) {
+        const cat = STYLE_CATEGORIES[argv.type];
+        console.log(JSON.stringify({ flag: cat.flag, values: cat.values }, null, 2));
+      } else {
+        console.log(JSON.stringify(STYLE_CATEGORIES, null, 2));
+      }
+      return;
+    }
+    if (argv.type) {
+      const cat = STYLE_CATEGORIES[argv.type];
+      console.log("");
+      console.log(`  ${argv.type} (${cat.flag})`);
+      console.log("  " + "\u2500".repeat(40));
+      for (const v of cat.values) {
+        console.log(`  ${v}`);
+      }
+      console.log("");
+      console.log(`  Usage: melies image "prompt" ${cat.flag} ${cat.values[0]} --sync`);
+      console.log("");
+      return;
+    }
+    console.log("");
+    console.log("  Visual Style Flags");
+    console.log("  " + "\u2500".repeat(60));
+    let totalValues = 0;
+    for (const [category, data] of Object.entries(STYLE_CATEGORIES)) {
+      totalValues += data.values.length;
+      const preview = data.values.slice(0, 5).join(", ");
+      const more = data.values.length > 5 ? `, +${data.values.length - 5} more` : "";
+      console.log(`  ${data.flag.padEnd(22)} ${preview}${more}`);
+    }
+    console.log("  " + "\u2500".repeat(60));
+    console.log(`  ${totalValues} values across ${Object.keys(STYLE_CATEGORIES).length} categories`);
+    console.log("");
+    console.log("  Show a category:  melies styles --type lighting");
+    console.log('  Search styles:    melies styles search "neon"');
+    console.log("  Browse online:    https://melies.co/docs/styles");
+    console.log("");
   }
 };
 
 // src/commands/upscale.ts
-var UPSCALE_MODELS = {
-  esrgan: { credits: 3, description: "Fast general-purpose upscaling" },
-  clarity: { credits: 8, description: "High quality with detail enhancement" },
-  seedvr2: { credits: 5, description: "Balanced quality and speed" }
-};
 var upscaleCommand = {
   command: "upscale <imageUrl>",
   describe: "Upscale an image to higher resolution",
@@ -3734,9 +3999,9 @@ var upscaleCommand = {
   }),
   handler: async (argv) => {
     try {
-      const modelInfo = UPSCALE_MODELS[argv.model || "esrgan"];
-      const credits = modelInfo.credits * (argv.scale === 4 ? 2 : 1);
       if (argv.dryRun) {
+        const baseCredits = await getModelCredits(argv.model || "esrgan");
+        const credits = baseCredits != null ? baseCredits * (argv.scale === 4 ? 2 : 1) : "unknown";
         console.log(JSON.stringify({
           model: argv.model,
           scale: argv.scale,
@@ -3776,7 +4041,7 @@ var upscaleCommand = {
 // src/commands/remove-bg.ts
 var removeBgCommand = {
   command: "remove-bg <imageUrl>",
-  describe: "Remove the background from an image (3 credits)",
+  describe: "Remove the background from an image",
   builder: (yargs2) => yargs2.positional("imageUrl", {
     type: "string",
     description: "URL of the image to process",
@@ -3798,9 +4063,10 @@ var removeBgCommand = {
   handler: async (argv) => {
     try {
       if (argv.dryRun) {
+        const credits = await getModelCredits("remove-background");
         console.log(JSON.stringify({
           tool: "remove-background",
-          credits: 3,
+          credits: credits ?? "unknown",
           imageUrl: argv.imageUrl
         }, null, 2));
         return;
@@ -3891,12 +4157,12 @@ var thumbnailCommand = {
       if (argv.era) styleOptions.era = argv.era;
       const rawPrompt = actorModifier ? `${actorModifier}, YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition` : `YouTube thumbnail: ${argv.prompt}, bold vibrant colors, high contrast, eye-catching composition`;
       if (argv.dryRun) {
-        const credits = getPresetCredits("image", argv);
+        const credits = await getModelCredits(model);
         console.log(JSON.stringify({
           model,
           prompt: rawPrompt,
           styleOptions,
-          credits: credits || "varies by model",
+          credits: credits ?? "unknown",
           aspectRatio: "16:9",
           numOutputs: argv.numOutputs,
           actor: argv.actor || null,
@@ -4006,18 +4272,18 @@ var pipelineCommand = {
       const rawPrompt = actorModifier ? `${actorModifier}, ${argv.prompt}` : argv.prompt;
       const hasStyleOptions = Object.keys(styleOptions).length > 0;
       if (argv.dryRun) {
-        const imageCredits = getPresetCredits("image", { ...argv, model: argv.imageModel });
-        const videoCredits = getPresetCredits("video", { ...argv, model: argv.videoModel });
+        const imageCredits = await getModelCredits(imageModel);
+        const videoCredits = await getModelCredits(videoModel);
         console.log(JSON.stringify({
           step1: {
             type: "image",
             model: imageModel,
-            credits: imageCredits || "varies by model"
+            credits: imageCredits ?? "unknown"
           },
           step2: {
             type: "video",
             model: videoModel,
-            credits: videoCredits || "varies by model"
+            credits: videoCredits ?? "unknown"
           },
           prompt: rawPrompt,
           styleOptions: hasStyleOptions ? styleOptions : void 0,
