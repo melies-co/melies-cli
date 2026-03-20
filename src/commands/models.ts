@@ -3,6 +3,7 @@ import { MeliesAPI } from '../api';
 
 interface ModelsArgs {
   type?: string;
+  json?: boolean;
 }
 
 export const modelsCommand: CommandModule<{}, ModelsArgs> = {
@@ -15,6 +16,11 @@ export const modelsCommand: CommandModule<{}, ModelsArgs> = {
         type: 'string',
         choices: ['image', 'video', 'sound', 'sound_effect'],
         description: 'Filter by model type',
+      })
+      .option('json', {
+        type: 'boolean',
+        default: false,
+        description: 'Output raw JSON (for agents and scripts)',
       }),
   handler: async (argv) => {
     try {
@@ -33,9 +39,33 @@ export const modelsCommand: CommandModule<{}, ModelsArgs> = {
         credits: m.credits ?? null,
       }));
 
-      console.log(JSON.stringify(output, null, 2));
+      if (argv.json) {
+        console.log(JSON.stringify(output, null, 2));
+        return;
+      }
+
+      // Human-readable table
+      console.log('');
+      console.log(`  ${filtered.length} models available${argv.type ? ` (${argv.type})` : ''}`);
+      console.log('');
+      console.log(`  ${'ID'.padEnd(24)} ${'Name'.padEnd(28)} ${'Type'.padEnd(8)} Credits`);
+      console.log('  ' + '─'.repeat(72));
+
+      for (const m of output) {
+        const id = (m.id || '').padEnd(24);
+        const name = (m.name || '').slice(0, 27).padEnd(28);
+        const type = (m.type || '').padEnd(8);
+        const credits = m.credits != null ? String(m.credits) : '—';
+        console.log(`  ${id} ${name} ${type} ${credits}`);
+      }
+
+      console.log('');
     } catch (error: any) {
-      console.error(JSON.stringify({ error: error.message }));
+      if (argv.json) {
+        console.error(JSON.stringify({ error: error.message }));
+      } else {
+        console.error(`  Error: ${error.message}`);
+      }
       process.exit(1);
     }
   },

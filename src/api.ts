@@ -163,14 +163,4 @@ export class MeliesAPI {
     }
   }
 
-  async searchSrefStyles(keyword: string): Promise<any> {
-    return this.request('/sref-styles/search', {
-      method: 'GET',
-      query: { q: keyword },
-    });
-  }
-
-  async getTopSrefKeywords(): Promise<any> {
-    return this.request('/sref-styles/top-keywords', { method: 'GET' });
-  }
 }
