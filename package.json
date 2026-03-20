@@ -1,7 +1,7 @@
 {
   "name": "melies",
   "version": "2.1.0",
-  "description": "CLI for Melies - Generate movie posters, images, and videos from the command line",
+  "description": "AI Agent Creative Toolkit — 150+ AI actors, 220+ visual styles, 50+ models. Generate images, videos, posters, and thumbnails from the command line.",
   "main": "dist/index.js",
   "bin": {
     "melies": "./dist/index.js"
@@ -14,6 +14,7 @@
   },
   "files": [
     "dist",
+    "docs",
     "README.md",
     "SKILL.md",
     "LICENSE"
