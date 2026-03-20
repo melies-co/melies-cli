@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="docs/banner.jpg" alt="Melies — AI Agent Creative Toolkit" width="100%" />
+  <img src="docs/banner.jpg" alt="Melies CLI — AI Agent Creative Toolkit" width="100%" />
 </p>
+
+<h1 align="center">Melies CLI — AI Agent Creative Toolkit</h1>
 
 <p align="center">
   <strong>150 AI actors. 220+ visual styles. 50+ models. Zero prompt engineering.</strong><br>
